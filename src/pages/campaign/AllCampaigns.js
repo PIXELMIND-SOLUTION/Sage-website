@@ -7,6 +7,7 @@ const PAGE_SIZE = 10;
 
 const AdminCampaigns = ({ darkMode }) => {
   const navigate = useNavigate();
+
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,19 +15,26 @@ const AdminCampaigns = ({ darkMode }) => {
   const [statusFilter, setStatusFilter] = useState("all");
   const [page, setPage] = useState(1);
 
-  /* ================= FETCH ================= */
-  useEffect(() => {
-    const fetchCampaigns = async () => {
-      try {
-        const res = await axios.get(`${API}/admin/campaigns?isAdmin=true`);
-        setCampaigns(res.data.data || []);
-      } catch (err) {
-        console.error("Failed to fetch campaigns", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Modal state
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedCampaign, setSelectedCampaign] = useState(null);
+  const [actionType, setActionType] = useState(null); // approved | rejected
+  const [notes, setNotes] = useState("");
+  const [actionLoading, setActionLoading] = useState(false);
 
+  /* ================= FETCH ================= */
+  const fetchCampaigns = async () => {
+    try {
+      const res = await axios.get(`${API}/admin/campaigns?isAdmin=true`);
+      setCampaigns(res.data.data || []);
+    } catch (err) {
+      console.error("Failed to fetch campaigns", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchCampaigns();
   }, []);
 
@@ -34,7 +42,7 @@ const AdminCampaigns = ({ darkMode }) => {
   const filtered = useMemo(() => {
     return campaigns.filter((c) => {
       const text =
-        `${c.fullName} ${c.email} ${c.userId?.fullName}`.toLowerCase();
+        `${c.userId?.fullName} ${c.userId?.email}`.toLowerCase();
 
       const matchesSearch = text.includes(search.toLowerCase());
       const matchesStatus =
@@ -54,9 +62,47 @@ const AdminCampaigns = ({ darkMode }) => {
 
   useEffect(() => setPage(1), [search, statusFilter]);
 
+  /* ================= OPEN MODAL ================= */
+  const openModal = (campaign, type) => {
+    setSelectedCampaign(campaign);
+    setActionType(type);
+    setNotes("");
+    setModalOpen(true);
+  };
+
+  /* ================= SUBMIT REVIEW ================= */
+  const submitReview = async () => {
+    if (!notes.trim()) {
+      alert("Please enter a reason");
+      return;
+    }
+
+    try {
+      setActionLoading(true);
+      await axios.put(
+        `${API}/admin/campaigns/${selectedCampaign._id}/review`,
+        {
+          status: actionType,
+          notes,
+          isAdmin: "true"
+        }
+      );
+
+      setModalOpen(false);
+      setSelectedCampaign(null);
+      fetchCampaigns();
+    } catch (err) {
+      alert(err.response?.data?.message || "Action failed");
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
   if (loading) {
     return (
-      <div className="p-10 text-center text-gray-500">Loading campaigns…</div>
+      <div className="p-10 text-center text-gray-500">
+        Loading campaigns…
+      </div>
     );
   }
 
@@ -94,20 +140,22 @@ const AdminCampaigns = ({ darkMode }) => {
           <table className="min-w-full text-sm">
             <thead className={darkMode ? "bg-gray-700" : "bg-gray-100"}>
               <tr>
-                <th className="p-3 text-left">S NO</th>
+                <th className="p-3 text-left">S.NO</th>
                 <th className="p-3 text-left">User</th>
                 <th className="p-3">Package</th>
                 <th className="p-3">Status</th>
                 <th className="p-3">Created</th>
-                <th className="p-3 text-right">Action</th>
+                <th className="p-3 text-right">Actions</th>
               </tr>
             </thead>
+
             <tbody>
-              {paginated.map((c) => (
+              {paginated.map((c, index) => (
                 <tr key={c._id} className="border-t">
-                    <td className="p-3">
-                    {(page - 1) * PAGE_SIZE + paginated.indexOf(c) + 1}
+                  <td className="p-3">
+                    {(page - 1) * PAGE_SIZE + index + 1}
                   </td>
+
                   <td className="p-3">
                     <div className="font-medium">
                       {c.userId?.fullName}
@@ -141,21 +189,41 @@ const AdminCampaigns = ({ darkMode }) => {
                   </td>
 
                   <td className="p-3 text-right">
-                    <button
-                      onClick={() =>
-                        navigate(`/admin/campaigns/${c._id}`)
-                      }
-                      className="px-3 py-1 text-sm rounded bg-indigo-600 text-white hover:bg-indigo-700"
-                    >
-                      View
-                    </button>
+                    <div className="flex justify-end gap-2 flex-wrap">
+                      <button
+                        onClick={() =>
+                          navigate(`/admin/campaigns/${c._id}`)
+                        }
+                        className="px-3 py-1 text-xs rounded bg-indigo-600 text-white"
+                      >
+                        View
+                      </button>
+
+                      {c.adminApprovalStatus === "pending" && (
+                        <>
+                          <button
+                            onClick={() => openModal(c, "approved")}
+                            className="px-3 py-1 text-xs rounded bg-green-600 text-white"
+                          >
+                            Approve
+                          </button>
+
+                          <button
+                            onClick={() => openModal(c, "rejected")}
+                            className="px-3 py-1 text-xs rounded bg-red-600 text-white"
+                          >
+                            Reject
+                          </button>
+                        </>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
 
               {paginated.length === 0 && (
                 <tr>
-                  <td colSpan="5" className="p-6 text-center text-gray-500">
+                  <td colSpan="6" className="p-6 text-center text-gray-500">
                     No campaigns found
                   </td>
                 </tr>
@@ -184,6 +252,52 @@ const AdminCampaigns = ({ darkMode }) => {
           </div>
         )}
       </div>
+
+      {/* ===== MODAL ===== */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
+          <div
+            className={`w-full max-w-md rounded-xl p-6
+            ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"}`}
+          >
+            <h2 className="text-lg font-bold mb-4">
+              {actionType === "approved"
+                ? "Approve Campaign"
+                : "Reject Campaign"}
+            </h2>
+
+            <textarea
+              placeholder="Enter reason..."
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              className="w-full p-3 rounded-lg border mb-4"
+              rows={4}
+            />
+
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setModalOpen(false)}
+                className="px-4 py-2 rounded border"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={submitReview}
+                disabled={actionLoading}
+                className={`px-4 py-2 rounded text-white
+                  ${
+                    actionType === "approved"
+                      ? "bg-green-600"
+                      : "bg-red-600"
+                  }`}
+              >
+                {actionLoading ? "Processing..." : "Submit"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

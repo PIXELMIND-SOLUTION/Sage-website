@@ -62,6 +62,7 @@ const Sidebar = ({ sidebarOpen, darkMode, toggleSidebar, collapsed, toggleCollap
   const menuItems = [
     { id: 'dashboard', icon: <FaTachometerAlt />, text: 'Dashboard', path: '/' },
     { id: 'users', icon: <FaUsers />, text: 'Users', path: '/users' },
+    { id: 'posts', icon: <FaLifeRing />, text: 'Posts', path: '/posts' },
     { 
       id: 'Packages', 
       icon: <FaIdBadge />, 
@@ -74,29 +75,24 @@ const Sidebar = ({ sidebarOpen, darkMode, toggleSidebar, collapsed, toggleCollap
     },
     { id: 'spins', icon: <FaShoppingCart />, text: 'Spins', path: '/spins' },
     { 
-      id: 'Approvals', 
+      id: 'Campaigns', 
       icon: <FaRegQuestionCircle />, 
-      text: 'Approvals', 
-      path: '/approvals',
+      text: 'Campaigns', 
+      path: '/campaigns',
       subItems: [
         { id: 'all campaigns', text: 'All Campaigns', path: '/campaigns' },
-        { id: 'campaign requests', text: 'Campaign Requests', path: '/campaign-requests' }
+        { id: 'campaign requests', text: 'Campaign Requests', path: '/campaign-requests' },
+        { id: 'rejected campaigns', text: 'Rejected Campaigns', path: '/rejected-campaigns' }
       ]
     },
     { id: 'calendar', icon: <FaCalendarAlt />, text: 'Calendar', path: '/calendar' },
-    { id: 'support', icon: <FaLifeRing />, text: 'Support', path: '/support' },
+    { id: 'payments', icon: <FaFileInvoiceDollar />, text: 'Payments', path: '/payments' },
     { 
       id: 'settings', 
       icon: <FaCog />, 
       text: 'Settings', 
-      path: '/settings',
-      subItems: [
-        { id: 'general', text: 'General Settings', path: '/settings/general' },
-        { id: 'payment', text: 'Payment Settings', path: '/settings/payment' },
-        { id: 'email', text: 'Email Settings', path: '/settings/email' },
-        { id: 'notifications', text: 'Notifications', path: '/settings/notifications' },
-      ]
-    },
+      path: '/settings'
+    }
   ];
 
   const handleItemClick = (item) => {

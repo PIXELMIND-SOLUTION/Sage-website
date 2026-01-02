@@ -49,7 +49,7 @@ const SingleCampaignView = ({ darkMode }) => {
     <div className={`min-h-screen p-4 md:p-6 ${darkMode ? "bg-gray-900" : "bg-gray-50"}`}>
       <div
         className={`max-w-7xl mx-auto rounded-3xl shadow-xl p-6 md:p-8
-        ${darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-800"}`}
+        ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"}`}
       >
         {/* BACK */}
         <button
@@ -70,10 +70,9 @@ const SingleCampaignView = ({ darkMode }) => {
 
           <span
             className={`px-4 py-1 rounded-full text-sm w-fit
-              ${
-                campaign.adminApprovalStatus === "approved"
-                  ? "bg-green-100 text-green-700"
-                  : campaign.adminApprovalStatus === "pending"
+              ${campaign.adminApprovalStatus === "approved"
+                ? "bg-green-100 text-green-700"
+                : campaign.adminApprovalStatus === "pending"
                   ? "bg-yellow-100 text-yellow-700"
                   : "bg-red-100 text-red-700"
               }`}
@@ -94,15 +93,36 @@ const SingleCampaignView = ({ darkMode }) => {
 
         {/* STATS */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-          <Stat label="Impressions" value={stats.impressions} icon={<FiEye />} />
-          <Stat label="Clicks" value={stats.clicks} icon={<FiMousePointer />} />
-          <Stat label="Conversions" value={stats.conversions} icon={<FiTrendingUp />} />
+          <Stat
+            label="Impressions"
+            value={stats.impressions}
+            icon={<FiEye />}
+            darkMode={darkMode}
+          />
+
+          <Stat
+            label="Clicks"
+            value={stats.clicks}
+            icon={<FiMousePointer />}
+            darkMode={darkMode}
+          />
+
+          <Stat
+            label="Conversions"
+            value={stats.conversions}
+            icon={<FiTrendingUp />}
+            darkMode={darkMode}
+          />
+
           <Stat
             label="Time Spent"
-            value={`${Math.floor(stats.totalTimeSpent / 60)}m ${stats.totalTimeSpent % 60}s`}
+            value={`${Math.floor(stats.totalTimeSpent / 60)}m ${stats.totalTimeSpent % 60
+              }s`}
             icon={<FiClock />}
+            darkMode={darkMode}
           />
         </div>
+
 
         {/* MEDIA */}
         {campaign.media?.length > 0 && (
@@ -185,14 +205,26 @@ const Info = ({ label, value }) => (
   </div>
 );
 
-const Stat = ({ label, value, icon }) => (
-  <div className="p-4 rounded-xl border bg-gradient-to-br from-indigo-50 to-blue-50">
+const Stat = ({ label, value, icon, darkMode }) => (
+  <div
+    className={`p-4 rounded-xl border
+      ${darkMode
+        ? "bg-gray-900 border-gray-700 text-white"
+        : "bg-gradient-to-br from-indigo-50 to-blue-50 text-gray-800"
+      }`}
+  >
     <div className="flex justify-between items-center mb-2">
-      <p className="text-sm text-gray-500">{label}</p>
-      {icon}
+      <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+        {label}
+      </p>
+      <span className={darkMode ? "text-indigo-400" : "text-indigo-600"}>
+        {icon}
+      </span>
     </div>
+
     <p className="text-xl font-bold">{value}</p>
   </div>
 );
+
 
 export default SingleCampaignView;

@@ -16,6 +16,8 @@ import AdminSpinDashboard from '../pages/spin/AdminSpin';
 import AdminCampaigns from '../pages/campaign/AllCampaigns';
 import SingleCampaignView from '../pages/campaign/SingleCampaign';
 import CampaignRequests from '../pages/campaign/CampaignRequests';
+import RejectedCampaigns from '../pages/campaign/RejectedCampaigns';
+import Posts from '../pages/posts/AllPosts';
 
 const AdminPanel = () => {
     const navigate = useNavigate();
@@ -113,12 +115,15 @@ const AdminPanel = () => {
                             <Route path="/users/details/:id" element={<UserDetails darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path='/userposts/:userId' element={<AdminUserPosts darkMode={darkMode} collapsed={collapsed} />} />
 
+                            <Route path="/posts" element={<Posts darkMode={darkMode} collapsed={collapsed} />} />
+
                             <Route path="/packages" element={<CoinPackage darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path="/campaign-packages" element={<CampaignPackage darkMode={darkMode} collapsed={collapsed} />} />
 
                             <Route path="/campaigns" element={<AdminCampaigns darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path="/campaigns/:id" element={<SingleCampaignView darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path="/campaign-requests" element={<CampaignRequests darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path="/rejected-campaigns" element={<RejectedCampaigns darkMode={darkMode} collapsed={collapsed} />} />
 
                             <Route path="/spins" element={<AdminSpinDashboard darkMode={darkMode} collapsed={collapsed} />} />
 
