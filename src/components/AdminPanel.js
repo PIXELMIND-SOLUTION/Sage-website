@@ -13,6 +13,9 @@ import CoinPackage from '../pages/packages/CoinPackage';
 import CampaignPackage from '../pages/packages/CampaignPackage';
 import AdminUserPosts from '../pages/users/UserPosts';
 import AdminSpinDashboard from '../pages/spin/AdminSpin';
+import AdminCampaigns from '../pages/campaign/AllCampaigns';
+import SingleCampaignView from '../pages/campaign/SingleCampaign';
+import CampaignRequests from '../pages/campaign/CampaignRequests';
 
 const AdminPanel = () => {
     const navigate = useNavigate();
@@ -71,9 +74,9 @@ const AdminPanel = () => {
         <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
             <div className="flex">
                 {/* Sidebar */}
-                <Sidebar 
-                    sidebarOpen={sidebarOpen} 
-                    darkMode={darkMode} 
+                <Sidebar
+                    sidebarOpen={sidebarOpen}
+                    darkMode={darkMode}
                     toggleSidebar={toggleSidebar}
                     collapsed={collapsed}
                     toggleCollapsed={toggleCollapsed}
@@ -113,7 +116,9 @@ const AdminPanel = () => {
                             <Route path="/packages" element={<CoinPackage darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path="/campaign-packages" element={<CampaignPackage darkMode={darkMode} collapsed={collapsed} />} />
 
-                            {/* <Route path="/campaign-requests" element={<CampaignRequests darkMode={darkMode} collapsed={collapsed} />} /> */}
+                            <Route path="/campaigns" element={<AdminCampaigns darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path="/campaigns/:id" element={<SingleCampaignView darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path="/campaign-requests" element={<CampaignRequests darkMode={darkMode} collapsed={collapsed} />} />
 
                             <Route path="/spins" element={<AdminSpinDashboard darkMode={darkMode} collapsed={collapsed} />} />
 

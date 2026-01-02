@@ -79,6 +79,7 @@ const Sidebar = ({ sidebarOpen, darkMode, toggleSidebar, collapsed, toggleCollap
       text: 'Approvals', 
       path: '/approvals',
       subItems: [
+        { id: 'all campaigns', text: 'All Campaigns', path: '/campaigns' },
         { id: 'campaign requests', text: 'Campaign Requests', path: '/campaign-requests' }
       ]
     },
