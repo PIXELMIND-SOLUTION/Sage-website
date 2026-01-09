@@ -1,5 +1,5 @@
 // App.jsx
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
     Search,
     Filter,
@@ -27,7 +27,8 @@ import {
     Clock,
     TrendingUp,
     Users,
-    AlertCircle
+    AlertCircle,
+    X
 } from 'lucide-react';
 
 // Theme context
@@ -51,6 +52,10 @@ const Posts = ({ darkMode }) => {
     const [selectedPost, setSelectedPost] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+    const [searchResults, setSearchResults] = useState([]);
+    const [showSearchResults, setShowSearchResults] = useState(false);
+    const [isSearching, setIsSearching] = useState(false);
+    const searchTimeoutRef = useRef(null);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -90,6 +95,88 @@ const Posts = ({ darkMode }) => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    // Search function with debouncing
+    const handleSearch = async (searchQuery) => {
+        if (!searchQuery.trim()) {
+            setSearchResults([]);
+            setShowSearchResults(false);
+            return;
+        }
+
+        setIsSearching(true);
+        setShowSearchResults(true);
+
+        try {
+            // Search in posts
+            const searchPosts = posts.filter(post => {
+                if (post.type === 'post') {
+                    return (
+                        post.data.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        post.data.userId?.fullName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        post.data.userId?.profile?.username?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        post.data._id?.toLowerCase().includes(searchQuery.toLowerCase())
+                    );
+                } else if (post.type === 'advertisement') {
+                    return (
+                        post.data.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        post.data.campaignId?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        post.data.description?.toLowerCase().includes(searchQuery.toLowerCase())
+                    );
+                }
+                return false;
+            });
+
+            // Search in ads if available
+            const searchAds = ads.data?.campaigns || [];
+            const filteredAds = searchAds.filter(ad => 
+                ad.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                ad.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                ad.campaignId?.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+
+            // Combine results
+            const combinedResults = [
+                ...searchPosts,
+                ...filteredAds.map(ad => ({
+                    type: 'advertisement',
+                    data: ad
+                }))
+            ];
+
+            setSearchResults(combinedResults);
+        } catch (error) {
+            console.error('Search error:', error);
+            setSearchResults([]);
+        } finally {
+            setIsSearching(false);
+        }
+    };
+
+    // Debounced search
+    const debouncedSearch = (searchQuery) => {
+        if (searchTimeoutRef.current) {
+            clearTimeout(searchTimeoutRef.current);
+        }
+
+        searchTimeoutRef.current = setTimeout(() => {
+            handleSearch(searchQuery);
+        }, 300);
+    };
+
+    // Handle search input change
+    const handleSearchChange = (e) => {
+        const value = e.target.value;
+        setSearchTerm(value);
+        debouncedSearch(value);
+    };
+
+    // Clear search
+    const clearSearch = () => {
+        setSearchTerm('');
+        setSearchResults([]);
+        setShowSearchResults(false);
+    };
 
     // Apply filters and search
     useEffect(() => {
@@ -223,10 +310,6 @@ const Posts = ({ darkMode }) => {
         setFilters(prev => ({ ...prev, [key]: value }));
     };
 
-    const handleSearch = (e) => {
-        setSearchTerm(e.target.value);
-    };
-
     const clearFilters = () => {
         setSearchTerm('');
         setFilters({
@@ -236,6 +319,8 @@ const Posts = ({ darkMode }) => {
             sortBy: 'newest',
             status: 'all'
         });
+        setShowSearchResults(false);
+        setSearchResults([]);
     };
 
     const formatDate = (dateString) => {
@@ -329,8 +414,101 @@ const Posts = ({ darkMode }) => {
         <ThemeContext.Provider value={{ theme }}>
             <div className={`min-h-screen transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
 
-                {/* Main Content */}
+                {/* Search Section */}
                 <div className="container mx-auto px-4 py-6 lg:px-6">
+                    {/* Search Bar */}
+                    <div className="relative mb-6">
+                        <div className="relative">
+                            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                            <input
+                                type="text"
+                                placeholder="Search posts, users, ads, campaigns..."
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                                className={`w-full pl-12 pr-12 py-3 rounded-xl border ${theme === 'dark' ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400' : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'}`}
+                            />
+                            {searchTerm && (
+                                <button
+                                    onClick={clearSearch}
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                >
+                                    <X size={20} />
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Search Results Dropdown */}
+                        {showSearchResults && searchTerm && (
+                            <div className={`absolute top-full left-0 right-0 mt-2 rounded-xl shadow-lg border z-50 max-h-96 overflow-y-auto ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+                                <div className="p-4">
+                                    <div className="flex justify-between items-center mb-3">
+                                        <h3 className="font-semibold">Search Results</h3>
+                                        <span className="text-sm text-gray-500">
+                                            {isSearching ? 'Searching...' : `${searchResults.length} results`}
+                                        </span>
+                                    </div>
+                                    
+                                    {isSearching ? (
+                                        <div className="flex items-center justify-center py-8">
+                                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
+                                            <span className="ml-3">Searching...</span>
+                                        </div>
+                                    ) : searchResults.length > 0 ? (
+                                        <div className="space-y-3">
+                                            {searchResults.slice(0, 10).map((item, index) => (
+                                                <div
+                                                    key={index}
+                                                    onClick={() => {
+                                                        setSelectedPost(item);
+                                                        setShowSearchResults(false);
+                                                    }}
+                                                    className={`p-3 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}
+                                                >
+                                                    <div className="flex items-center gap-3">
+                                                        <div className={`w-8 h-8 rounded-full ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'} flex items-center justify-center`}>
+                                                            {item.type === 'post' ? (
+                                                                <User size={16} />
+                                                            ) : (
+                                                                <BarChart3 size={16} />
+                                                            )}
+                                                        </div>
+                                                        <div className="flex-1">
+                                                            <h4 className="font-medium">
+                                                                {item.type === 'post' 
+                                                                    ? item.data.userId?.fullName || 'Unknown User'
+                                                                    : item.data.title
+                                                                }
+                                                            </h4>
+                                                            <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} truncate`}>
+                                                                {item.type === 'post' 
+                                                                    ? item.data.description || 'No description'
+                                                                    : item.data.description || 'Advertisement'
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                        <span className={`px-2 py-1 text-xs rounded-full ${item.type === 'post' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900' : 'bg-green-100 text-green-800 dark:bg-green-900'}`}>
+                                                            {item.type === 'post' ? 'Post' : 'Ad'}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                            {searchResults.length > 10 && (
+                                                <div className="text-center py-2 text-sm text-gray-500">
+                                                    + {searchResults.length - 10} more results
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <div className="text-center py-8">
+                                            <AlertCircle className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+                                            <p>No results found for "{searchTerm}"</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
                     {/* Stats Overview - Responsive Grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
                         <StatCard
@@ -439,12 +617,12 @@ const Posts = ({ darkMode }) => {
                                 <button
                                     onClick={() => setViewMode("grid")}
                                     className={`
-        px-3 py-1 rounded-md text-sm font-medium transition-all
-        ${viewMode === "grid"
+                                        px-3 py-1 rounded-md text-sm font-medium transition-all
+                                        ${viewMode === "grid"
                                             ? "bg-white text-gray-900 shadow dark:bg-gray-600 dark:text-white"
                                             : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                                         }
-      `}
+                                    `}
                                 >
                                     Grid
                                 </button>
@@ -452,12 +630,12 @@ const Posts = ({ darkMode }) => {
                                 <button
                                     onClick={() => setViewMode("list")}
                                     className={`
-        px-3 py-1 rounded-md text-sm font-medium transition-all
-        ${viewMode === "list"
+                                        px-3 py-1 rounded-md text-sm font-medium transition-all
+                                        ${viewMode === "list"
                                             ? "bg-white text-gray-900 shadow dark:bg-gray-600 dark:text-white"
                                             : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                                         }
-      `}
+                                    `}
                                 >
                                     List
                                 </button>
@@ -510,7 +688,7 @@ const Posts = ({ darkMode }) => {
                                 <AlertCircle className="w-12 h-12 mx-auto mb-4 text-gray-400" />
                                 <p className="text-lg mb-2">No content found</p>
                                 <p className={`text-sm mb-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                                    Try adjusting your search or filters
+                                    {searchTerm ? `No results for "${searchTerm}"` : 'Try adjusting your search or filters'}
                                 </p>
                                 <button
                                     onClick={clearFilters}

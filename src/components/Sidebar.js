@@ -85,7 +85,7 @@ const Sidebar = ({ sidebarOpen, darkMode, toggleSidebar, collapsed, toggleCollap
         { id: 'rejected campaigns', text: 'Rejected Campaigns', path: '/rejected-campaigns' }
       ]
     },
-    { id: 'calendar', icon: <FaCalendarAlt />, text: 'Calendar', path: '/calendar' },
+    { id: 'calendar', icon: <FaCalendarAlt />, text: 'Calendar', path: '/calender' },
     { id: 'payments', icon: <FaFileInvoiceDollar />, text: 'Payments', path: '/payments' },
     { 
       id: 'settings', 

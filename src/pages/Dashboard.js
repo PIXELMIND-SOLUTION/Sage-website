@@ -231,7 +231,7 @@ const Dashboard = ({ darkMode }) => {
               </span>
             )}
           </div>
-          <select
+          {/* <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
             className={`
@@ -247,7 +247,7 @@ const Dashboard = ({ darkMode }) => {
             <option value="30days">Last 30 days</option>
             <option value="90days">Last 90 days</option>
             <option value="1year">Last year</option>
-          </select>
+          </select> */}
         </div>
       </div>
 

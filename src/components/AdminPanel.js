@@ -4,8 +4,6 @@ import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import Dashboard from '../pages/Dashboard';
 import Users from '../pages/users/Users';
-import Orders from '../pages/Orders';
-import Analytics from '../pages/Analytics';
 import Settings from '../pages/Settings';
 import EditUser from '../pages/users/UpdateUser';
 import UserDetails from '../pages/users/UserDetails';
@@ -18,6 +16,8 @@ import SingleCampaignView from '../pages/campaign/SingleCampaign';
 import CampaignRequests from '../pages/campaign/CampaignRequests';
 import RejectedCampaigns from '../pages/campaign/RejectedCampaigns';
 import Posts from '../pages/posts/AllPosts';
+import Calender from '../pages/Calender';
+import Payments from '../pages/Payments';
 
 const AdminPanel = () => {
     const navigate = useNavigate();
@@ -127,8 +127,8 @@ const AdminPanel = () => {
 
                             <Route path="/spins" element={<AdminSpinDashboard darkMode={darkMode} collapsed={collapsed} />} />
 
-                            <Route path="/orders" element={<Orders darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/analytics" element={<Analytics darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path='/calender' element={<Calender darkMode={darkMode} collapsed={collapsed} />}/>
+                            <Route path="/payments" element={<Payments darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path="/settings" element={<Settings darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path="*" element={<Navigate to="/admin" replace />} />
                         </Routes>

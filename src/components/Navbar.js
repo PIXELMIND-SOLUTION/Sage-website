@@ -95,50 +95,9 @@ const Navbar = ({ toggleSidebar, toggleDarkMode, darkMode, collapsed, sidebarOpe
         </button>
       </div>
 
-      {/* Center Search (Desktop) */}
-      <div className={`hidden md:block flex-1 max-w-2xl mx-4 ${collapsed ? 'opacity-100' : ''}`}>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <FaSearch className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
-          </div>
-          <input
-            type="text"
-            placeholder="Search..."
-            className={`
-              w-full pl-10 pr-4 py-2 rounded-lg
-              ${darkMode
-                ? 'bg-gray-700 text-white border-gray-600 placeholder-gray-400'
-                : 'bg-gray-50 text-gray-800 border-gray-200 placeholder-gray-500'
-              }
-              border focus:outline-none focus:ring-2 focus:ring-blue-500
-              transition-all duration-200
-            `}
-          />
-        </div>
-      </div>
+      
 
-      {/* Mobile Search Overlay */}
-      {searchOpen && isMobile && (
-        <div className="absolute top-0 left-0 right-0 bg-white dark:bg-gray-800 p-4 shadow-lg md:hidden z-40">
-          <div className="flex items-center space-x-2">
-            <div className="flex-1 relative">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 border-none focus:outline-none"
-                autoFocus
-              />
-              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            </div>
-            <button
-              onClick={() => setSearchOpen(false)}
-              className="p-2"
-            >
-              <FaTimes />
-            </button>
-          </div>
-        </div>
-      )}
+      
 
       {/* Right Section */}
       <div className="flex items-center space-x-2 md:space-x-3">
@@ -304,7 +263,7 @@ const Navbar = ({ toggleSidebar, toggleDarkMode, darkMode, collapsed, sidebarOpe
                 </a>
                 <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}></div>
                 <a
-                  href="#"
+                  href="/"
                   className={`block px-4 py-3 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'} text-red-600 dark:text-red-400`}
                 >
                   <FaSignOutAlt className="inline mr-2" /> Logout
