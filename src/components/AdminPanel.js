@@ -2,24 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
-import Dashboard from '../pages/Dashboard';
-import Users from '../pages/users/Users';
-import Settings from '../pages/Settings';
-import EditUser from '../pages/users/UpdateUser';
-import UserDetails from '../pages/users/UserDetails';
-import CoinPackage from '../pages/packages/CoinPackage';
-import CampaignPackage from '../pages/packages/CampaignPackage';
-import AdminUserPosts from '../pages/users/UserPosts';
-import AdminSpinDashboard from '../pages/spin/AdminSpin';
-import AdminCampaigns from '../pages/campaign/AllCampaigns';
-import SingleCampaignView from '../pages/campaign/SingleCampaign';
-import CampaignRequests from '../pages/campaign/CampaignRequests';
-import RejectedCampaigns from '../pages/campaign/RejectedCampaigns';
-import Posts from '../pages/posts/AllPosts';
-import Calender from '../pages/Calender';
-import Payments from '../pages/Payments';
-import AdminDownloadConfig from '../pages/AdminDownloadConfig';
-import SinglePostDetails from '../pages/users/SinglePostDetails';
+import UserList from '../Views/users/UserList';
+import Categories from '../Views/category/Categories';
+import Dashboard from '../Views/Dashboard';
+import SingleUser from '../Views/users/SingleUser';
+import EditUser from '../Views/users/EditUser';
+import CreateHouse from '../Views/houses/CreateHouse';
+import AllHouses from '../Views/houses/AllHouses';
+import Plans from '../Views/plans/Plans';
 
 const AdminPanel = () => {
     const navigate = useNavigate();
@@ -112,29 +102,19 @@ const AdminPanel = () => {
                             <Route path="/" element={<Dashboard darkMode={darkMode} collapsed={collapsed} />} />
                             <Route path="/dashboard" element={<Dashboard darkMode={darkMode} collapsed={collapsed} />} />
 
-                            <Route path="/users" element={<Users darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/users/:id" element={<EditUser darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/users/details/:id" element={<UserDetails darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path='/userposts/:userId' element={<AdminUserPosts darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path='/user/post/:postId' element={<SinglePostDetails darkMode={darkMode} collapsed={collapsed} />}/>
+                            <Route path="/users" element={<UserList darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path="/users/:id" element={<SingleUser darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path="/users/update/:id" element={<EditUser darkMode={darkMode} collapsed={collapsed} />} />
 
-                            <Route path="/posts" element={<Posts darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path='/create-house/:id' element={<CreateHouse darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path='/allhouses' element={<AllHouses darkMode={darkMode} collapsed={collapsed} />} />
 
-                            <Route path="/packages" element={<CoinPackage darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/campaign-packages" element={<CampaignPackage darkMode={darkMode} collapsed={collapsed} />} />
 
-                            <Route path="/campaigns" element={<AdminCampaigns darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/campaigns/:id" element={<SingleCampaignView darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/campaign-requests" element={<CampaignRequests darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/rejected-campaigns" element={<RejectedCampaigns darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path='/categories' element={<Categories darkMode={darkMode} collapsed={collapsed} />} />
 
-                            <Route path="/spins" element={<AdminSpinDashboard darkMode={darkMode} collapsed={collapsed} />} />
+                            <Route path="/plans" element={<Plans darkMode={darkMode} collapsed={collapsed} />} />
 
-                            <Route path='/download' element={<AdminDownloadConfig darkMode={darkMode} collapsed={collapsed} />}  />
-
-                            <Route path='/calender' element={<Calender darkMode={darkMode} collapsed={collapsed} />}/>
-                            <Route path="/payments" element={<Payments darkMode={darkMode} collapsed={collapsed} />} />
-                            <Route path="/settings" element={<Settings darkMode={darkMode} collapsed={collapsed} />} />
+                            
                             <Route path="*" element={<Navigate to="/admin" replace />} />
                         </Routes>
                     </main>
