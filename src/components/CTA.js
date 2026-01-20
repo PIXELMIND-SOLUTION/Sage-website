@@ -1,41 +1,82 @@
 // components/CTA.jsx
-import React from 'react';
-import { MessageSquare, Calendar } from 'lucide-react';
+import React from "react";
+import { MessageSquare, Calendar } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-700 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+    <section className="relative py-16 overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700" />
 
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            
-            <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
-              Schedule a consultation with our experts to discuss how we can drive your digital transformation journey
-            </p>
+      {/* Decorative Blobs (smaller) */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+      <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group px-8 py-4 bg-white text-indigo-600 font-semibold rounded-full hover:bg-gray-100 hover:scale-105 transition-all duration-300 flex items-center justify-center">
-                <MessageSquare className="mr-3" size={20} />
-                Contact Our Team
-              </button>
-              
-              <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-300 flex items-center justify-center">
-                <Calendar className="mr-3" size={20} />
-                Schedule Demo
-              </button>
-            </div>
-
-            <p className="text-indigo-200 mt-8 text-sm">
-              Response within 24 hours • No commitment required
-            </p>
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
+        <div
+          className="
+            max-w-3xl mx-auto
+            bg-white/10 backdrop-blur-xl
+            border border-white/20
+            rounded-2xl
+            px-6 py-10 md:px-10 md:py-12
+            text-center
+            shadow-xl
+          "
+        >
+          {/* Accent Icon (smaller) */}
+          <div className="mx-auto mb-6 w-14 h-14 rounded-full bg-white/10 flex items-center justify-center ring-1 ring-white/20">
+            <MessageSquare className="w-6 h-6 text-white" />
           </div>
+
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 leading-tight">
+            Ready to Transform
+            <span className="block text-indigo-200">
+              Your Business?
+            </span>
+          </h2>
+
+          <p className="text-sm sm:text-base text-indigo-100 mb-8 max-w-xl mx-auto leading-relaxed">
+            Talk to our experts and discover solutions tailored to your growth
+            and digital goals.
+          </p>
+
+          {/* CTA Buttons (smaller) */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              className="
+                group px-6 py-3
+                bg-white text-indigo-600
+                font-semibold rounded-full
+                flex items-center justify-center
+                shadow-md
+                hover:scale-105 hover:shadow-lg
+                transition-all duration-300
+              "
+            >
+              <MessageSquare className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
+              Contact Us
+            </button>
+
+            <button
+              className="
+                px-6 py-3
+                border border-white
+                text-white font-semibold rounded-full
+                flex items-center justify-center
+                hover:bg-white/10 hover:scale-105
+                transition-all duration-300
+              "
+            >
+              <Calendar className="mr-2 w-4 h-4" />
+              Schedule Demo
+            </button>
+          </div>
+
+          {/* Trust Note */}
+          <p className="mt-6 text-xs text-indigo-200 tracking-wide">
+            ⏱ Response within 24 hours • No obligation
+          </p>
         </div>
       </div>
     </section>

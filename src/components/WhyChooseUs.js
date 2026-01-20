@@ -58,7 +58,7 @@ const WhyChooseUs = () => {
       ref={sectionRef}
       className="py-20 lg:py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
     >
-      <div className="container mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           {/* LEFT CONTENT */}
           <div

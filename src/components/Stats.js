@@ -108,7 +108,7 @@ const Stats = () => {
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-white/20 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
         {/* ================= COUNTER SECTION ================= */}
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -119,7 +119,7 @@ const Stats = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 ">  {/*{mb-24} */}
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -142,7 +142,7 @@ const Stats = () => {
         </div>
 
         {/* ================= TRUSTED COMPANIES ================= */}
-        <div className="relative bg-white/5 backdrop-blur-md rounded-3xl p-10 md:p-14 border border-white/15">
+        {/* <div className="relative bg-white/5 backdrop-blur-md rounded-3xl p-10 md:p-14 border border-white/15">
           <div className="text-center mb-10">
             <p className="text-indigo-200 text-sm uppercase tracking-wider mb-2">
               Trusted by Industry Leaders
@@ -169,7 +169,7 @@ const Stats = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import {
   ShieldCheck, Database as DbIcon, CloudLightning, Cpu as CpuIcon,
   Phone, Mail, MapPin, Award, Users, CheckCircle, Coffee
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   { 
@@ -141,6 +142,8 @@ const Header = ({ isScrolled }) => {
   const isHoveringMegaMenu = useRef(false);
   const leaveTimer = useRef(null);
 
+  const navigate = useNavigate();
+
   // Handle mouse enter for mega menu triggers
   const handleTriggerMouseEnter = (menuType) => {
     if (leaveTimer.current) {
@@ -245,7 +248,7 @@ const Header = ({ isScrolled }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
           <div className="flex items-center justify-between relative">
             {/* LOGO */}
-            <a href="#" className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center">
                 <span className="text-white font-bold text-sm sm:text-base lg:text-lg">S</span>
               </div>
@@ -293,19 +296,19 @@ const Header = ({ isScrolled }) => {
               </div>
 
               {/* OTHER NAV ITEMS */}
-              <a onMouseEnter={() => handleTriggerMouseEnter('about us')} href="#" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200">
+              <a onMouseEnter={() => handleTriggerMouseEnter('about us')} href="/aboutus" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200">
                 About Us
               </a>
-              <a onMouseEnter={() => handleTriggerMouseEnter('careers')} href="#" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200">
+              <a onMouseEnter={() => handleTriggerMouseEnter('careers')} href="/careers" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200">
                 Careers
               </a>
-              <a onMouseEnter={() => handleTriggerMouseEnter('contact')} href="#" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200">
+              <a onMouseEnter={() => handleTriggerMouseEnter('contact')} href="/contact" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200">
                 Contact
               </a>
             </nav>
 
             {/* DESKTOP CTA */}
-            <button className="hidden lg:block px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:shadow-indigo-200 hover:scale-105 transition-all duration-300 whitespace-nowrap">
+            <button onClick={()=>navigate('/talktoexperts')} className="hidden lg:block px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:shadow-indigo-200 hover:scale-105 transition-all duration-300 whitespace-nowrap">
               Talk to Experts
             </button>
 

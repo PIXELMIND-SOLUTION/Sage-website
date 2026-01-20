@@ -100,7 +100,7 @@ const Industries = () => {
 
   return (
     <section ref={sectionRef} className="py-16 md:py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
           className={`text-center max-w-2xl mx-auto mb-12 md:mb-16 transition-all duration-700 ${
