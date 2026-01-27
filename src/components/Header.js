@@ -1,130 +1,32 @@
 // components/Header.jsx
 import React, { useState, useEffect, useRef } from "react";
-import { 
-  Menu, X, ChevronDown, 
+import {
+  Menu, X, ChevronDown,
   Brain, Cloud, Cpu, GitMerge, Database, Shield,
   Server, Code, Globe, Lock, Terminal, MessageSquare,
   ShieldCheck, Database as DbIcon, CloudLightning, Cpu as CpuIcon,
   Phone, Mail, MapPin, Award, Users, CheckCircle, Coffee
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { solutionsData } from "../Data/SolutionsData";
+import technology from '../Data/TechnologiesData';
+import Service from '../Data/ServiceData';
 
-const services = [
-  { 
-    title: "AI & Machine Learning", 
-    desc: "Predictive intelligence & automation solutions",
-    icon: <Brain size={20} />,
-    gradient: "from-indigo-500 to-violet-500",
-    features: ["Predictive Analytics", "Natural Language Processing", "Computer Vision", "MLOps"]
-  },
-  { 
-    title: "Cloud Consulting", 
-    desc: "Migration, scaling & optimization strategies",
-    icon: <Cloud size={20} />,
-    gradient: "from-blue-500 to-indigo-500",
-    features: ["Cloud Migration", "Cost Optimization", "Multi-Cloud Strategy", "DevOps"]
-  },
-  { 
-    title: "Intelligent Automation", 
-    desc: "RPA & workflow automation systems",
-    icon: <Cpu size={20} />,
-    gradient: "from-green-500 to-emerald-500",
-    features: ["RPA Implementation", "Process Mining", "Workflow Automation", "BPM"]
-  },
-  { 
-    title: "Integration & APIs", 
-    desc: "System-to-system connectivity solutions",
-    icon: <GitMerge size={20} />,
-    gradient: "from-amber-500 to-orange-500",
-    features: ["API Management", "Microservices", "ESB", "Real-time Integration"]
-  },
-  { 
-    title: "Data Engineering", 
-    desc: "Pipelines, analytics & business insights",
-    icon: <Database size={20} />,
-    gradient: "from-violet-500 to-purple-500",
-    features: ["Data Lakes", "ETL/ELT", "Real-time Analytics", "BI Dashboards"]
-  },
-  { 
-    title: "Cybersecurity", 
-    desc: "Enterprise-grade security & compliance",
-    icon: <Shield size={20} />,
-    gradient: "from-red-500 to-pink-500",
-    features: ["Threat Detection", "Compliance", "Zero Trust", "Security Operations"]
-  },
-];
+const services = Service;
 
-const technologies = [
-  {
-    category: "Cloud Platforms",
-    items: [
-      { name: "AWS", icon: <CloudLightning size={16} />, color: "text-orange-500" },
-      { name: "Azure", icon: <Cloud size={16} />, color: "text-blue-500" },
-      { name: "Google Cloud", icon: <Server size={16} />, color: "text-green-500" },
-      { name: "Oracle Cloud", icon: <Database size={16} />, color: "text-red-500" },
-      { name: "IBM Cloud", icon: <CpuIcon size={16} />, color: "text-blue-600" },
-    ]
-  },
-  {
-    category: "AI & ML",
-    items: [
-      { name: "TensorFlow", icon: <Brain size={16} />, color: "text-orange-600" },
-      { name: "PyTorch", icon: <Terminal size={16} />, color: "text-red-500" },
-      { name: "OpenAI", icon: <MessageSquare size={16} />, color: "text-green-600" },
-      { name: "Azure ML", icon: <Cloud size={16} />, color: "text-blue-500" },
-      { name: "SageMaker", icon: <Cpu size={16} />, color: "text-orange-500" },
-    ]
-  },
-  {
-    category: "Data & Analytics",
-    items: [
-      { name: "Snowflake", icon: <DbIcon size={16} />, color: "text-blue-400" },
-      { name: "Databricks", icon: <Terminal size={16} />, color: "text-red-400" },
-      { name: "Apache Spark", icon: <Server size={16} />, color: "text-orange-500" },
-      { name: "Kafka", icon: <GitMerge size={16} />, color: "text-purple-500" },
-      { name: "Tableau", icon: <Globe size={16} />, color: "text-blue-600" },
-    ]
-  },
-  {
-    category: "Security",
-    items: [
-      { name: "CrowdStrike", icon: <ShieldCheck size={16} />, color: "text-green-500" },
-      { name: "Palo Alto", icon: <Shield size={16} />, color: "text-orange-500" },
-      { name: "Fortinet", icon: <Lock size={16} />, color: "text-red-500" },
-      { name: "Okta", icon: <Lock size={16} />, color: "text-blue-500" },
-      { name: "Splunk", icon: <Terminal size={16} />, color: "text-purple-500" },
-    ]
-  },
-  {
-    category: "Development",
-    items: [
-      { name: "React", icon: <Code size={16} />, color: "text-blue-400" },
-      { name: "Node.js", icon: <Terminal size={16} />, color: "text-green-600" },
-      { name: "Python", icon: <Code size={16} />, color: "text-yellow-500" },
-      { name: "Java", icon: <Coffee size={16} />, color: "text-red-500" },
-      { name: "Kubernetes", icon: <Server size={16} />, color: "text-blue-500" },
-    ]
-  },
-  {
-    category: "DevOps",
-    items: [
-      { name: "Docker", icon: <Server size={16} />, color: "text-blue-500" },
-      { name: "Jenkins", icon: <Terminal size={16} />, color: "text-red-500" },
-      { name: "Terraform", icon: <Cloud size={16} />, color: "text-purple-500" },
-      { name: "GitLab", icon: <Code size={16} />, color: "text-orange-500" },
-      { name: "Ansible", icon: <Terminal size={16} />, color: "text-red-400" },
-    ]
-  }
-];
+const technologies = technology;
 
-const industries = [
-  { name: "Finance & Banking", color: "from-blue-500 to-cyan-500" },
-  { name: "Healthcare & Life Sciences", color: "from-green-500 to-emerald-500" },
-  { name: "Retail & E-commerce", color: "from-amber-500 to-orange-500" },
-  { name: "Manufacturing & Industrial", color: "from-gray-600 to-gray-800" },
-  { name: "Technology & SaaS", color: "from-violet-500 to-purple-500" },
-  { name: "Energy & Utilities", color: "from-yellow-500 to-amber-500" },
-];
+
+
+export const industries = Object.entries(solutionsData).map(
+  ([key, value]) => ({
+    slug: key,                 // "networking", "cyber-security"
+    name: value.name.replace(" Solutions", ""), // Networking, Cyber Security
+    color: value.color,
+  })
+);
+
+
 
 const Header = ({ isScrolled }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -132,12 +34,12 @@ const Header = ({ isScrolled }) => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileTechOpen, setMobileTechOpen] = useState(false);
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
-  
+
   const megaMenuRef = useRef(null);
   const servicesButtonRef = useRef(null);
   const techButtonRef = useRef(null);
   const industriesButtonRef = useRef(null);
-  
+
   // Create a shared hover state for mega menu and its triggers
   const isHoveringMegaMenu = useRef(false);
   const leaveTimer = useRef(null);
@@ -159,7 +61,7 @@ const Header = ({ isScrolled }) => {
     if (leaveTimer.current) {
       clearTimeout(leaveTimer.current);
     }
-    
+
     leaveTimer.current = setTimeout(() => {
       if (!isHoveringMegaMenu.current) {
         setActiveMegaMenu(null);
@@ -179,11 +81,11 @@ const Header = ({ isScrolled }) => {
   // Handle mouse leave for mega menu
   const handleMegaMenuMouseLeave = () => {
     isHoveringMegaMenu.current = false;
-    
+
     if (leaveTimer.current) {
       clearTimeout(leaveTimer.current);
     }
-    
+
     leaveTimer.current = setTimeout(() => {
       if (!isHoveringMegaMenu.current) {
         setActiveMegaMenu(null);
@@ -239,11 +141,10 @@ const Header = ({ isScrolled }) => {
     <>
       {/* HEADER */}
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg"
-            : "bg-white"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-lg"
+          : "bg-white"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
           <div className="flex items-center justify-between relative">
@@ -261,19 +162,20 @@ const Header = ({ isScrolled }) => {
             <nav className="hidden lg:flex items-center gap-8">
               {/* SERVICES DROPDOWN */}
               <div className="relative">
-                <button 
+                <button
                   ref={servicesButtonRef}
                   onMouseEnter={() => handleTriggerMouseEnter('services')}
                   onMouseLeave={handleTriggerMouseLeave}
                   className="flex items-center gap-1 font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200"
                 >
-                  Services <ChevronDown size={16} className={`transition-transform duration-200 ${activeMegaMenu === 'services' ? 'rotate-180' : ''}`} />
+
+                  professional services <ChevronDown size={16} className={`transition-transform duration-200 ${activeMegaMenu === 'services' ? 'rotate-180' : ''}`} />
                 </button>
               </div>
 
               {/* TECHNOLOGIES DROPDOWN */}
               <div className="relative">
-                <button 
+                <button
                   ref={techButtonRef}
                   onMouseEnter={() => handleTriggerMouseEnter('technologies')}
                   onMouseLeave={handleTriggerMouseLeave}
@@ -285,13 +187,13 @@ const Header = ({ isScrolled }) => {
 
               {/* INDUSTRIES DROPDOWN */}
               <div className="relative">
-                <button 
+                <button
                   ref={industriesButtonRef}
                   onMouseEnter={() => handleTriggerMouseEnter('industries')}
                   onMouseLeave={handleTriggerMouseLeave}
                   className="flex items-center gap-1 font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200"
                 >
-                  Industries <ChevronDown size={16} className={`transition-transform duration-200 ${activeMegaMenu === 'industries' ? 'rotate-180' : ''}`} />
+                  Solutions <ChevronDown size={16} className={`transition-transform duration-200 ${activeMegaMenu === 'industries' ? 'rotate-180' : ''}`} />
                 </button>
               </div>
 
@@ -308,7 +210,7 @@ const Header = ({ isScrolled }) => {
             </nav>
 
             {/* DESKTOP CTA */}
-            <button onClick={()=>navigate('/talktoexperts')} className="hidden lg:block px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:shadow-indigo-200 hover:scale-105 transition-all duration-300 whitespace-nowrap">
+            <button onClick={() => navigate('/talktoexperts')} className="hidden lg:block px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:shadow-indigo-200 hover:scale-105 transition-all duration-300 whitespace-nowrap">
               Talk to Experts
             </button>
 
@@ -325,7 +227,7 @@ const Header = ({ isScrolled }) => {
 
         {/* MEGA MENU - Positioned as separate element */}
         {activeMegaMenu && (
-          <div 
+          <div
             ref={megaMenuRef}
             onMouseEnter={handleMegaMenuMouseEnter}
             onMouseLeave={handleMegaMenuMouseLeave}
@@ -338,13 +240,13 @@ const Header = ({ isScrolled }) => {
                   <div className="flex items-start justify-between mb-8">
                     <div>
                       <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                        Our <span className="text-indigo-600">Expert Services</span>
+                        Our <span className="text-indigo-600">Expert services</span>
                       </h2>
                       <p className="text-gray-600">
                         End-to-end digital transformation solutions for enterprise success
                       </p>
                     </div>
-                    <a href="#" className="px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <a href="/services" className="px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:scale-105 transition-all duration-300">
                       View All Services →
                     </a>
                   </div>
@@ -353,7 +255,7 @@ const Header = ({ isScrolled }) => {
                     {services.map((item, idx) => (
                       <a
                         key={idx}
-                        href="#"
+                        href={`/services/${item.title}`}
                         className="group p-6 rounded-xl border border-gray-100 hover:border-indigo-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                       >
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} p-3 mb-4 group-hover:scale-110 transition-transform duration-300`}>
@@ -458,8 +360,8 @@ const Header = ({ isScrolled }) => {
                         Tailored digital transformation solutions for every sector
                       </p>
                     </div>
-                    <a href="#" className="px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:scale-105 transition-all duration-300">
-                      View Case Studies →
+                    <a href="/solutions" className="px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium hover:shadow-lg hover:scale-105 transition-all duration-300">
+                      View All Solutions →
                     </a>
                   </div>
 
@@ -467,7 +369,7 @@ const Header = ({ isScrolled }) => {
                     {industries.map((industry, idx) => (
                       <a
                         key={idx}
-                        href="#"
+                        href={`/solutions/${industry.name}`}
                         className="group relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br via-white to-white border border-gray-100 hover:shadow-2xl transition-all duration-500"
                       >
                         <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
@@ -500,16 +402,16 @@ const Header = ({ isScrolled }) => {
 
       {/* MOBILE MENU OVERLAY */}
       {mobileOpen && (
-        <div 
+        <div
           data-mobile-menu
           className="fixed inset-0 z-[60] lg:hidden"
         >
           {/* Backdrop */}
-          <div 
+          <div
             className="absolute inset-0 bg-black/30 backdrop-blur-sm"
             onClick={toggleMobileMenu}
           />
-          
+
           {/* Menu Panel */}
           <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl animate-slideInRight">
             {/* Header */}
@@ -525,7 +427,7 @@ const Header = ({ isScrolled }) => {
                   <p className="text-xs text-gray-500">Digital Transformation Experts</p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={toggleMobileMenu}
                 className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
                 aria-label="Close menu"
@@ -544,9 +446,9 @@ const Header = ({ isScrolled }) => {
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   >
                     <span className="font-semibold text-gray-900 text-lg">Services</span>
-                    <ChevronDown 
-                      size={20} 
-                      className={`transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`} 
+                    <ChevronDown
+                      size={20}
+                      className={`transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
 
@@ -584,9 +486,9 @@ const Header = ({ isScrolled }) => {
                     onClick={() => setMobileTechOpen(!mobileTechOpen)}
                   >
                     <span className="font-semibold text-gray-900 text-lg">Technologies</span>
-                    <ChevronDown 
-                      size={20} 
-                      className={`transition-transform duration-200 ${mobileTechOpen ? 'rotate-180' : ''}`} 
+                    <ChevronDown
+                      size={20}
+                      className={`transition-transform duration-200 ${mobileTechOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
 
@@ -620,9 +522,9 @@ const Header = ({ isScrolled }) => {
                     onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
                   >
                     <span className="font-semibold text-gray-900 text-lg">Industries</span>
-                    <ChevronDown 
-                      size={20} 
-                      className={`transition-transform duration-200 ${mobileIndustriesOpen ? 'rotate-180' : ''}`} 
+                    <ChevronDown
+                      size={20}
+                      className={`transition-transform duration-200 ${mobileIndustriesOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
 
@@ -652,21 +554,21 @@ const Header = ({ isScrolled }) => {
                 </div>
 
                 {/* Other Links */}
-                <a 
+                <a
                   href="#"
                   className="block py-4 px-4 rounded-lg hover:bg-gray-50 font-semibold text-gray-900 hover:text-indigo-600 transition-colors text-lg"
                   onClick={toggleMobileMenu}
                 >
                   About Us
                 </a>
-                <a 
+                <a
                   href="#"
                   className="block py-4 px-4 rounded-lg hover:bg-gray-50 font-semibold text-gray-900 hover:text-indigo-600 transition-colors text-lg"
                   onClick={toggleMobileMenu}
                 >
                   Careers
                 </a>
-                <a 
+                <a
                   href="#"
                   className="block py-4 px-4 rounded-lg hover:bg-gray-50 font-semibold text-gray-900 hover:text-indigo-600 transition-colors text-lg"
                   onClick={toggleMobileMenu}

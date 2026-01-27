@@ -11,6 +11,10 @@ import ContactUs from "./pages/ContactUs";
 import Careers from "./pages/Careers";
 import AboutUs from "./pages/AboutUs";
 import TalkToExperts from "./pages/TalkToxperts";
+import IndustrySolutions from "./pages/IndustrialSolutionByName";
+import AllSolutions from "./pages/AllSolutions";
+import AllServices from "./pages/AllServices";
+import ServiceDetails from "./pages/ServiceByName";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,6 +36,10 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/talktoexperts" element={<TalkToExperts />} />
+          <Route path="/solutions" element={<AllSolutions/>} />
+          <Route path="/solutions/:name" element={<IndustrySolutions/>} />
+          <Route path="/services" element={<AllServices/>}/>
+          <Route path="/services/:name" element={<ServiceDetails/>} />
         </Routes>
 
         <Footer />
