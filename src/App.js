@@ -16,6 +16,7 @@ import AllSolutions from "./pages/AllSolutions";
 import WhatWeDo from "./pages/WhatWeDo";
 import ServiceDetails from "./pages/ServiceByName";
 import ScrollToTop from "./views/ScrollToTop";
+import Admin from "./Admin/Admin";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,6 +44,7 @@ function App() {
           <Route path="/solutions/:name" element={<IndustrySolutions/>} />
           <Route path="/services" element={<WhatWeDo/>}/>
           <Route path="/services/:name" element={<ServiceDetails/>} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
 
         <Footer />

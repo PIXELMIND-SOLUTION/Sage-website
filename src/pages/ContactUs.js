@@ -8,7 +8,11 @@ import {
   User,
   Building2,
   Globe,
+  Loader2,
 } from "lucide-react";
+
+const API_URL =
+  "http://31.97.206.144:7127/api/positions/submit-contact";
 
 const ContactUs = () => {
   const [form, setForm] = useState({
@@ -22,14 +26,65 @@ const ContactUs = () => {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  /* ================= SUBMIT ================= */
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
-    alert("Thank you! Our team will contact you shortly.");
+    setLoading(true);
+    setSuccessMsg("");
+    setErrorMsg("");
+
+    const payload = {
+      fullName: form.name,
+      companyName: form.company,
+      mobile: form.mobile,
+      email: form.email,
+      country: form.country,
+      areaOfInterest: form.interest,
+      heardAboutUs: form.source,
+      description: form.message,
+    };
+
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSuccessMsg(
+          "✅ Thank you! Our team will contact you shortly."
+        );
+        setForm({
+          name: "",
+          company: "",
+          mobile: "",
+          email: "",
+          country: "",
+          interest: "",
+          source: "",
+          message: "",
+        });
+      } else {
+        setErrorMsg("Submission failed. Please try again.");
+      }
+    } catch {
+      setErrorMsg("Server error. Please try later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,22 +99,22 @@ const ContactUs = () => {
           <span className="inline-block px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-semibold mb-4">
             Contact Us
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
             Let’s Start a Conversation
           </h1>
           <p className="text-lg text-gray-600">
-            Tell us about your needs and our experts will reach out within 24
-            hours.
+            Tell us about your needs and our experts will reach out within
+            24 hours.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* LEFT – INFO */}
+          {/* LEFT INFO */}
           <div className="space-y-6">
             {[
               {
                 icon: <Phone />,
-                title: "Talk to Us.",
+                title: "Talk to Us",
                 desc: "+1 (972) 654-2856",
               },
               {
@@ -75,199 +130,133 @@ const ContactUs = () => {
               {
                 icon: <MapPin />,
                 title: "USA Office",
-                desc: "8700 stacy rd Mckinney texas 75070",
+                desc: "8700 Stacy Rd, McKinney, Texas 75070",
               },
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 bg-white rounded-xl p-6 shadow-md border border-gray-100"
+                className="flex gap-4 bg-white rounded-xl p-6 shadow-md border"
               >
-                <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center">
                   {item.icon}
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900">{item.title}</h4>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                  <h4 className="font-bold">{item.title}</h4>
+                  <p className="text-sm text-gray-600">{item.desc}</p>
                 </div>
               </div>
             ))}
-
-            {/* WHY CONTACT */}
-            <div className="bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl p-6 text-white shadow-lg">
-              <h4 className="font-bold text-lg mb-3">Why Choose Us?</h4>
-              <ul className="space-y-2 text-sm text-indigo-100">
-                <li>✔ Free initial consultation</li>
-                <li>✔ 20+ years industry experience</li>
-                <li>✔ Trusted by global enterprises</li>
-                <li>✔ Quick response & dedicated support</li>
-              </ul>
-            </div>
           </div>
 
-          {/* RIGHT – FORM */}
-          <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl border border-gray-100 p-8 sm:p-12">
+          {/* FORM */}
+          <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl border p-8 sm:p-12">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Full Name */}
-              <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  />
-                </div>
-              </div>
+              <input
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Full Name"
+                required
+                className="w-full px-4 py-3 border rounded-xl"
+              />
 
-              {/* Company Name (Optional) */}
-              <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                  Company Name (Optional)
-                </label>
-                <div className="relative">
-                  <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type="text"
-                    name="company"
-                    value={form.company}
-                    onChange={handleChange}
-                    placeholder="Your Company"
-                    className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  />
-                </div>
-              </div>
+              <input
+                name="company"
+                value={form.company}
+                onChange={handleChange}
+                placeholder="Company Name (Optional)"
+                className="w-full px-4 py-3 border rounded-xl"
+              />
 
-              {/* Mobile + Email */}
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                    Mobile Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="mobile"
-                    required
-                    value={form.mobile}
-                    onChange={handleChange}
-                    placeholder="+91 XXXXX XXXXX"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  />
-                </div>
-              </div>
-
-              {/* Country + Interest */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                    Country
-                  </label>
-                  <div className="relative">
-                    <Globe className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-                    <input
-                      type="text"
-                      name="country"
-                      required
-                      value={form.country}
-                      onChange={handleChange}
-                      placeholder="India / USA"
-                      className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                    Area of Interest
-                  </label>
-                  <select
-                    name="interest"
-                    required
-                    value={form.interest}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  >
-                    <option value="">Select</option>
-                    <option>Networking</option>
-                    <option>Cloud Solutions</option>
-                    <option>Cyber Security</option>
-                    <option>Data Engineering</option>
-                    <option>Consulting</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Source */}
-              <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                  How did you hear about us?
-                </label>
-                <select
-                  name="source"
+                <input
+                  name="mobile"
+                  value={form.mobile}
+                  onChange={handleChange}
+                  placeholder="Mobile Number"
                   required
-                  value={form.source}
+                  className="w-full px-4 py-3 border rounded-xl"
+                />
+                <input
+                  name="email"
+                  value={form.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                >
-                  <option value="">Select</option>
-                  <option>Google</option>
-                  <option>LinkedIn</option>
-                  <option>Referral</option>
-                  <option>Social Media</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  rows="4"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Tell us briefly about your requirement..."
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
+                  placeholder="Email Address"
+                  required
+                  className="w-full px-4 py-3 border rounded-xl"
                 />
               </div>
 
-              {/* Submit */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <input
+                  name="country"
+                  value={form.country}
+                  onChange={handleChange}
+                  placeholder="Country"
+                  required
+                  className="w-full px-4 py-3 border rounded-xl"
+                />
+                <select
+                  name="interest"
+                  value={form.interest}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border rounded-xl"
+                >
+                  <option value="">Area of Interest</option>
+                  <option>Networking</option>
+                  <option>Cloud Solutions</option>
+                  <option>Cyber Security</option>
+                  <option>Data Engineering</option>
+                  <option>Consulting</option>
+                </select>
+              </div>
+
+              <select
+                name="source"
+                value={form.source}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border rounded-xl"
+              >
+                <option value="">How did you hear about us?</option>
+                <option>Google Search</option>
+                <option>LinkedIn</option>
+                <option>Referral</option>
+                <option>Social Media</option>
+                <option>Other</option>
+              </select>
+
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                rows="4"
+                placeholder="Message"
+                className="w-full px-4 py-3 border rounded-xl"
+              />
+
               <button
                 type="submit"
-                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600
-                text-white font-semibold rounded-full flex items-center justify-center gap-2
-                hover:scale-105 hover:shadow-lg transition-all duration-300"
+                disabled={loading}
+                className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600
+                text-white rounded-full font-semibold flex items-center gap-2"
               >
-                <Send className="w-4 h-4" />
-                Submit Request
+                {loading ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  <>
+                    <Send size={16} /> Submit Request
+                  </>
+                )}
               </button>
 
-              <p className="text-xs text-gray-500 mt-2">
-                🔒 We respect your privacy. Your information is safe with us.
-              </p>
+              {successMsg && (
+                <p className="text-green-600">{successMsg}</p>
+              )}
+              {errorMsg && (
+                <p className="text-red-500">{errorMsg}</p>
+              )}
             </form>
           </div>
         </div>

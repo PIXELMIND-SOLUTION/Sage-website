@@ -187,20 +187,32 @@ const Header = ({ isScrolled }) => {
             </button>
 
             <div className="space-y-4">
+
+              <button className="w-full text-left font-semibold" onClick={() => { navigate("/"); toggleMobileMenu(); }}>
+                Home
+              </button>
+
               <button
                 className="w-full text-left font-semibold"
-                onClick={() => { navigate("/services") }}
+                onClick={() => { { navigate("/services") }; toggleMobileMenu(); }}
               >
                 Services
               </button>
 
 
               <button
-                className="w-full text-left font-semibold"
                 onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
+                className="w-full flex items-center justify-between font-semibold text-left py-3 px-2
+             transition-colors hover:text-indigo-600"
               >
-                Solutions
+                <span>Solutions</span>
+
+                <ChevronDown
+                  className={`w-5 h-5 transition-transform duration-300 ${mobileIndustriesOpen ? "rotate-180" : ""
+                    }`}
+                />
               </button>
+
               {mobileIndustriesOpen &&
                 industries.map((ind, i) => (
                   <div
@@ -213,26 +225,23 @@ const Header = ({ isScrolled }) => {
                   >
                     {ind.name}
                   </div>
-                ))}
+                ))
+              }
 
-              <button onClick={() => { navigate("/aboutus"); toggleMobileMenu(); }}>
+              <button className="w-full text-left font-semibold" onClick={() => { navigate("/aboutus"); toggleMobileMenu(); }}>
                 About Us
               </button>
 
-              <button onClick={() => { navigate("/careers"); toggleMobileMenu(); }}>
+              <button className="w-full text-left font-semibold" onClick={() => { navigate("/careers"); toggleMobileMenu(); }}>
                 Careers
-              </button>
-
-              <button onClick={() => { navigate("/contact"); toggleMobileMenu(); }}>
-                Contact
               </button>
             </div>
 
             <button
               className="mt-6 w-full py-3 bg-indigo-600 text-white rounded-xl"
-              onClick={() => navigate("/talktoexperts")}
+              onClick={() => navigate("/contact")}
             >
-              Talk to Experts
+              Contact Us
             </button>
           </div>
         </div>
