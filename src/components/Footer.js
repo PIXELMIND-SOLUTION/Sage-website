@@ -35,7 +35,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-xl">S</span>
               </div>
-              <span className="text-2xl font-bold">SageTech</span>
+              <span className="text-2xl font-bold">Nectar Solutions</span>
             </div>
 
             <p className="text-gray-400 mb-6">

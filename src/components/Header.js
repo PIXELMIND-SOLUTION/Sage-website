@@ -101,17 +101,17 @@ const Header = ({ isScrolled }) => {
             <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold">
               S
             </div>
-            <span className="text-xl font-bold text-indigo-600">SageTech</span>
+            <span className="text-xl font-bold text-indigo-600">Nectar Solutions</span>
           </div>
 
           {/* DESKTOP NAV */}
           <nav className="hidden lg:flex gap-8 items-center">
-            <button
+            {/* <button
               onClick={() => navigate("/")}
               className="flex items-center gap-1 font-medium hover:text-indigo-600 transition-colors"
             >
               Home
-            </button>
+            </button> */}
 
             <button
               onClick={() => navigate("/services")}
@@ -229,12 +229,12 @@ const Header = ({ isScrolled }) => {
 
             {/* Menu Items */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
-              <button 
+              {/* <button 
                 className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
                 onClick={() => handleMobileLinkClick("/")}
               >
                 Home
-              </button>
+              </button> */}
 
               <button
                 className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
