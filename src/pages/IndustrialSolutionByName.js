@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { solutionsData } from "../Data/SolutionsData";
 
 const IndustrySolutions = () => {
@@ -14,6 +14,8 @@ const IndustrySolutions = () => {
 
   const sectionRef = useRef(null);
   const [inView, setInView] = useState(false);
+
+  const navigate = useNavigate();
 
   /* ===== VIEWPORT OBSERVER ===== */
   useEffect(() => {
@@ -138,7 +140,7 @@ const IndustrySolutions = () => {
           <h3 className="text-2xl font-bold mb-4">
             Let’s build your solution
           </h3>
-          <button className="px-8 py-3 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 transition">
+          <button onClick={()=>navigate('/contact')} className="px-8 py-3 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 transition">
             Contact Us
           </button>
         </div>
