@@ -6,15 +6,17 @@ import {
   MapPin,
   Send,
   User,
-  Briefcase,
-  Info,
+  Building2,
+  Globe,
 } from "lucide-react";
 
 const ContactUs = () => {
   const [form, setForm] = useState({
     name: "",
+    company: "",
     mobile: "",
     email: "",
+    country: "",
     interest: "",
     source: "",
     message: "",
@@ -57,8 +59,8 @@ const ContactUs = () => {
             {[
               {
                 icon: <Phone />,
-                title: "Talk to Sales",
-                desc: "+91 98765 43210",
+                title: "Talk to Us.",
+                desc: "+1 (972) 654-2856",
               },
               {
                 icon: <Mail />,
@@ -67,8 +69,13 @@ const ContactUs = () => {
               },
               {
                 icon: <MapPin />,
-                title: "Office",
-                desc: "Hyderabad, India",
+                title: "India Office",
+                desc: "Hyderabad, Telangana, India",
+              },
+              {
+                icon: <MapPin />,
+                title: "USA Office",
+                desc: "8700 stacy rd Mckinney texas 75070",
               },
             ].map((item, i) => (
               <div
@@ -87,9 +94,7 @@ const ContactUs = () => {
 
             {/* WHY CONTACT */}
             <div className="bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl p-6 text-white shadow-lg">
-              <h4 className="font-bold text-lg mb-3">
-                Why Choose Us?
-              </h4>
+              <h4 className="font-bold text-lg mb-3">Why Choose Us?</h4>
               <ul className="space-y-2 text-sm text-indigo-100">
                 <li>✔ Free initial consultation</li>
                 <li>✔ 20+ years industry experience</li>
@@ -102,7 +107,7 @@ const ContactUs = () => {
           {/* RIGHT – FORM */}
           <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl border border-gray-100 p-8 sm:p-12">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name */}
+              {/* Full Name */}
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-1 block">
                   Full Name
@@ -115,7 +120,25 @@ const ContactUs = () => {
                     required
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Your Name"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+                  />
+                </div>
+              </div>
+
+              {/* Company Name (Optional) */}
+              <div>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">
+                  Company Name (Optional)
+                </label>
+                <div className="relative">
+                  <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <input
+                    type="text"
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
+                    placeholder="Your Company"
                     className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
                   />
                 </div>
@@ -154,8 +177,26 @@ const ContactUs = () => {
                 </div>
               </div>
 
-              {/* Dropdowns */}
+              {/* Country + Interest */}
               <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-semibold text-gray-700 mb-1 block">
+                    Country
+                  </label>
+                  <div className="relative">
+                    <Globe className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
+                    <input
+                      type="text"
+                      name="country"
+                      required
+                      value={form.country}
+                      onChange={handleChange}
+                      placeholder="India / USA"
+                      className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="text-sm font-semibold text-gray-700 mb-1 block">
                     Area of Interest
@@ -168,39 +209,40 @@ const ContactUs = () => {
                     className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
                   >
                     <option value="">Select</option>
-                    <option>AI & Machine Learning</option>
-                    <option>Cloud Services</option>
-                    <option>Cybersecurity</option>
-                    <option>Automation</option>
+                    <option>Networking</option>
+                    <option>Cloud Solutions</option>
+                    <option>Cyber Security</option>
+                    <option>Data Engineering</option>
                     <option>Consulting</option>
                   </select>
                 </div>
+              </div>
 
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                    How did you hear about us?
-                  </label>
-                  <select
-                    name="source"
-                    required
-                    value={form.source}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  >
-                    <option value="">Select</option>
-                    <option>Google</option>
-                    <option>LinkedIn</option>
-                    <option>Referral</option>
-                    <option>Social Media</option>
-                    <option>Other</option>
-                  </select>
-                </div>
+              {/* Source */}
+              <div>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">
+                  How did you hear about us?
+                </label>
+                <select
+                  name="source"
+                  required
+                  value={form.source}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+                >
+                  <option value="">Select</option>
+                  <option>Google</option>
+                  <option>LinkedIn</option>
+                  <option>Referral</option>
+                  <option>Social Media</option>
+                  <option>Other</option>
+                </select>
               </div>
 
               {/* Message */}
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-1 block">
-                  Reason / Message
+                  Message
                 </label>
                 <textarea
                   name="message"
@@ -223,7 +265,6 @@ const ContactUs = () => {
                 Submit Request
               </button>
 
-              {/* Privacy */}
               <p className="text-xs text-gray-500 mt-2">
                 🔒 We respect your privacy. Your information is safe with us.
               </p>

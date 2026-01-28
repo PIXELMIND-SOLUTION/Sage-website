@@ -13,11 +13,11 @@ const slides = [
     {
         id: 1,
         type: "content",
-        badge: "Trusted by Fortune 500 Companies",
-        title: "Accelerating ",
-        highlight: "Digital Transformation",
+        badge: "Enterprise Technology Experts",
+        title: "Powering Secure & Scalable ",
+        highlight: "Digital Enterprises",
         description:
-            "Drive innovation with AI, Cloud, Automation and Integration solutions. We help enterprises scale with confidence.",
+            "We deliver enterprise-grade Networking, Cyber Security, Data Engineering, and Cloud solutions that help organizations modernize infrastructure, secure digital assets, and scale with confidence.",
         stats: [
             {
                 value: "20+",
@@ -40,22 +40,23 @@ const slides = [
         id: 2,
         type: "banner",
         background:
-            "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1600&q=80",
-        title: "Build Faster. Scale Smarter.",
+            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80",
+        title: "Secure. Connect. Scale.",
         description:
-            "Next-generation cloud, automation and AI platforms engineered for modern enterprises.",
-        ctaPrimary: "Explore Services",
+            "End-to-end Networking, Cloud, Cyber Security, and Data Engineering solutions designed for modern, high-performing enterprises.",
+        ctaPrimary: "Explore Solutions",
         ctaSecondary: "Talk to Experts",
     },
     {
         id: 3,
         type: "video",
         video: "https://www.w3schools.com/html/mov_bbb.mp4",
-        title: "See Our Capabilities in Action",
+        title: "Enterprise Capabilities in Action",
         description:
-            "Watch how we transform enterprises using AI, Cloud and Data Engineering.",
+            "Discover how we help organizations strengthen security, unlock data value, modernize networks, and accelerate cloud adoption.",
     },
 ];
+
 
 const Hero = () => {
     const [current, setCurrent] = useState(0);
@@ -73,8 +74,8 @@ const Hero = () => {
                 <div
                     key={slide.id}
                     className={`${HERO_HEIGHT} flex items-center pt-10 transition-all duration-700 ease-in-out ${index === current
-                            ? "opacity-100 relative"
-                            : "opacity-0 absolute inset-0 pointer-events-none"
+                        ? "opacity-100 relative"
+                        : "opacity-0 absolute inset-0 pointer-events-none"
                         }`}
                 >
                     {/* ================= CONTENT SLIDE ================= */}
@@ -140,7 +141,7 @@ const Hero = () => {
                             {/* RIGHT */}
                             <div className="relative h-[420px] hidden lg:block">
                                 {/* Card 1 */}
-                                <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-2xl shadow-xl p-6 rotate-3">
+                                <div className="absolute top-10 left-10 w-64 h-72 bg-white rounded-2xl shadow-xl p-6 rotate-3">
                                     <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center mb-4">
                                         {/* AI Icon */}
                                         <svg
@@ -154,17 +155,25 @@ const Hero = () => {
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
                                                 strokeWidth={2}
-                                                d="M9.75 3v1.5m4.5-1.5v1.5M4.5 9.75H3m18 0h-1.5M9.75 21v-1.5m4.5 1.5v-1.5M7.5 7.5h9v9h-9v-9z"
+                                                d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7l7-4z"
+                                            />
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M9 12l2 2 4-4"
                                             />
                                         </svg>
+
                                     </div>
 
-                                    <h3 className="font-bold mb-2 text-gray-900">AI Solutions</h3>
+                                    <h3 className="font-bold mb-2 text-gray-900">Cyber Security</h3>
                                     <p className="text-sm text-gray-600">
-                                        Enterprise-grade artificial intelligence solutions designed to automate
-                                        workflows, enhance decision-making, and deliver predictive insights that
-                                        drive smarter business outcomes.
+                                        Comprehensive cyber security solutions that protect enterprise systems,
+                                        data, and applications through advanced threat detection, continuous
+                                        monitoring, compliance management, and zero-trust security frameworks.
                                     </p>
+
                                 </div>
 
                                 {/* Card 2 */}
@@ -173,7 +182,7 @@ const Hero = () => {
                                         {/* Cloud Icon */}
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="w-6 h-6 text-blue-600"
+                                            className="w-6 h-6 text-indigo-600"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
@@ -182,17 +191,31 @@ const Hero = () => {
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
                                                 strokeWidth={2}
-                                                d="M3 15a4 4 0 014-4h1a5 5 0 019.9 1H19a3 3 0 010 6H7a4 4 0 01-4-4z"
+                                                d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2z"
+                                            />
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M4 12c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2z"
+                                            />
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M4 18c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2z"
                                             />
                                         </svg>
+
                                     </div>
 
-                                    <h3 className="font-bold mb-2 text-gray-900">Cloud Migration</h3>
+                                    <h3 className="font-bold mb-2 text-gray-900">Data Engineering</h3>
                                     <p className="text-sm text-gray-600">
-                                        Secure, scalable cloud migration services that modernize infrastructure,
-                                        reduce operational costs, and ensure high availability with enterprise-
-                                        grade security and performance.
+                                        Robust data engineering services that design scalable data pipelines,
+                                        modern data platforms, and analytics-ready architectures to enable
+                                        real-time insights, AI-driven decisions, and business intelligence.
                                     </p>
+
                                 </div>
                             </div>
 

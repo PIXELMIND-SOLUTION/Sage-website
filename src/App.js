@@ -13,8 +13,9 @@ import AboutUs from "./pages/AboutUs";
 import TalkToExperts from "./pages/TalkToxperts";
 import IndustrySolutions from "./pages/IndustrialSolutionByName";
 import AllSolutions from "./pages/AllSolutions";
-import AllServices from "./pages/AllServices";
+import WhatWeDo from "./pages/WhatWeDo";
 import ServiceDetails from "./pages/ServiceByName";
+import ScrollToTop from "./views/ScrollToTop";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,6 +31,8 @@ function App() {
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white font-sans">
         <Header isScrolled={isScrolled} />
 
+        <ScrollToTop/>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<ContactUs />} />
@@ -38,7 +41,7 @@ function App() {
           <Route path="/talktoexperts" element={<TalkToExperts />} />
           <Route path="/solutions" element={<AllSolutions/>} />
           <Route path="/solutions/:name" element={<IndustrySolutions/>} />
-          <Route path="/services" element={<AllServices/>}/>
+          <Route path="/services" element={<WhatWeDo/>}/>
           <Route path="/services/:name" element={<ServiceDetails/>} />
         </Routes>
 

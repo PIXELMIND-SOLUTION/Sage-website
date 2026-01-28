@@ -1,6 +1,7 @@
 // components/ChatBot.jsx
 import React, { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
 
 const ChatBot = () => {
   const [open, setOpen] = useState(false);
@@ -27,17 +28,16 @@ const ChatBot = () => {
 
         {/* Button */}
         <button
-          onClick={() => setOpen(true)}
           className="
             w-14 h-14 rounded-full
-            bg-gradient-to-r from-indigo-600 to-violet-600
+            bg-gradient-to-r from-green-600 to-green-600
             text-white shadow-xl
             flex items-center justify-center
             hover:scale-110 transition-all duration-300
           "
           aria-label="Open Chat"
         >
-          <MessageCircle className="w-6 h-6" />
+          <BsWhatsapp className="w-6 h-6" />
         </button>
       </div>
 

@@ -5,7 +5,10 @@ export const solutionsData = {
     name: "Networking Solutions",
     color: "from-blue-500 to-indigo-500",
 
-    // HERO IMAGE – Networking / Data Center
+    /* LOGO */
+    logo:
+      "https://cdn-icons-png.flaticon.com/512/1039/1039328.png",
+
     image:
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80",
 
@@ -53,7 +56,10 @@ export const solutionsData = {
     name: "Cyber Security Solutions",
     color: "from-red-500 to-rose-600",
 
-    // HERO IMAGE – Cyber Security / Digital Shield
+    /* LOGO */
+    logo:
+      "https://cdn-icons-png.flaticon.com/512/3064/3064197.png",
+
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
 
@@ -61,7 +67,7 @@ export const solutionsData = {
       "Protect your digital assets with enterprise-grade cybersecurity solutions and continuous monitoring.",
 
     longDescription:
-      "Our cybersecurity solutions help organizations defend against evolving threats with proactive monitoring, threat detection, and rapid incident response. We combine advanced technologies with industry best practices to safeguard your data and systems.",
+      "Our cybersecurity solutions help organizations defend against evolving threats with proactive monitoring, threat detection, and rapid incident response.",
 
     services: [
       {
@@ -93,6 +99,108 @@ export const solutionsData = {
         image:
           "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
         desc: "Security compliance assessments and audits aligned with industry and regulatory standards.",
+      },
+    ],
+  },
+
+  "data-engineering": {
+    name: "Data Engineering Solutions",
+    color: "from-emerald-500 to-teal-600",
+
+    /* LOGO */
+    logo:
+      "https://cdn-icons-png.flaticon.com/512/4727/4727424.png",
+
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+
+    description:
+      "Build scalable data pipelines and platforms that turn raw data into actionable insights.",
+
+    longDescription:
+      "Our data engineering solutions help organizations collect, process, store, and analyze massive volumes of data efficiently. We design robust data architectures that power analytics, AI, and business intelligence initiatives.",
+
+    services: [
+      {
+        title: "Data Pipelines",
+        image:
+          "https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=1200&q=80",
+        desc: "Reliable batch and real-time data pipelines for seamless data ingestion and processing.",
+      },
+      {
+        title: "Data Warehousing",
+        image:
+          "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80",
+        desc: "Modern data warehouses optimized for analytics and high-performance querying.",
+      },
+      {
+        title: "Big Data Platforms",
+        image:
+          "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
+        desc: "Scalable big data platforms supporting large-scale data processing and analytics.",
+      },
+      {
+        title: "Data Integration",
+        image:
+          "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1200&q=80",
+        desc: "Integrate data from multiple sources into a unified, trusted data ecosystem.",
+      },
+      {
+        title: "Analytics Enablement",
+        image:
+          "https://images.unsplash.com/photo-1556155092-8707de31f9c4?auto=format&fit=crop&w=1200&q=80",
+        desc: "Enable BI, reporting, and AI use cases with clean, well-modeled data.",
+      },
+    ],
+  },
+
+  cloud: {
+    name: "Cloud Solutions",
+    color: "from-sky-500 to-blue-600",
+
+    /* LOGO */
+    logo:
+      "https://cdn-icons-png.flaticon.com/512/4144/4144781.png",
+
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
+
+    description:
+      "Accelerate innovation with secure, scalable, and cost-optimized cloud solutions.",
+
+    longDescription:
+      "Our cloud solutions help organizations migrate, modernize, and manage workloads across public, private, and hybrid cloud environments. We ensure security, resilience, and cost efficiency at every stage.",
+
+    services: [
+      {
+        title: "Cloud Migration",
+        image:
+          "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
+        desc: "Seamless migration of applications and infrastructure to the cloud.",
+      },
+      {
+        title: "Cloud Architecture",
+        image:
+          "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        desc: "Design resilient, scalable, and secure cloud-native architectures.",
+      },
+      {
+        title: "Hybrid & Multi-Cloud",
+        image:
+          "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=1200&q=80",
+        desc: "Flexible hybrid and multi-cloud strategies tailored to business needs.",
+      },
+      {
+        title: "Cloud Security",
+        image:
+          "https://images.unsplash.com/photo-1556155092-8707de31f9c4?auto=format&fit=crop&w=1200&q=80",
+        desc: "Protect cloud workloads with robust security and compliance controls.",
+      },
+      {
+        title: "Cloud Optimization",
+        image:
+          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+        desc: "Optimize performance and cost with continuous cloud monitoring and governance.",
       },
     ],
   },

@@ -1,257 +1,143 @@
 // components/Services.jsx
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Brain,
-  Cloud,
-  Cpu,
-  GitMerge,
-  Database,
-  Shield,
-  ArrowRight,
-  X,
-  Zap,
-  TrendingUp,
-} from "lucide-react";
-
-const serviceBackgrounds = [
-  "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
-];
+import React, { useEffect, useRef, useState } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { solutionsData } from "../Data/SolutionsData";
+import { useNavigate } from "react-router-dom";
 
 const Services = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [inView, setInView] = useState(false);
   const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const navigate = useNavigate();
 
-  const services = [
-    {
-      icon: <Brain size={24} />,
-      title: "AI & Machine Learning",
-      shortDesc: "Enterprise AI solutions and automation",
-      fullDesc:
-        "Build intelligent systems with AI & ML. From predictive analytics to NLP, we help enterprises gain competitive advantage.",
-      gradient: "from-indigo-500 to-violet-500",
-      features: ["Predictive Analytics", "Computer Vision", "NLP", "MLOps"],
-      stat: "+40% Efficiency",
-    },
-    {
-      icon: <Cloud size={24} />,
-      title: "Cloud Services",
-      shortDesc: "Cloud migration and optimization",
-      fullDesc:
-        "End-to-end cloud solutions including migration, optimization, and multi-cloud strategies.",
-      gradient: "from-blue-500 to-cyan-500",
-      features: ["Cloud Migration", "Cost Optimization", "Multi-Cloud", "DevOps"],
-      stat: "99.9% Uptime",
-    },
-    {
-      icon: <Cpu size={24} />,
-      title: "Intelligent Automation",
-      shortDesc: "RPA and workflow automation",
-      fullDesc:
-        "Automate workflows using RPA and BPM solutions to reduce cost and increase accuracy.",
-      gradient: "from-emerald-500 to-green-500",
-      features: ["RPA", "Workflow Automation", "Process Mining", "BPM"],
-      stat: "60% Time Saved",
-    },
-    {
-      icon: <GitMerge size={24} />,
-      title: "Integration Services",
-      shortDesc: "API management and integrations",
-      fullDesc:
-        "Seamless enterprise integrations using microservices, APIs, and event-driven architecture.",
-      gradient: "from-amber-500 to-orange-500",
-      features: ["API Management", "Microservices", "Event-Driven"],
-      stat: "3x Faster",
-    },
-    {
-      icon: <Database size={24} />,
-      title: "Data & Analytics",
-      shortDesc: "BI & real-time analytics",
-      fullDesc:
-        "Transform raw data into insights using real-time analytics, BI, and governance.",
-      gradient: "from-violet-500 to-purple-500",
-      features: ["Data Lakes", "BI", "Real-time Analytics"],
-      stat: "Live Insights",
-    },
-    {
-      icon: <Shield size={24} />,
-      title: "Cybersecurity",
-      shortDesc: "Enterprise security solutions",
-      fullDesc:
-        "End-to-end cybersecurity including Zero Trust, SOC, compliance, and threat intelligence.",
-      gradient: "from-rose-500 to-pink-500",
-      features: ["Zero Trust", "Threat Intel", "Compliance", "SOC"],
-      stat: "24/7 Protection",
-    },
-  ];
+  const solutions = Object.entries(solutionsData).map(
+    ([slug, solution]) => ({
+      slug,
+      ...solution,
+    })
+  );
 
-  /* 🔥 Viewport animation – triggers EVERY time */
+  /* Viewport animation */
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setInView(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.25 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  /* Mobile detection */
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-white to-gray-50"
+      className="py-24 bg-gradient-to-b from-white via-slate-50 to-white"
     >
-      <div className="container max-w-7xl mx-auto px-6">
-        {/* Header */}
+      <div className="max-w-7xl mx-auto px-6">
+        {/* HEADER */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
+          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 mb-4">
-            <Zap className="w-4 h-4 text-indigo-600" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 mb-5">
+            <Sparkles className="w-4 h-4 text-indigo-600" />
             <span className="text-sm font-semibold text-indigo-700">
-              Our Core Services
+              Our Expertise
             </span>
           </div>
 
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
             Enterprise Digital Solutions
           </h2>
-          <p className="text-gray-600">
-            Scalable, secure, and future-ready technology services
+
+          <p className="text-base md:text-lg text-gray-600">
+            Scalable, secure, and future-ready technology offerings
           </p>
         </div>
 
-        {/* Desktop Grid */}
-        {!isMobile && (
-          <div className="grid grid-cols-3 gap-6 relative">
-            {services.map((service, index) => {
-              const isHovered = hoveredIndex === index;
-
-              return (
+        {/* GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {solutions.map((solution, index) => (
+            <div
+              key={solution.slug}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`group relative rounded-2xl overflow-hidden transition-all duration-700 ${
+                inView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
+              {/* DEFAULT WHITE CARD */}
+              <div className="relative z-10 bg-white border border-gray-200 rounded-2xl p-6 md:p-7 h-full transition-all duration-500 group-hover:opacity-0">
                 <div
-                  key={index}
-                  className={`relative transition-all duration-700 ${
-                    inView
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-10"
-                  }`}
-                  style={{ transitionDelay: `${index * 120}ms` }}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  className={`w-12 h-16 mb-4 rounded-xl bg-gradient-to-br ${solution.color} flex items-center justify-center`}
                 >
-                  {/* Base Card */}
-                  <div
-                    className={`relative bg-white rounded-2xl border border-gray-200 p-6 h-full transition-all duration-300 ${
-                      isHovered
-                        ? "opacity-0 pointer-events-none"
-                        : "shadow-lg hover:shadow-xl"
-                    }`}
-                  >
-                    <div
-                      className={`w-14 h-16 rounded-xl bg-gradient-to-br ${service.gradient} p-3 mb-4`}
-                    >
-                      <div className="text-white">{service.icon}</div>
-                    </div>
-
-                    <h3 className="text-xl font-bold mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      {service.shortDesc}
-                    </p>
-                  </div>
-
-                  {/* Hover Overlay */}
-                  {isHovered && (
-                    <div className="absolute inset-0 z-50 scale-[1.06] transition-transform duration-300 ease-out">
-                      <div className="relative h-full rounded-2xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
-                        <img
-                          src={serviceBackgrounds[index]}
-                          alt={service.title}
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-black/70" />
-
-                        <div className="relative p-6 h-full flex flex-col text-white">
-                          <h3 className="text-2xl font-bold mb-3">
-                            {service.title}
-                          </h3>
-                          <p className="text-sm mb-4">
-                            {service.fullDesc}
-                          </p>
-
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {service.features.map((f, i) => (
-                              <span
-                                key={i}
-                                className="px-3 py-1 bg-white/20 rounded-full text-xs"
-                              >
-                                {f}
-                              </span>
-                            ))}
-                          </div>
-
-                          <button className="mt-4 inline-flex items-center text-sm font-semibold">
-                            Get Started
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <img
+                    src={solution.logo}
+                    alt={solution.name}
+                    className="w-6 h-6 object-contain"
+                  />
                 </div>
-              );
-            })}
-          </div>
-        )}
 
-        {/* Mobile Layout */}
-        {isMobile && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className={`bg-white border border-gray-200 rounded-xl p-5 shadow-sm transition-all duration-700 ${
-                  inView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: `${index * 120}ms` }}
-              >
-                <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} p-3 mb-3`}
-                >
-                  <div className="text-white">{service.icon}</div>
-                </div>
-                <h3 className="font-bold mb-2">{service.title}</h3>
-                <p className="text-gray-600 text-sm mb-3">
-                  {service.shortDesc}
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+                  {solution.name}
+                </h3>
+
+                <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                  {solution.description}
                 </p>
-                <button className="text-indigo-600 text-sm flex items-center">
-                  View Details <ArrowRight className="w-4 h-4 ml-1" />
+              </div>
+
+              {/* HOVER IMAGE BACKGROUND */}
+              <img
+                src={solution.image}
+                alt={solution.name}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
+
+              {/* DARK OVERLAY */}
+              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* HOVER CONTENT */}
+              <div className="absolute inset-0 z-20 p-6 md:p-7 flex flex-col text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span
+                  className={`inline-flex self-start mb-3 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${solution.color}`}
+                >
+                  {solution.name.replace(" Solutions", "")}
+                </span>
+
+                <h3 className="text-lg md:text-xl font-bold mb-3">
+                  {solution.name}
+                </h3>
+
+                <p className="text-sm text-gray-200 mb-4 line-clamp-3">
+                  {solution.longDescription}
+                </p>
+
+                {/* TAGS */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {solution.services.slice(0, 3).map((srv, i) => (
+                    <span
+                      key={i}
+                      className="px-2.5 py-1 rounded-full text-[11px] bg-white/20 backdrop-blur"
+                    >
+                      {srv.title}
+                    </span>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <button
+                  onClick={() => navigate(`/solutions/${solution.slug}`)}
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all"
+                >
+                  Explore Solution
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
-            ))}
-          </div>
-        )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

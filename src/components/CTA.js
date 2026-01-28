@@ -1,8 +1,10 @@
 // components/CTA.jsx
 import React from "react";
 import { MessageSquare, Calendar } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CTA = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative py-16 overflow-hidden">
       {/* Background Gradient */}
@@ -53,12 +55,13 @@ const CTA = () => {
                 hover:scale-105 hover:shadow-lg
                 transition-all duration-300
               "
+              onClick={()=>navigate('/contact')}
             >
               <MessageSquare className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
               Contact Us
             </button>
 
-            <button
+            {/* <button
               className="
                 px-6 py-3
                 border border-white
@@ -70,7 +73,7 @@ const CTA = () => {
             >
               <Calendar className="mr-2 w-4 h-4" />
               Schedule Demo
-            </button>
+            </button> */}
           </div>
 
           {/* Trust Note */}

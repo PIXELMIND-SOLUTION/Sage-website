@@ -25,7 +25,7 @@ const Home = () => {
           Banners: heroRef,
           Services: servicesRef,
           "Why Us": whyRef,
-          Industries: industriesRef,
+          // Industries: industriesRef,
           Stats: statsRef,
           Testimonials: testimonialsRef,
           "Contact Us": ctaRef,
@@ -35,7 +35,7 @@ const Home = () => {
       <section ref={heroRef}><Hero /></section>
       <section ref={servicesRef}><Services /></section>
       <section ref={whyRef}><WhyChooseUs /></section>
-      <section ref={industriesRef}><Industries /></section>
+      {/* <section ref={industriesRef}><Industries /></section> */}
       <section ref={statsRef}><Stats /></section>
       <section ref={testimonialsRef}><Testimonials /></section>
       <section ref={ctaRef}><CTA /></section>
