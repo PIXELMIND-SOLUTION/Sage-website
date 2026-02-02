@@ -88,20 +88,20 @@ const Header = ({ isScrolled }) => {
     <>
       {/* HEADER */}
       <header
-        className={`fixed top-0 w-full z-50 transition-all ${
-          isScrolled ? "bg-white shadow-md" : "bg-white"
-        }`}
+        className={`fixed top-0 w-full z-50 transition-all ${isScrolled ? "bg-white shadow-md" : "bg-white"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           {/* LOGO */}
           <div
-            className="flex items-center gap-2 cursor-pointer"
+            className="w-48 h-16 rounded-xl overflow-hidden cursor-pointer"
             onClick={() => navigate("/")}
           >
-            <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold">
-              S
-            </div>
-            <span className="text-xl font-bold text-indigo-600">Nectar Solutions</span>
+            <img
+              src="/logo.png" // 👈 Replace with your actual logo path
+              alt="Nectar Solutions"
+              className="w-full h-full object-contain"
+            />
           </div>
 
           {/* DESKTOP NAV */}
@@ -129,17 +129,17 @@ const Header = ({ isScrolled }) => {
               Solutions <ChevronDown size={16} />
             </button>
 
-            <button 
-              onClick={() => navigate("/aboutus")} 
-              onMouseEnter={handleMegaMenuMouseLeave} 
+            <button
+              onClick={() => navigate("/aboutus")}
+              onMouseEnter={handleMegaMenuMouseLeave}
               className="font-medium hover:text-indigo-600 transition-colors"
             >
               About Us
             </button>
 
-            <button 
-              onClick={() => navigate("/careers")} 
-              onMouseEnter={handleMegaMenuMouseLeave} 
+            <button
+              onClick={() => navigate("/careers")}
+              onMouseEnter={handleMegaMenuMouseLeave}
               className="font-medium hover:text-indigo-600 transition-colors"
             >
               Careers
@@ -154,8 +154,8 @@ const Header = ({ isScrolled }) => {
             Contact Us
           </button>
 
-          <button 
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors" 
+          <button
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -187,7 +187,7 @@ const Header = ({ isScrolled }) => {
                       <img
                         src={solutionsData[ind.slug]?.logo}
                         alt={ind.name}
-                        className="w-8 h-8 object-contain"
+                        className="w-8 h-8 object-contain rounded rounded-2"
                       />
                     </div>
 
@@ -212,14 +212,18 @@ const Header = ({ isScrolled }) => {
           <div className="absolute right-0 w-full max-w-sm sm:max-w-md bg-white h-full flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b">
-              <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold">
-                  S
-                </div>
-                <span className="text-xl font-bold text-indigo-600">SageTech</span>
+              <div
+                className="w-48 h-16 rounded-xl overflow-hidden cursor-pointer"
+                onClick={() => navigate("/")}
+              >
+                <img
+                  src="/logo.png" // 👈 Replace with your actual logo path
+                  alt="Nectar Solutions"
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <button 
-                onClick={toggleMobileMenu} 
+              <button
+                onClick={toggleMobileMenu}
                 className="p-2 hover:bg-gray-100 rounded-lg"
                 aria-label="Close menu"
               >
@@ -251,9 +255,8 @@ const Header = ({ isScrolled }) => {
                 >
                   <span>Solutions</span>
                   <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-300 ${
-                      mobileIndustriesOpen ? "rotate-180" : ""
-                    }`}
+                    className={`w-5 h-5 transition-transform duration-300 ${mobileIndustriesOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
@@ -283,14 +286,14 @@ const Header = ({ isScrolled }) => {
                 )}
               </div>
 
-              <button 
+              <button
                 className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
                 onClick={() => handleMobileLinkClick("/aboutus")}
               >
                 About Us
               </button>
 
-              <button 
+              <button
                 className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
                 onClick={() => handleMobileLinkClick("/careers")}
               >

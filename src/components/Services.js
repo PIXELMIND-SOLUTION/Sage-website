@@ -70,12 +70,12 @@ const Services = () => {
               {/* DEFAULT WHITE CARD */}
               <div className="relative z-10 bg-white border border-gray-200 rounded-2xl p-6 md:p-7 h-full transition-all duration-500 group-hover:opacity-0">
                 <div
-                  className={`w-12 h-16 mb-4 rounded-xl bg-gradient-to-br ${solution.color} flex items-center justify-center`}
+                  className={`w-12 h-16 mb-4 rounded-xl flex items-center justify-center`}
                 >
                   <img
                     src={solution.logo}
                     alt={solution.name}
-                    className="w-6 h-6 object-contain"
+                    className="w-12 h-12 object-contain rounded rounded-2"
                   />
                 </div>
 

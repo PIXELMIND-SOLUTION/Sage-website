@@ -31,22 +31,22 @@ const WhatWeDo = () => {
     const capabilities = [
         {
             title: "Networking",
-            img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+            img: "/images/Service/network.png",
             desc: "Design, deploy, and manage secure, high-performance enterprise and data center networking solutions.",
         },
         {
             title: "Cyber Security",
-            img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+            img: "/images/Service/cyber.png",
             desc: "Protect digital assets with advanced threat detection, monitoring, and enterprise-grade security frameworks.",
         },
         {
             title: "Data Engineering",
-            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+            img: "/images/Service/data.png",
             desc: "Build scalable data pipelines and platforms that transform raw data into actionable business insights.",
         },
         {
             title: "Cloud Solutions",
-            img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+            img: "/images/Service/cloud.png",
             desc: "Accelerate innovation with secure, scalable, and cost-optimized cloud and hybrid cloud solutions.",
         },
     ];
@@ -60,7 +60,7 @@ const WhatWeDo = () => {
                 className="relative min-h-[85vh] flex items-center bg-cover bg-center"
                 style={{
                     backgroundImage:
-                        "url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1800&q=80')",
+                        "url('/images/whatwedo/whatwedo.png')",
                 }}
             >
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-indigo-900/70" />

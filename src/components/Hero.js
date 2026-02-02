@@ -40,7 +40,7 @@ const slides = [
         id: 2,
         type: "banner",
         background:
-            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80",
+            "/images/Hero/banner.png",
         title: "Secure. Connect. Scale.",
         description:
             "End-to-end Networking, Cloud, Cyber Security, and Data Engineering solutions designed for modern, high-performing enterprises.",

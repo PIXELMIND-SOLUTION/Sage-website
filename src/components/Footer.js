@@ -31,11 +31,12 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
-              </div>
-              <span className="text-2xl font-bold">Nectar Solutions</span>
+            <div className="flex items-center justify-start space-x-3 mb-6 h-20 w-48">
+              <img
+                src="/logo.png" // 👈 Replace with your actual logo path
+                alt="Nectar Solutions"
+                className="w-full h-full object-contain"
+              />
             </div>
 
             <p className="text-gray-400 mb-6">
@@ -113,7 +114,7 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 text-gray-400 mr-3 mt-1" />
                 <span className="text-gray-400">
-                  8700 stacy rd 
+                  8700 stacy rd
                   <br />
                   Mckinney texas 75070
                   <br />

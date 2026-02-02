@@ -48,7 +48,7 @@ const IndustrySolutions = () => {
     <section className="w-full">
 
       {/* ================= HERO ================= */}
-      <div className="relative h-[60vh] w-full overflow-hidden">
+      <div className="relative h-[80vh] w-full overflow-hidden">
         <img
           src={data.image}
           alt={data.name}

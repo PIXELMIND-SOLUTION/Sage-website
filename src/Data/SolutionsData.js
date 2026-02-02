@@ -7,10 +7,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "https://cdn-icons-png.flaticon.com/512/1039/1039328.png",
+      "/images/Service/networklogo.png",
 
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80",
+      "/images/Service/network.png",
 
     description:
       "We design, deploy, and manage scalable, secure networking solutions that power modern enterprises.",
@@ -58,10 +58,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "https://cdn-icons-png.flaticon.com/512/3064/3064197.png",
+      "/images/Service/cyberlogo.png",
 
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
+      "/images/Service/cyber.png",
 
     description:
       "Protect your digital assets with enterprise-grade cybersecurity solutions and continuous monitoring.",
@@ -109,10 +109,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "https://cdn-icons-png.flaticon.com/512/4727/4727424.png",
+      "/images/Service/datalogo.png",
 
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+      "/images/Service/data.png",
 
     description:
       "Build scalable data pipelines and platforms that turn raw data into actionable insights.",
@@ -160,10 +160,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "https://cdn-icons-png.flaticon.com/512/4144/4144781.png",
+      "/images/Service/cloudlogo.png",
 
     image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
+      "/images/Service/cloud.png",
 
     description:
       "Accelerate innovation with secure, scalable, and cost-optimized cloud solutions.",
