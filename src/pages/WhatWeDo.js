@@ -60,7 +60,7 @@ const WhatWeDo = () => {
                 className="relative min-h-[85vh] flex items-center bg-cover bg-center"
                 style={{
                     backgroundImage:
-                        "url('/images/whatwedo/whatwedo.png')",
+                        "url('src/Assets/images/whatwedo/whatwedo.png')",
                 }}
             >
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-indigo-900/70" />
