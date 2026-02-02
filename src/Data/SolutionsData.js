@@ -1,4 +1,12 @@
 // src/data/solutionsData.js
+import network from '../Assets/Images/Service/network.png';
+import cloud from '../Assets/Images/Service/cloud.png';
+import data from '../Assets/Images/Service/data.png';
+import cyber from '../Assets/Images/Service/cyber.png';
+import networklogo from '../Assets/Images/Service/networklogo.png';
+import cloudlogo from '../Assets/Images/Service/cloudlogo.png';
+import datalogo from '../Assets/Images/Service/datalogo.png';
+import cyberlogo from '../Assets/Images/Service/cyberlogo.png';
 
 export const solutionsData = {
   networking: {
@@ -7,10 +15,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "/images/Service/networklogo.png",
+      networklogo,
 
     image:
-      "/images/Service/network.png",
+      network,
 
     description:
       "We design, deploy, and manage scalable, secure networking solutions that power modern enterprises.",
@@ -58,10 +66,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "/images/Service/cyberlogo.png",
+      cyberlogo,
 
     image:
-      "/images/Service/cyber.png",
+      cyber,
 
     description:
       "Protect your digital assets with enterprise-grade cybersecurity solutions and continuous monitoring.",
@@ -109,10 +117,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "/images/Service/datalogo.png",
+      datalogo,
 
     image:
-      "/images/Service/data.png",
+      data,
 
     description:
       "Build scalable data pipelines and platforms that turn raw data into actionable insights.",
@@ -160,10 +168,10 @@ export const solutionsData = {
 
     /* LOGO */
     logo:
-      "/images/Service/cloudlogo.png",
+      cloudlogo,
 
     image:
-      "/images/Service/cloud.png",
+      cloud,
 
     description:
       "Accelerate innovation with secure, scalable, and cost-optimized cloud solutions.",

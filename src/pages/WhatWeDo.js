@@ -1,7 +1,12 @@
 // components/WhatWeDo.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { CheckCircle, ArrowRight } from "lucide-react";
+import logo from '../Assets/Images/WhatWeDo/whatwedo.png';
 import { useNavigate } from "react-router-dom";
+import network from '../Assets/Images/Service/network.png';
+import cloud from '../Assets/Images/Service/cloud.png';
+import data from '../Assets/Images/Service/data.png';
+import cyber from '../Assets/Images/Service/cyber.png';
 
 const WhatWeDo = () => {
     const navigate = useNavigate();
@@ -31,22 +36,22 @@ const WhatWeDo = () => {
     const capabilities = [
         {
             title: "Networking",
-            img: "/images/Service/network.png",
+            img: network,
             desc: "Design, deploy, and manage secure, high-performance enterprise and data center networking solutions.",
         },
         {
             title: "Cyber Security",
-            img: "/images/Service/cyber.png",
+            img: cyber,
             desc: "Protect digital assets with advanced threat detection, monitoring, and enterprise-grade security frameworks.",
         },
         {
             title: "Data Engineering",
-            img: "/images/Service/data.png",
+            img: data,
             desc: "Build scalable data pipelines and platforms that transform raw data into actionable business insights.",
         },
         {
             title: "Cloud Solutions",
-            img: "/images/Service/cloud.png",
+            img: cloud,
             desc: "Accelerate innovation with secure, scalable, and cost-optimized cloud and hybrid cloud solutions.",
         },
     ];
@@ -60,7 +65,7 @@ const WhatWeDo = () => {
                 className="relative min-h-[85vh] flex items-center bg-cover bg-center"
                 style={{
                     backgroundImage:
-                        "url('/src/Assets/images/whatwedo/whatwedo.png')",
+                        `url(${logo})`,
                 }}
             >
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-indigo-900/70" />
