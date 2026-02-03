@@ -1,6 +1,7 @@
 // components/Hero.jsx
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Play, Award, Users, TrendingUp } from "lucide-react";
+import hero from "../Assets/Images/Hero/banner2.png";
 
 /**
  * Assumption:
@@ -40,7 +41,7 @@ const slides = [
         id: 2,
         type: "banner",
         background:
-            "/images/Hero/banner.png",
+            hero,
         title: "Secure. Connect. Scale.",
         description:
             "End-to-end Networking, Cloud, Cyber Security, and Data Engineering solutions designed for modern, high-performing enterprises.",
