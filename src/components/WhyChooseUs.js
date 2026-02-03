@@ -12,28 +12,28 @@ const WhyChooseUs = () => {
       title: "Global Delivery Model",
       description:
         "24/7 delivery centers across North America, Europe, and APAC ensuring seamless collaboration.",
-      stat: "15+ Countries",
+      stat: "8+ Countries",
     },
     {
       icon: <Award size={24} />,
       title: "Fortune-level Clients",
       description:
         "Trusted by Fortune 500 companies across finance, healthcare, retail, and manufacturing.",
-      stat: "200+ Enterprises",
+      stat: "90+ Enterprises",
     },
     {
       icon: <Users size={24} />,
       title: "Expert Team",
       description:
         "Certified professionals with deep domain expertise and cutting-edge technical skills.",
-      stat: "1000+ Experts",
+      stat: "50+ Experts",
     },
     {
       icon: <CheckCircle size={24} />,
       title: "Proven Methodology",
       description:
         "Agile delivery framework ensuring quality, transparency, and timely completion.",
-      stat: "99% Success Rate",
+      stat: "100% Success Rate",
     },
   ];
 
@@ -73,7 +73,7 @@ const WhyChooseUs = () => {
             </span>
 
             <h2 className="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              20+ Years of Excellence in <br />
+              5+ Years of Excellence in <br />
               <span className="text-indigo-600">Digital Transformation</span>
             </h2>
 

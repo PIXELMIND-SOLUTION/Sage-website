@@ -17,7 +17,7 @@ const Stats = () => {
 
         const targetValues = {
           clients: 100,
-          years: 5,
+          years: 10,
           retention: 99,
           countries: 8,
         };
