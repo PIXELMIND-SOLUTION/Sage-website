@@ -128,7 +128,7 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail className="w-5 h-5 text-gray-400 mr-3" />
                 <span className="text-gray-400">
-                  contact@sagetech.com
+                  contact@nectar.com
                 </span>
               </li>
             </ul>
@@ -139,7 +139,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} SageTech. All rights reserved.
+              © {new Date().getFullYear()} NectarSolutions. All rights reserved.
             </p>
 
             {/* <div className="flex flex-wrap gap-6 text-sm text-gray-400">

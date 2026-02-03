@@ -251,7 +251,7 @@ const Careers = () => {
           {/* HERO */}
           <div className="text-center max-w-4xl mx-auto mb-20">
             <span className="inline-flex px-5 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold mb-6">
-              Careers at SageTech
+              Careers at NectarSolutions
             </span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">

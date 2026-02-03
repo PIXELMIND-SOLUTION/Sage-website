@@ -136,7 +136,7 @@ const TalkToExperts = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Email Us</p>
-                  <p className="text-gray-600 text-sm">contact@sageit.com</p>
+                  <p className="text-gray-600 text-sm">contact@nectarsolutions.com</p>
                 </div>
               </div>
             </div>

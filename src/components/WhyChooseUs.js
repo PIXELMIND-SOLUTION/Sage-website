@@ -69,7 +69,7 @@ const WhyChooseUs = () => {
             }`}
           >
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-700 font-semibold mb-6">
-              Why Choose SageTech
+              Why Choose NectarSolutions
             </span>
 
             <h2 className="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-900 mb-6 leading-tight">

@@ -56,7 +56,7 @@ const AboutUs = () => {
           className="text-center max-w-4xl mx-auto mb-24 opacity-0 translate-y-8 transition-all duration-700"
         >
           <span className="inline-flex px-5 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold mb-6 shadow-lg animate-scale">
-            About Sage IT
+            About NectarSolutions
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6">
             Driving Digital Transformation with
@@ -65,7 +65,7 @@ const AboutUs = () => {
             </span>
           </h1>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Sage IT is a global technology consulting and services company
+            NectarSolutions is a global technology consulting and services company
             helping enterprises accelerate innovation, optimize operations,
             and build future-ready digital platforms.
           </p>
@@ -110,7 +110,7 @@ const AboutUs = () => {
             </h2>
             <p className="text-gray-600 mb-4 leading-relaxed">
               Founded with a vision to bridge the gap between business and
-              technology, Sage IT has evolved into a trusted digital partner
+              technology,  NectarSolutions has evolved into a trusted digital partner
               for Fortune 500 companies and fast-growing enterprises.
             </p>
             <p className="text-gray-600 leading-relaxed">
@@ -201,14 +201,14 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* ================= WHY SAGE ================= */}
+        {/* ================= WHY NectarSolutions ================= */}
         <div 
           data-animate="scale"
           className="text-center rounded-3xl p-14 bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 
           text-white shadow-2xl opacity-0 scale-95 transition-all duration-700 hover:scale-102"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            Why Choose Sage IT?
+            Why Choose NectarSolutions?
           </h2>
           <p className="text-indigo-100 max-w-3xl mx-auto mb-10">
             We combine deep industry expertise, cutting-edge technology, and

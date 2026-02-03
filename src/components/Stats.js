@@ -16,10 +16,10 @@ const Stats = () => {
         if (!entry.isIntersecting) return;
 
         const targetValues = {
-          clients: 500,
-          years: 20,
+          clients: 100,
+          years: 5,
           retention: 99,
-          countries: 40,
+          countries: 8,
         };
 
         const duration = 2000;

@@ -8,7 +8,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       quote:
-        "SageTech transformed our digital infrastructure, resulting in 40% operational efficiency gains. Their expertise in cloud migration was exceptional.",
+        "NectarSolutions transformed our digital infrastructure, resulting in 40% operational efficiency gains. Their expertise in cloud migration was exceptional.",
       author: "Sarah Johnson",
       position: "CTO, Global Financial Services",
       company: "Fortune 500 Banking Corporation",
@@ -16,7 +16,7 @@ const Testimonials = () => {
     },
     {
       quote:
-        "The AI-driven analytics platform developed by SageTech provided unprecedented insights into our supply chain, optimizing costs by 30% annually.",
+        "The AI-driven analytics platform developed by NectarSolutions provided unprecedented insights into our supply chain, optimizing costs by 30% annually.",
       author: "Michael Chen",
       position: "CIO",
       company: "Leading Manufacturing Conglomerate",

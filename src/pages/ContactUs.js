@@ -120,7 +120,7 @@ const ContactUs = () => {
               {
                 icon: <Mail size={20} />,
                 title: "Email Us",
-                desc: "contact@sagetech.com",
+                desc: "contact@nectarsolutions.com",
               },
               {
                 icon: <MapPin size={20} />,
