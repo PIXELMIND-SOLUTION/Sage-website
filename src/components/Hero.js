@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Play, Award, Users, TrendingUp } from "lucide-react";
 import hero from "../Assets/Images/Hero/banner2.png";
+import banner from "../Assets/videos/banner.mp4"
 
 /**
  * Assumption:
@@ -51,7 +52,7 @@ const slides = [
     {
         id: 3,
         type: "video",
-        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        video: banner,
         title: "Enterprise Capabilities in Action",
         description:
             "Discover how we help organizations strengthen security, unlock data value, modernize networks, and accelerate cloud adoption.",
@@ -230,7 +231,7 @@ const Hero = () => {
                             style={{
                                 backgroundImage: `url(${slide.background})`,
                                 backgroundSize: "cover",
-                                backgroundPosition: "center",
+                                backgroundPosition: "cover",
                             }}
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
