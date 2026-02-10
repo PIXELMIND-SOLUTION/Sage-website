@@ -35,9 +35,8 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <div
-          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 mb-5">
             <Sparkles className="w-4 h-4 text-indigo-600" />
@@ -61,65 +60,43 @@ const Services = () => {
             <div
               key={solution.slug}
               style={{ transitionDelay: `${index * 100}ms` }}
-              className={`group relative rounded-2xl overflow-hidden transition-all duration-700 ${
-                inView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
+              className={`group relative rounded-3xl transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
             >
-              {/* DEFAULT WHITE CARD */}
-              <div className="relative z-10 bg-white border border-gray-200 rounded-2xl p-6 md:p-7 h-full transition-all duration-500 group-hover:opacity-0">
-                <div
-                  className={`w-12 h-16 mb-4 rounded-xl flex items-center justify-center`}
-                >
+              {/* GRADIENT BORDER */}
+              <div className="absolute inset-0 rounded-3xl p-[1px] bg-gradient-to-br from-indigo-200 via-blue-200 to-purple-200 group-hover:from-indigo-500 group-hover:via-blue-500 group-hover:to-purple-500 transition-all duration-500" />
+
+              {/* CARD */}
+              <div className="relative h-full rounded-3xl bg-white/90 backdrop-blur-xl border border-white/40 p-7 overflow-hidden transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-[0_25px_70px_rgba(79,70,229,0.35)]">
+
+                {/* SHIMMER EFFECT */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
+                  <div className="absolute -left-40 top-0 w-40 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-12 animate-[shimmer_1.5s_linear]" />
+                </div>
+
+                {/* LOGO */}
+                <div className="w-14 h-14 mb-5 rounded-2xl bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center shadow-sm">
                   <img
                     src={solution.logo}
                     alt={solution.name}
-                    className="w-12 h-12 object-contain rounded rounded-2"
+                    className="w-10 h-10 object-contain"
                   />
                 </div>
 
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition">
                   {solution.name}
                 </h3>
 
-                <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
                   {solution.description}
-                </p>
-              </div>
-
-              {/* HOVER IMAGE BACKGROUND */}
-              <img
-                src={solution.image}
-                alt={solution.name}
-                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-
-              {/* DARK OVERLAY */}
-              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* HOVER CONTENT */}
-              <div className="absolute inset-0 z-20 p-6 md:p-7 flex flex-col text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span
-                  className={`inline-flex self-start mb-3 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${solution.color}`}
-                >
-                  {solution.name.replace(" Solutions", "")}
-                </span>
-
-                <h3 className="text-lg md:text-xl font-bold mb-3">
-                  {solution.name}
-                </h3>
-
-                <p className="text-sm text-gray-200 mb-4 line-clamp-3">
-                  {solution.longDescription}
                 </p>
 
                 {/* TAGS */}
-                <div className="flex flex-wrap gap-2 mb-5">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {solution.services.slice(0, 3).map((srv, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-full text-[11px] bg-white/20 backdrop-blur"
+                      className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700"
                     >
                       {srv.title}
                     </span>
@@ -129,7 +106,7 @@ const Services = () => {
                 {/* CTA */}
                 <button
                   onClick={() => navigate(`/solutions/${solution.slug}`)}
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:gap-3 transition-all"
                 >
                   Explore Solution
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -137,6 +114,7 @@ const Services = () => {
               </div>
             </div>
           ))}
+
         </div>
       </div>
     </section>

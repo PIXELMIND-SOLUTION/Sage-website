@@ -1,5 +1,4 @@
-// pages/AboutUs.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import {
   Award,
   Users,
@@ -12,258 +11,262 @@ import {
 } from "lucide-react";
 
 const AboutUs = () => {
-  const observerRefs = useRef([]);
-
   useEffect(() => {
-    // Create Intersection Observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-in");
-            // Unobserve after animation
             observer.unobserve(entry.target);
           }
         });
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
+      { threshold: 0.15 }
     );
 
-    // Observe all elements with data-animate attribute
-    const animatedElements = document.querySelectorAll('[data-animate]');
-    animatedElements.forEach((el) => observer.observe(el));
+    document
+      .querySelectorAll("[data-animate]")
+      .forEach((el) => observer.observe(el));
 
-    return () => {
-      animatedElements.forEach((el) => observer.unobserve(el));
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-      {/* Background Blobs */}
-      <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-indigo-400/30 rounded-full blur-3xl" />
-      <div className="absolute top-32 -right-40 w-[460px] h-[460px] bg-pink-400/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 left-1/4 w-[560px] h-[560px] bg-violet-400/30 rounded-full blur-3xl" />
+    <section className="relative overflow-hidden bg-[#f7f9fc]">
+      
+      {/* ===== LUXURY BACKGROUND ===== */}
+      <div className="absolute -top-60 left-[-200px] w-[700px] h-[700px] bg-indigo-500/20 blur-[160px] rounded-full" />
+      <div className="absolute bottom-[-300px] right-[-200px] w-[700px] h-[700px] bg-violet-500/20 blur-[160px] rounded-full" />
 
-      <div className="container max-w-7xl mx-auto px-6 py-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-32 relative z-10">
 
         {/* ================= HERO ================= */}
-        <div 
-          data-animate="fade-up"
-          className="text-center max-w-4xl mx-auto mb-24 opacity-0 translate-y-8 transition-all duration-700"
+
+        <div
+          data-animate
+          className="text-center max-w-5xl mx-auto mb-32 opacity-0 translate-y-10 transition-all duration-700"
         >
-          <span className="inline-flex px-5 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold mb-6 shadow-lg animate-scale">
+          <span className="px-6 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold shadow-lg">
             About NectarSolutions
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6">
-            Driving Digital Transformation with
-            <span className="block bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent">
-              Innovation & Integrity
+
+          <h1 className="mt-8 text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+            Engineering the Future of
+            <span className="block bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+              Enterprise Technology
             </span>
           </h1>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            NectarSolutions is a global technology consulting and services company
-            helping enterprises accelerate innovation, optimize operations,
-            and build future-ready digital platforms.
+
+          <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+            We partner with forward-thinking organizations to design,
+            build, and scale digital platforms that redefine industries.
           </p>
         </div>
 
-        {/* ================= COMPANY STATS ================= */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-28">
+        {/* ================= FLOATING STATS ================= */}
+
+        <div className="grid md:grid-cols-4 gap-8 mb-32">
           {[
-            { icon: <Globe />, value: "40+", label: "Countries Served" },
-            { icon: <Users />, value: "1000+", label: "Technology Experts" },
-            { icon: <Briefcase />, value: "500+", label: "Enterprise Clients" },
-            { icon: <Award />, value: "20+", label: "Years of Excellence" },
-          ].map((stat, i) => (
-            <div
-              key={i}
-              data-animate="fade-up"
-              data-delay={i * 100}
-              className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 text-center
-              opacity-0 translate-y-8 transition-all duration-700 hover:-translate-y-2 hover:scale-105"
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500
-                flex items-center justify-center text-white mb-4 shadow-lg">
-                {stat.icon}
+            { icon: Globe, value: "40+", label: "Countries Served" },
+            { icon: Users, value: "1000+", label: "Tech Experts" },
+            { icon: Briefcase, value: "500+", label: "Enterprise Clients" },
+            { icon: Award, value: "20+", label: "Years Experience" },
+          ].map((stat, i) => {
+            const Icon = stat.icon;
+
+            return (
+              <div
+                key={i}
+                data-animate
+                style={{ transitionDelay: `${i * 120}ms` }}
+                className="
+                opacity-0 translate-y-10 transition-all duration-700
+                relative rounded-3xl p-[1px]
+                bg-gradient-to-br from-indigo-200 via-violet-200 to-pink-200
+                hover:from-indigo-500 hover:via-violet-500 hover:to-pink-500
+                "
+              >
+                <div className="rounded-3xl bg-white/80 backdrop-blur-xl p-8 text-center shadow-xl hover:-translate-y-3 transition-all duration-500">
+                  
+                  <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white mb-4 shadow-lg">
+                    <Icon />
+                  </div>
+
+                  <div className="text-3xl font-extrabold text-gray-900">
+                    {stat.value}
+                  </div>
+
+                  <p className="text-gray-600">{stat.label}</p>
+                </div>
               </div>
-              <div className="text-3xl font-extrabold text-gray-900">
-                {stat.value}
-              </div>
-              <p className="text-gray-600 mt-1">{stat.label}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* ================= OUR STORY ================= */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-28 items-center">
-          <div 
-            data-animate="fade-left"
-            className="opacity-0 -translate-x-8 transition-all duration-700"
+        {/* ================= STORY + MISSION ================= */}
+
+        <div className="grid lg:grid-cols-2 gap-20 items-center mb-36">
+
+          {/* STORY */}
+          <div
+            data-animate
+            className="opacity-0 -translate-x-10 transition-all duration-700"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">
               Our Story
             </h2>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Founded with a vision to bridge the gap between business and
-              technology,  NectarSolutions has evolved into a trusted digital partner
-              for Fortune 500 companies and fast-growing enterprises.
+
+            <p className="text-gray-600 mb-5 leading-relaxed">
+              NectarSolutions was founded with a bold vision — to close the gap
+              between business ambition and technological capability.
             </p>
+
             <p className="text-gray-600 leading-relaxed">
-              We specialize in cloud transformation, data engineering, AI,
-              cybersecurity, and enterprise modernization—delivering
-              measurable business outcomes at scale.
+              Today, we empower global enterprises through cloud engineering,
+              AI-driven insights, cybersecurity resilience, and large-scale
+              digital modernization.
             </p>
           </div>
 
-          <div 
-            data-animate="fade-right"
-            className="relative bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600
-            rounded-3xl p-10 text-white shadow-2xl opacity-0 translate-x-8 transition-all duration-700
-            hover:scale-102"
+          {/* MISSION CARD */}
+          <div
+            data-animate
+            className="
+            opacity-0 translate-x-10 transition-all duration-700
+            relative p-[1px] rounded-3xl
+            bg-gradient-to-br from-indigo-500 via-violet-500 to-pink-500
+            "
           >
-            <h3 className="text-2xl font-bold mb-4">
-              Our Mission
-            </h3>
-            <p className="text-indigo-100 mb-6">
-              Empower organizations with innovative, secure, and scalable
-              digital solutions that drive long-term success.
-            </p>
-            <div className="flex items-center gap-3">
-              <Rocket />
-              <span className="font-semibold">
-                Innovation that creates impact
-              </span>
+            <div className="rounded-3xl p-12 text-white bg-gradient-to-br from-indigo-600 via-violet-600 to-pink-600 shadow-2xl hover:scale-[1.02] transition-all duration-500">
+
+              <Rocket className="mb-6 w-10 h-10 opacity-90" />
+
+              <h3 className="text-2xl font-bold mb-4">
+                Our Mission
+              </h3>
+
+              <p className="text-indigo-100">
+                To empower organizations with intelligent, secure,
+                and scalable technology that accelerates growth.
+              </p>
+
             </div>
           </div>
         </div>
 
         {/* ================= CORE VALUES ================= */}
-        <div 
-          data-animate="fade-up"
-          className="mb-28 opacity-0 translate-y-8 transition-all duration-700"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+
+        <div className="mb-36">
+          <h2
+            data-animate
+            className="text-4xl font-bold text-center mb-14 opacity-0 translate-y-10 transition-all duration-700"
+          >
             Our Core Values
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
-                icon: <ShieldCheck />,
+                icon: ShieldCheck,
                 title: "Integrity",
-                desc: "We act with honesty, transparency, and accountability.",
-                gradient: "from-indigo-500 to-blue-500",
+                desc: "Transparency and trust drive everything we do.",
               },
               {
-                icon: <TrendingUp />,
+                icon: TrendingUp,
                 title: "Excellence",
-                desc: "We strive for continuous improvement and quality.",
-                gradient: "from-emerald-500 to-green-500",
+                desc: "We push boundaries and deliver elite results.",
               },
               {
-                icon: <Users />,
+                icon: Users,
                 title: "Collaboration",
-                desc: "We believe in teamwork and shared success.",
-                gradient: "from-orange-500 to-pink-500",
+                desc: "Great outcomes come from great teamwork.",
               },
               {
-                icon: <HeartHandshake />,
+                icon: HeartHandshake,
                 title: "Customer First",
-                desc: "Our clients' success is our top priority.",
-                gradient: "from-violet-500 to-purple-500",
+                desc: "Your success defines our success.",
               },
-            ].map((value, i) => (
-              <div
-                key={i}
-                data-animate="fade-up"
-                data-delay={i * 150}
-                className="bg-white rounded-3xl p-6 shadow-xl border border-gray-100
-                opacity-0 translate-y-8 transition-all duration-700 hover:-translate-y-3 hover:scale-105"
-                style={{ transitionDelay: `${i * 150}ms` }}
-              >
+            ].map((value, i) => {
+              const Icon = value.icon;
+
+              return (
                 <div
-                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${value.gradient}
-                  flex items-center justify-center text-white mb-5 shadow-lg`}
+                  key={i}
+                  data-animate
+                  style={{ transitionDelay: `${i * 140}ms` }}
+                  className="
+                  opacity-0 translate-y-10 transition-all duration-700
+                  group relative rounded-3xl p-[1px]
+                  bg-gradient-to-br from-indigo-200 via-violet-200 to-pink-200
+                  hover:from-indigo-500 hover:to-pink-500
+                  "
                 >
-                  {value.icon}
+                  <div className="rounded-3xl bg-white/90 backdrop-blur-xl p-8 shadow-xl group-hover:-translate-y-3 transition-all duration-500">
+
+                    <div className="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center text-white bg-gradient-to-br from-indigo-600 to-violet-600 shadow-lg">
+                      <Icon />
+                    </div>
+
+                    <h3 className="font-bold text-lg text-gray-900 mb-2">
+                      {value.title}
+                    </h3>
+
+                    <p className="text-gray-600 text-sm">
+                      {value.desc}
+                    </p>
+
+                  </div>
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{value.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
-        {/* ================= WHY NectarSolutions ================= */}
-        <div 
-          data-animate="scale"
-          className="text-center rounded-3xl p-14 bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 
-          text-white shadow-2xl opacity-0 scale-95 transition-all duration-700 hover:scale-102"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            Why Choose NectarSolutions?
-          </h2>
-          <p className="text-indigo-100 max-w-3xl mx-auto mb-10">
-            We combine deep industry expertise, cutting-edge technology, and
-            a customer-centric approach to deliver exceptional results.
-          </p>
+        {/* ================= MEGA CTA ================= */}
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              "Enterprise-grade solutions",
-              "Global delivery model",
-              "Agile & scalable teams",
-              "Proven track record",
-            ].map((item, i) => (
-              <div
-                key={i}
-                data-animate="fade-up"
-                data-delay={i * 100}
-                className="bg-white/15 backdrop-blur rounded-xl p-4 font-semibold
-                opacity-0 translate-y-4 transition-all duration-500 hover:scale-105"
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                {item}
-              </div>
-            ))}
+        <div
+          data-animate
+          className="
+          opacity-0 scale-95 transition-all duration-700
+          relative p-[1px] rounded-3xl
+          bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500
+          "
+        >
+          <div className="rounded-3xl text-center p-16 text-white bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 shadow-2xl">
+
+            <h2 className="text-4xl font-bold mb-6">
+              Why Choose NectarSolutions?
+            </h2>
+
+            <p className="text-indigo-100 max-w-2xl mx-auto mb-10">
+              We combine deep engineering expertise with strategic thinking
+              to help enterprises innovate faster and operate smarter.
+            </p>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                "Enterprise-grade architecture",
+                "Global delivery capability",
+                "Elite engineering teams",
+                "Proven transformation success",
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-white/15 backdrop-blur rounded-xl py-4 font-semibold hover:scale-105 transition"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Animation */}
       <style jsx>{`
         .animate-in {
           opacity: 1 !important;
           transform: none !important;
-        }
-        
-        .animate-scale {
-          animation: scaleIn 0.6s ease-out;
-        }
-        
-        @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        
-        .scale-102 {
-          transform: scale(1.02);
-        }
-        
-        .hover\:scale-102:hover {
-          transform: scale(1.02);
         }
       `}</style>
     </section>

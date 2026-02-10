@@ -82,7 +82,7 @@ const Hero = () => {
                 >
                     {/* ================= CONTENT SLIDE ================= */}
                     {slide.type === "content" && (
-                        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="max-w-7xl mx-auto px-6 mt-16 w-full grid lg:grid-cols-2 gap-12 items-center">
                             {/* LEFT */}
                             <div>
                                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 mb-6">
@@ -114,7 +114,7 @@ const Hero = () => {
                                 </div>
 
                                 {/* ===== STATS CARDS (ENHANCED) ===== */}
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                                {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                                     {slide.stats.map((s, i) => {
                                         const Icon = s.icon;
                                         return (
@@ -137,7 +137,7 @@ const Hero = () => {
                                             </div>
                                         );
                                     })}
-                                </div>
+                                </div> */}
                             </div>
 
                             {/* RIGHT */}
