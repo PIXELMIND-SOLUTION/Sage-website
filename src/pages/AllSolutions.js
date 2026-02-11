@@ -36,7 +36,7 @@ const AllSolutions = () => {
     <section className="w-full">
 
       {/* ================= HERO ================= */}
-      <div className="relative h-[45vh] w-full overflow-hidden bg-gray-900">
+      <div className="relative h-[45vh] w-full overflow-hidden bg-[#1e5a8e]">
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-black/40" />
 
         <div className="relative z-10 h-full flex items-center">
@@ -77,7 +77,10 @@ const AllSolutions = () => {
 
               {/* Gradient Overlay */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-70`}
+                className="absolute inset-0 opacity-70"
+                style={{
+                  background: "linear-gradient(to bottom right, #1e5a8e, #4dd6d5)"
+                }}
               />
 
               {/* Dark Overlay */}
@@ -105,16 +108,24 @@ const AllSolutions = () => {
       </div>
 
       {/* ================= CTA ================= */}
-      <div className="bg-gray-900 py-20 text-center">
+      <div
+        className="py-20 text-center"
+        style={{
+          background: "linear-gradient(to right, #1e5a8e, #4dd6d5)"
+        }}
+      >
         <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
           Ready to transform your infrastructure?
         </h3>
-        <p className="text-gray-300 mb-8">
+        <p className="text-white/90 mb-8">
           Talk to our experts and build secure, scalable solutions tailored to your needs.
         </p>
         <Link
           to="/contact"
-          className="inline-block px-8 py-3 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 transition"
+          className="inline-block px-8 py-3 rounded-full text-white font-semibold transition"
+          style={{ backgroundColor: "#1e5a8e" }}
+          onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#17496f")}
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#1e5a8e")}
         >
           Contact Us
         </Link>
