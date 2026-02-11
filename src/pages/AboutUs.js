@@ -10,6 +10,9 @@ import {
   HeartHandshake,
 } from "lucide-react";
 
+const PRIMARY = "#1e5a8e";
+const SECONDARY = "#4dd6d5";
+
 const AboutUs = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,9 +37,15 @@ const AboutUs = () => {
   return (
     <section className="relative overflow-hidden bg-[#f7f9fc]">
       
-      {/* ===== LUXURY BACKGROUND ===== */}
-      <div className="absolute -top-60 left-[-200px] w-[700px] h-[700px] bg-indigo-500/20 blur-[160px] rounded-full" />
-      <div className="absolute bottom-[-300px] right-[-200px] w-[700px] h-[700px] bg-violet-500/20 blur-[160px] rounded-full" />
+      {/* ===== BACKGROUND ===== */}
+      <div
+        className="absolute -top-60 left-[-200px] w-[700px] h-[700px] blur-[160px] rounded-full"
+        style={{ background: `${PRIMARY}33` }}
+      />
+      <div
+        className="absolute bottom-[-300px] right-[-200px] w-[700px] h-[700px] blur-[160px] rounded-full"
+        style={{ background: `${SECONDARY}33` }}
+      />
 
       <div className="max-w-7xl mx-auto px-6 py-32 relative z-10">
 
@@ -46,13 +55,23 @@ const AboutUs = () => {
           data-animate
           className="text-center max-w-5xl mx-auto mb-32 opacity-0 translate-y-10 transition-all duration-700"
         >
-          <span className="px-6 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold shadow-lg">
+          <span
+            className="px-6 py-2 rounded-full text-white font-semibold shadow-lg"
+            style={{
+              background: `linear-gradient(to right, ${PRIMARY}, ${SECONDARY})`
+            }}
+          >
             About NectarSolutions
           </span>
 
           <h1 className="mt-8 text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
             Engineering the Future of
-            <span className="block bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+            <span
+              className="block bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(to right, ${PRIMARY}, ${SECONDARY})`
+              }}
+            >
               Enterprise Technology
             </span>
           </h1>
@@ -79,16 +98,20 @@ const AboutUs = () => {
                 key={i}
                 data-animate
                 style={{ transitionDelay: `${i * 120}ms` }}
-                className="
-                opacity-0 translate-y-10 transition-all duration-700
-                relative rounded-3xl p-[1px]
-                bg-gradient-to-br from-indigo-200 via-violet-200 to-pink-200
-                hover:from-indigo-500 hover:via-violet-500 hover:to-pink-500
-                "
+                className="opacity-0 translate-y-10 transition-all duration-700 relative rounded-3xl p-[1px]"
               >
-                <div className="rounded-3xl bg-white/80 backdrop-blur-xl p-8 text-center shadow-xl hover:-translate-y-3 transition-all duration-500">
-                  
-                  <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white mb-4 shadow-lg">
+                <div
+                  className="rounded-3xl bg-white/80 backdrop-blur-xl p-8 text-center shadow-xl hover:-translate-y-3 transition-all duration-500"
+                  style={{
+                    border: `1px solid ${SECONDARY}40`
+                  }}
+                >
+                  <div
+                    className="w-14 h-14 mx-auto rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg"
+                    style={{
+                      background: `linear-gradient(to bottom right, ${PRIMARY}, ${SECONDARY})`
+                    }}
+                  >
                     <Icon />
                   </div>
 
@@ -131,25 +154,27 @@ const AboutUs = () => {
           {/* MISSION CARD */}
           <div
             data-animate
-            className="
-            opacity-0 translate-x-10 transition-all duration-700
-            relative p-[1px] rounded-3xl
-            bg-gradient-to-br from-indigo-500 via-violet-500 to-pink-500
-            "
+            className="opacity-0 translate-x-10 transition-all duration-700 relative p-[1px] rounded-3xl"
+            style={{
+              background: `linear-gradient(to bottom right, ${PRIMARY}, ${SECONDARY})`
+            }}
           >
-            <div className="rounded-3xl p-12 text-white bg-gradient-to-br from-indigo-600 via-violet-600 to-pink-600 shadow-2xl hover:scale-[1.02] transition-all duration-500">
-
+            <div
+              className="rounded-3xl p-12 text-white shadow-2xl hover:scale-[1.02] transition-all duration-500"
+              style={{
+                background: `linear-gradient(to bottom right, ${PRIMARY}, ${SECONDARY})`
+              }}
+            >
               <Rocket className="mb-6 w-10 h-10 opacity-90" />
 
               <h3 className="text-2xl font-bold mb-4">
                 Our Mission
               </h3>
 
-              <p className="text-indigo-100">
+              <p style={{ color: "#d2f3f3" }}>
                 To empower organizations with intelligent, secure,
                 and scalable technology that accelerates growth.
               </p>
-
             </div>
           </div>
         </div>
@@ -194,16 +219,20 @@ const AboutUs = () => {
                   key={i}
                   data-animate
                   style={{ transitionDelay: `${i * 140}ms` }}
-                  className="
-                  opacity-0 translate-y-10 transition-all duration-700
-                  group relative rounded-3xl p-[1px]
-                  bg-gradient-to-br from-indigo-200 via-violet-200 to-pink-200
-                  hover:from-indigo-500 hover:to-pink-500
-                  "
+                  className="opacity-0 translate-y-10 transition-all duration-700 group relative rounded-3xl p-[1px]"
                 >
-                  <div className="rounded-3xl bg-white/90 backdrop-blur-xl p-8 shadow-xl group-hover:-translate-y-3 transition-all duration-500">
-
-                    <div className="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center text-white bg-gradient-to-br from-indigo-600 to-violet-600 shadow-lg">
+                  <div
+                    className="rounded-3xl bg-white/90 backdrop-blur-xl p-8 shadow-xl group-hover:-translate-y-3 transition-all duration-500"
+                    style={{
+                      border: `1px solid ${SECONDARY}40`
+                    }}
+                  >
+                    <div
+                      className="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center text-white shadow-lg"
+                      style={{
+                        background: `linear-gradient(to bottom right, ${PRIMARY}, ${SECONDARY})`
+                      }}
+                    >
                       <Icon />
                     </div>
 
@@ -214,7 +243,6 @@ const AboutUs = () => {
                     <p className="text-gray-600 text-sm">
                       {value.desc}
                     </p>
-
                   </div>
                 </div>
               );
@@ -226,19 +254,22 @@ const AboutUs = () => {
 
         <div
           data-animate
-          className="
-          opacity-0 scale-95 transition-all duration-700
-          relative p-[1px] rounded-3xl
-          bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500
-          "
+          className="opacity-0 scale-95 transition-all duration-700 relative p-[1px] rounded-3xl"
+          style={{
+            background: `linear-gradient(to right, ${PRIMARY}, ${SECONDARY})`
+          }}
         >
-          <div className="rounded-3xl text-center p-16 text-white bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 shadow-2xl">
-
+          <div
+            className="rounded-3xl text-center p-16 text-white shadow-2xl"
+            style={{
+              background: `linear-gradient(to right, ${PRIMARY}, ${SECONDARY})`
+            }}
+          >
             <h2 className="text-4xl font-bold mb-6">
               Why Choose NectarSolutions?
             </h2>
 
-            <p className="text-indigo-100 max-w-2xl mx-auto mb-10">
+            <p style={{ color: "#d2f3f3" }} className="max-w-2xl mx-auto mb-10">
               We combine deep engineering expertise with strategic thinking
               to help enterprises innovate faster and operate smarter.
             </p>

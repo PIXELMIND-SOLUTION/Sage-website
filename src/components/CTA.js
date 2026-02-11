@@ -8,7 +8,12 @@ const CTA = () => {
   return (
     <section className="relative py-16 overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(to bottom right, #1e5a8e, #4dd6d5)",
+        }}
+      />
 
       {/* Decorative Blobs (smaller) */}
       <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
@@ -33,12 +38,18 @@ const CTA = () => {
 
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 leading-tight">
             Ready to Transform
-            <span className="block text-indigo-200">
+            <span
+              className="block"
+              style={{ color: "#b6ecec" }}
+            >
               Your Business?
             </span>
           </h2>
 
-          <p className="text-sm sm:text-base text-indigo-100 mb-8 max-w-xl mx-auto leading-relaxed">
+          <p
+            className="text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed"
+            style={{ color: "#d2f3f3" }}
+          >
             Talk to our experts and discover solutions tailored to your growth
             and digital goals.
           </p>
@@ -48,14 +59,15 @@ const CTA = () => {
             <button
               className="
                 group px-6 py-3
-                bg-white text-indigo-600
+                bg-white
                 font-semibold rounded-full
                 flex items-center justify-center
                 shadow-md
                 hover:scale-105 hover:shadow-lg
                 transition-all duration-300
               "
-              onClick={()=>navigate('/contact')}
+              style={{ color: "#1e5a8e" }}
+              onClick={() => navigate('/contact')}
             >
               <MessageSquare className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
               Contact Us
@@ -77,7 +89,10 @@ const CTA = () => {
           </div>
 
           {/* Trust Note */}
-          <p className="mt-6 text-xs text-indigo-200 tracking-wide">
+          <p
+            className="mt-6 text-xs tracking-wide"
+            style={{ color: "#b6ecec" }}
+          >
             ⏱ Response within 24 hours • No obligation
           </p>
         </div>

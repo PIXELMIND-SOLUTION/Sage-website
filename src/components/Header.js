@@ -88,8 +88,9 @@ const Header = ({ isScrolled }) => {
     <>
       {/* HEADER */}
       <header
-        className={`fixed top-0 w-full z-50 transition-all ${isScrolled ? "bg-white shadow-md" : "bg-white"
-          }`}
+        className={`fixed top-0 w-full z-50 transition-all ${
+          isScrolled ? "bg-white shadow-md" : "bg-white"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           {/* LOGO */}
@@ -98,7 +99,7 @@ const Header = ({ isScrolled }) => {
             onClick={() => navigate("/")}
           >
             <img
-              src="/logo.png" // 👈 Replace with your actual logo path
+              src="/logo.png"
               alt="Nectar Solutions"
               className="w-full h-full object-contain"
             />
@@ -106,17 +107,13 @@ const Header = ({ isScrolled }) => {
 
           {/* DESKTOP NAV */}
           <nav className="hidden lg:flex gap-8 items-center">
-            {/* <button
-              onClick={() => navigate("/")}
-              className="flex items-center gap-1 font-medium hover:text-indigo-600 transition-colors"
-            >
-              Home
-            </button> */}
-
             <button
               onClick={() => navigate("/services")}
               onMouseEnter={handleMegaMenuMouseLeave}
-              className="flex items-center gap-1 font-medium hover:text-indigo-600 transition-colors"
+              className="flex items-center gap-1 font-medium transition-colors"
+              style={{ color: "#111827" }}
+              onMouseOver={(e)=>e.currentTarget.style.color="#1e5a8e"}
+              onMouseOut={(e)=>e.currentTarget.style.color="#111827"}
             >
               Services
             </button>
@@ -124,7 +121,10 @@ const Header = ({ isScrolled }) => {
             <button
               onMouseEnter={() => handleTriggerMouseEnter("solutions")}
               onMouseLeave={handleTriggerMouseLeave}
-              className="flex items-center gap-1 font-medium hover:text-indigo-600 transition-colors"
+              className="flex items-center gap-1 font-medium transition-colors"
+              style={{ color: "#111827" }}
+              onMouseOver={(e)=>e.currentTarget.style.color="#1e5a8e"}
+              onMouseOut={(e)=>e.currentTarget.style.color="#111827"}
             >
               Solutions <ChevronDown size={16} />
             </button>
@@ -132,7 +132,10 @@ const Header = ({ isScrolled }) => {
             <button
               onClick={() => navigate("/aboutus")}
               onMouseEnter={handleMegaMenuMouseLeave}
-              className="font-medium hover:text-indigo-600 transition-colors"
+              className="font-medium transition-colors"
+              style={{ color: "#111827" }}
+              onMouseOver={(e)=>e.currentTarget.style.color="#1e5a8e"}
+              onMouseOut={(e)=>e.currentTarget.style.color="#111827"}
             >
               About Us
             </button>
@@ -140,7 +143,10 @@ const Header = ({ isScrolled }) => {
             <button
               onClick={() => navigate("/careers")}
               onMouseEnter={handleMegaMenuMouseLeave}
-              className="font-medium hover:text-indigo-600 transition-colors"
+              className="font-medium transition-colors"
+              style={{ color: "#111827" }}
+              onMouseOver={(e)=>e.currentTarget.style.color="#1e5a8e"}
+              onMouseOut={(e)=>e.currentTarget.style.color="#111827"}
             >
               Careers
             </button>
@@ -149,7 +155,10 @@ const Header = ({ isScrolled }) => {
           <button
             onClick={() => navigate("/contact")}
             onMouseEnter={handleMegaMenuMouseLeave}
-            className="hidden lg:block px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors"
+            className="hidden lg:block px-6 py-2 text-white rounded-full transition-colors"
+            style={{ backgroundColor: "#1e5a8e" }}
+            onMouseOver={(e)=>e.currentTarget.style.backgroundColor="#17496f"}
+            onMouseOut={(e)=>e.currentTarget.style.backgroundColor="#1e5a8e"}
           >
             Contact Us
           </button>
@@ -168,9 +177,9 @@ const Header = ({ isScrolled }) => {
           <div
             onMouseEnter={handleMegaMenuMouseEnter}
             onMouseLeave={handleMegaMenuMouseLeave}
-            className="absolute top-full left-0 w-full bg-blue-50 shadow-xl hidden lg:block"
+            className="absolute top-full left-0 w-full shadow-xl hidden lg:block"
+            style={{ backgroundColor: "#e6f2f8" }}
           >
-            {/* SOLUTIONS */}
             {activeMegaMenu === "solutions" && (
               <div className="max-w-7xl mx-auto grid grid-cols-3 gap-6 p-8">
                 {industries.map((ind, i) => (
@@ -182,7 +191,6 @@ const Header = ({ isScrolled }) => {
                     }}
                     className="cursor-pointer bg-white p-6 rounded-xl hover:shadow-lg transition-all group border border-gray-100"
                   >
-                    {/* Logo */}
                     <div className="mb-4 w-12 h-12 flex items-center justify-center rounded-lg bg-gray-50 group-hover:scale-105 transition-transform">
                       <img
                         src={solutionsData[ind.slug]?.logo}
@@ -210,14 +218,13 @@ const Header = ({ isScrolled }) => {
       {mobileOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 lg:hidden">
           <div className="absolute right-0 w-full max-w-sm sm:max-w-md bg-white h-full flex flex-col">
-            {/* Header */}
             <div className="flex items-center justify-between p-6 border-b">
               <div
                 className="w-48 h-16 rounded-xl overflow-hidden cursor-pointer"
                 onClick={() => navigate("/")}
               >
                 <img
-                  src="/logo.png" // 👈 Replace with your actual logo path
+                  src="/logo.png"
                   alt="Nectar Solutions"
                   className="w-full h-full object-contain"
                 />
@@ -231,32 +238,28 @@ const Header = ({ isScrolled }) => {
               </button>
             </div>
 
-            {/* Menu Items */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
-              {/* <button 
-                className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
-                onClick={() => handleMobileLinkClick("/")}
-              >
-                Home
-              </button> */}
-
               <button
-                className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
+                className="w-full text-left py-4 px-2 text-lg font-semibold transition-colors"
+                style={{ color: "#111827" }}
                 onClick={() => handleMobileLinkClick("/services")}
+                onMouseOver={(e)=>e.currentTarget.style.color="#1e5a8e"}
+                onMouseOut={(e)=>e.currentTarget.style.color="#111827"}
               >
                 Services
               </button>
 
-              {/* Solutions Dropdown */}
               <div className="border-t pt-4 mt-4">
                 <button
                   onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
-                  className="w-full flex items-center justify-between text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
+                  className="w-full flex items-center justify-between text-left py-4 px-2 text-lg font-semibold transition-colors"
+                  style={{ color: "#111827" }}
                 >
                   <span>Solutions</span>
                   <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-300 ${mobileIndustriesOpen ? "rotate-180" : ""
-                      }`}
+                    className={`w-5 h-5 transition-transform duration-300 ${
+                      mobileIndustriesOpen ? "rotate-180" : ""
+                    }`}
                   />
                 </button>
 
@@ -266,7 +269,9 @@ const Header = ({ isScrolled }) => {
                       <button
                         key={i}
                         className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors group"
-                        onClick={() => handleMobileLinkClick(`/solutions/${ind.slug}`)}
+                        onClick={() =>
+                          handleMobileLinkClick(`/solutions/${ind.slug}`)
+                        }
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center">
@@ -276,7 +281,9 @@ const Header = ({ isScrolled }) => {
                               className="w-5 h-5 object-contain"
                             />
                           </div>
-                          <span className="font-medium text-gray-700 group-hover:text-indigo-600">
+                          <span
+                            className="font-medium text-gray-700 group-hover:text-[#1e5a8e]"
+                          >
                             {ind.name}
                           </span>
                         </div>
@@ -287,24 +294,26 @@ const Header = ({ isScrolled }) => {
               </div>
 
               <button
-                className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
+                className="w-full text-left py-4 px-2 text-lg font-semibold transition-colors"
+                style={{ color: "#111827" }}
                 onClick={() => handleMobileLinkClick("/aboutus")}
               >
                 About Us
               </button>
 
               <button
-                className="w-full text-left py-4 px-2 text-lg font-semibold hover:text-indigo-600 transition-colors"
+                className="w-full text-left py-4 px-2 text-lg font-semibold transition-colors"
+                style={{ color: "#111827" }}
                 onClick={() => handleMobileLinkClick("/careers")}
               >
                 Careers
               </button>
             </div>
 
-            {/* Contact Button */}
             <div className="p-6 border-t">
               <button
-                className="w-full py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors font-semibold"
+                className="w-full py-4 text-white rounded-xl transition-colors font-semibold"
+                style={{ backgroundColor: "#1e5a8e" }}
                 onClick={() => handleMobileLinkClick("/contact")}
               >
                 Contact Us

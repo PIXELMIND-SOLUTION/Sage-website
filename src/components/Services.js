@@ -35,12 +35,19 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <div
-          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 mb-5">
-            <Sparkles className="w-4 h-4 text-indigo-600" />
-            <span className="text-sm font-semibold text-indigo-700">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5"
+            style={{ backgroundColor: "#e6f2f8" }}
+          >
+            <Sparkles className="w-4 h-4" style={{ color: "#1e5a8e" }} />
+            <span
+              className="text-sm font-semibold"
+              style={{ color: "#1e5a8e" }}
+            >
               Our Expertise
             </span>
           </div>
@@ -60,14 +67,21 @@ const Services = () => {
             <div
               key={solution.slug}
               style={{ transitionDelay: `${index * 100}ms` }}
-              className={`group relative rounded-3xl transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
+              className={`group relative rounded-3xl transition-all duration-700 ${
+                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
             >
               {/* GRADIENT BORDER */}
-              <div className="absolute inset-0 rounded-3xl p-[1px] bg-gradient-to-br from-indigo-200 via-blue-200 to-purple-200 group-hover:from-indigo-500 group-hover:via-blue-500 group-hover:to-purple-500 transition-all duration-500" />
+              <div
+                className="absolute inset-0 rounded-3xl p-[1px] transition-all duration-500"
+                style={{
+                  background:
+                    "linear-gradient(to bottom right, #bcd6ea, #4dd6d5)",
+                }}
+              />
 
               {/* CARD */}
-              <div className="relative h-full rounded-3xl bg-white/90 backdrop-blur-xl border border-white/40 p-7 overflow-hidden transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-[0_25px_70px_rgba(79,70,229,0.35)]">
+              <div className="relative h-full rounded-3xl bg-white/90 backdrop-blur-xl border border-white/40 p-7 overflow-hidden transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-[0_25px_70px_rgba(30,90,142,0.35)]">
 
                 {/* SHIMMER EFFECT */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
@@ -75,7 +89,13 @@ const Services = () => {
                 </div>
 
                 {/* LOGO */}
-                <div className="w-14 h-14 mb-5 rounded-2xl bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center shadow-sm">
+                <div
+                  className="w-14 h-14 mb-5 rounded-2xl flex items-center justify-center shadow-sm"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom right, #e6f2f8, #e6f7f7)",
+                  }}
+                >
                   <img
                     src={solution.logo}
                     alt={solution.name}
@@ -83,7 +103,10 @@ const Services = () => {
                   />
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition">
+                <h3
+                  className="text-xl font-bold text-gray-900 mb-3 transition"
+                  style={{}}
+                >
                   {solution.name}
                 </h3>
 
@@ -96,7 +119,11 @@ const Services = () => {
                   {solution.services.slice(0, 3).map((srv, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700"
+                      className="px-3 py-1 rounded-full text-xs font-semibold"
+                      style={{
+                        backgroundColor: "#e6f2f8",
+                        color: "#1e5a8e",
+                      }}
                     >
                       {srv.title}
                     </span>
@@ -106,15 +133,18 @@ const Services = () => {
                 {/* CTA */}
                 <button
                   onClick={() => navigate(`/solutions/${solution.slug}`)}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all"
+                  style={{ color: "#1e5a8e" }}
                 >
                   Explore Solution
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    style={{ color: "#1e5a8e" }}
+                  />
                 </button>
               </div>
             </div>
           ))}
-
         </div>
       </div>
     </section>

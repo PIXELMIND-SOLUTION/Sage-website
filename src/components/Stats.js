@@ -102,7 +102,10 @@ const Stats = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 overflow-hidden bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700"
+      className="relative py-24 overflow-hidden"
+      style={{
+        background: "linear-gradient(to bottom right, #1e5a8e, #4dd6d5)",
+      }}
     >
       {/* Decorative Glow */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-white/20 rounded-full blur-3xl" />
@@ -114,12 +117,12 @@ const Stats = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
             Proven Impact. Measurable Results.
           </h2>
-          <p className="text-indigo-100 max-w-3xl mx-auto text-lg">
+          <p style={{ color: "#d2f3f3" }} className="max-w-3xl mx-auto text-lg">
             Our success is defined by long-term partnerships, global reach, and consistent delivery excellence.
           </p>
         </div>
 
-         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 ">  {/*{mb-24} */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -129,47 +132,19 @@ const Stats = () => {
             >
               <div className="text-4xl lg:text-5xl font-extrabold text-white mb-3">
                 {stat.value}
-                <span className="text-violet-200">{stat.suffix}</span>
+                <span style={{ color: "#b6ecec" }}>{stat.suffix}</span>
               </div>
               <h3 className="text-lg font-semibold text-white mb-1">
                 {stat.label}
               </h3>
-              <p className="text-indigo-200 text-sm">{stat.desc}</p>
+              <p style={{ color: "#d2f3f3" }} className="text-sm">{stat.desc}</p>
 
               <div className="absolute inset-0 rounded-2xl bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>
 
-        {/* ================= TRUSTED COMPANIES ================= */}
-        {/* <div className="relative bg-white/5 backdrop-blur-md rounded-3xl p-10 md:p-14 border border-white/15">
-          <div className="text-center mb-10">
-            <p className="text-indigo-200 text-sm uppercase tracking-wider mb-2">
-              Trusted by Industry Leaders
-            </p>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white">
-              Powering Global Enterprises
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 justify-items-center">
-            {companies.map((company, index) => (
-              <div
-                key={index}
-                className={`
-                  px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base
-                  ${company.bg} ${company.text}
-                  ring-1 ring-white/20 ${company.ring}
-                  backdrop-blur
-                  transition-all duration-300
-                  hover:scale-110 hover:shadow-lg
-                `}
-              >
-                {company.name}
-              </div>
-            ))}
-          </div>
-        </div> */}
+        
       </div>
     </section>
   );

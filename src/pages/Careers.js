@@ -242,21 +242,21 @@ const Careers = () => {
   return (
     <>
       {/* ================= CAREERS PAGE ================= */}
-      <section className="relative bg-gradient-to-b from-indigo-50 via-violet-50 to-white py-24 overflow-hidden min-h-screen">
+      <section className="relative bg-gradient-to-b from-[#1e5a8e]/10 via-[#4dd6d5]/10 to-white py-24 overflow-hidden min-h-screen">
         {/* Background blobs */}
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-indigo-400/30 rounded-full blur-3xl" />
-        <div className="absolute top-20 -right-40 w-[420px] h-[420px] bg-pink-400/30 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[#1e5a8e]/30 rounded-full blur-3xl" />
+        <div className="absolute top-20 -right-40 w-[420px] h-[420px] bg-[#4dd6d5]/30 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           {/* HERO */}
           <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="inline-flex px-5 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold mb-6">
+            <span className="inline-flex px-5 py-2 rounded-full bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] text-white font-semibold mb-6">
               Careers at NectarSolutions
             </span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
               Grow Your Career with
-              <span className="block bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] bg-clip-text text-transparent">
                 Innovation & Impact
               </span>
             </h1>
@@ -274,7 +274,7 @@ const Careers = () => {
 
             {loading && (
               <div className="text-center">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mb-2"></div>
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#1e5a8e] mb-2"></div>
                 <p className="text-gray-600">Loading job openings...</p>
               </div>
             )}
@@ -297,8 +297,8 @@ const Careers = () => {
               {jobs.map((job, index) => (
                 <div
                   key={job._id}
-                  className="rounded-3xl bg-gradient-to-r from-indigo-50 to-violet-50
-                  border border-indigo-100 shadow-lg transition hover:scale-[1.01] hover:shadow-xl"
+                  className="rounded-3xl bg-gradient-to-r from-[#1e5a8e]/10 to-[#4dd6d5]/10
+                  border border-[#1e5a8e]/20 shadow-lg transition hover:scale-[1.01] hover:shadow-xl"
                 >
                   <button
                     onClick={() =>
@@ -318,22 +318,22 @@ const Careers = () => {
                         <span className="flex items-center gap-1">
                           <Clock size={14} /> {job.type}
                         </span>
-                        <span className="bg-indigo-100 text-indigo-600 px-2 py-1 rounded-full text-xs font-medium">
+                        <span className="bg-[#1e5a8e]/10 text-[#1e5a8e] px-2 py-1 rounded-full text-xs font-medium">
                           {job.experience}
                         </span>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <span className="text-xs font-medium px-3 py-1 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-full">
+                      <span className="text-xs font-medium px-3 py-1 bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] text-white rounded-full">
                         Apply Now
                       </span>
-                      {openJob === index ? <ChevronUp className="text-indigo-600" /> : <ChevronDown className="text-gray-500" />}
+                      {openJob === index ? <ChevronUp className="text-[#1e5a8e]" /> : <ChevronDown className="text-gray-500" />}
                     </div>
                   </button>
 
                   {openJob === index && (
-                    <div className="px-6 pb-6 border-t border-indigo-100 pt-6">
+                    <div className="px-6 pb-6 border-t border-[#1e5a8e]/20 pt-6">
                       <p className="text-gray-700 mb-6 leading-relaxed">
                         {job.description}
                       </p>
@@ -343,7 +343,7 @@ const Careers = () => {
                         <ul className="space-y-2">
                           {job.requirement.map((req, i) => (
                             <li key={i} className="flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0"></div>
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#1e5a8e] mt-2 flex-shrink-0"></div>
                               <span className="text-gray-600">{req}</span>
                             </li>
                           ))}
@@ -354,7 +354,7 @@ const Careers = () => {
                         <button
                           onClick={() => openApplicationModal(job.title)}
                           className="px-6 py-3 rounded-full font-semibold text-white
-                          bg-gradient-to-r from-indigo-600 to-pink-600
+                          bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5]
                           hover:scale-105 transition hover:shadow-lg"
                         >
                           Apply for this Position
@@ -362,8 +362,8 @@ const Careers = () => {
                         
                         <button
                           onClick={() => openApplicationModal()}
-                          className="px-6 py-3 rounded-full font-semibold border-2 border-indigo-600
-                          text-indigo-600 hover:bg-indigo-50 transition"
+                          className="px-6 py-3 rounded-full font-semibold border-2 border-[#1e5a8e]
+                          text-[#1e5a8e] hover:bg-[#1e5a8e]/10 transition"
                         >
                           Submit General Application
                         </button>
@@ -378,41 +378,41 @@ const Careers = () => {
           {/* ================= STATS ================= */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
             <div className="text-center p-8 bg-white rounded-3xl shadow-lg border border-gray-100">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">50+</div>
+              <div className="text-4xl font-bold text-[#1e5a8e] mb-2">50+</div>
               <div className="text-gray-700 font-medium">Team Members</div>
               <p className="text-gray-500 text-sm mt-2">Across 10+ countries</p>
             </div>
             
             <div className="text-center p-8 bg-white rounded-3xl shadow-lg border border-gray-100">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">20+</div>
+              <div className="text-4xl font-bold text-[#1e5a8e] mb-2">20+</div>
               <div className="text-gray-700 font-medium">Years Experience</div>
               <p className="text-gray-500 text-sm mt-2">Enterprise solutions expertise</p>
             </div>
             
             <div className="text-center p-8 bg-white rounded-3xl shadow-lg border border-gray-100">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">99%</div>
+              <div className="text-4xl font-bold text-[#1e5a8e] mb-2">99%</div>
               <div className="text-gray-700 font-medium">Retention Rate</div>
               <p className="text-gray-500 text-sm mt-2">Employee satisfaction</p>
             </div>
           </div>
 
           {/* ================= FINAL CTA ================= */}
-          <div className="text-center rounded-3xl p-12 bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 text-white shadow-2xl">
+          <div className="text-center rounded-3xl p-12 bg-gradient-to-r from-[#1e5a8e] via-[#2a9bb0] to-[#4dd6d5] text-white shadow-2xl">
             <h3 className="text-3xl font-bold mb-4">
               Didn't find the perfect role?
             </h3>
-            <p className="text-indigo-100 mb-8 max-w-2xl mx-auto text-lg">
+            <p className="text-[#1e5a8e]/100 mb-8 max-w-2xl mx-auto text-lg">
               Submit your resume and we'll reach out when a role matches your skills and experience.
             </p>
             <button
               onClick={() => openApplicationModal()}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#1e5a8e]
               rounded-full font-semibold hover:scale-110 transition hover:shadow-xl text-lg"
             >
               <Send size={20} />
               Submit Your Resume
             </button>
-            <p className="text-indigo-200 text-sm mt-4">
+            <p className="text-[#1e5a8e]/200 text-sm mt-4">
               We review all submissions within 48 hours
             </p>
           </div>
@@ -465,7 +465,7 @@ const Careers = () => {
                 </p>
                 <button
                   onClick={handleCloseModal}
-                  className="px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700"
+                  className="px-6 py-2 bg-[#1e5a8e] text-white rounded-full hover:bg-[#1a4d7a]"
                 >
                   Close
                 </button>
@@ -493,7 +493,7 @@ const Careers = () => {
                         value={formData.fullName}
                         onChange={handleInputChange}
                         placeholder="Full Name *"
-                        className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-indigo-500 outline-none"
+                        className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#1e5a8e] outline-none"
                         required
                       />
                     </div>
@@ -505,7 +505,7 @@ const Careers = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="Email Address *"
-                        className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-indigo-500 outline-none"
+                        className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#1e5a8e] outline-none"
                         required
                       />
                     </div>
@@ -518,7 +518,7 @@ const Careers = () => {
                       value={formData.mobile}
                       onChange={handleInputChange}
                       placeholder="Mobile Number *"
-                      className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-indigo-500 outline-none"
+                      className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#1e5a8e] outline-none"
                       required
                     />
                   </div>
@@ -538,7 +538,7 @@ const Careers = () => {
                             value={role}
                             onChange={(e) => handleRoleChange(index, e.target.value)}
                             placeholder={`Role ${index + 1} (e.g., Frontend Developer, Backend Developer)`}
-                            className="flex-1 px-4 py-3 rounded-xl border focus:ring-2 focus:ring-indigo-500 outline-none"
+                            className="flex-1 px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#1e5a8e] outline-none"
                           />
                           {roles.length > 1 && (
                             <button
@@ -557,18 +557,18 @@ const Careers = () => {
                     <button
                       type="button"
                       onClick={addRoleField}
-                      className="mt-3 flex items-center gap-2 text-indigo-600 hover:text-indigo-700 text-sm font-medium"
+                      className="mt-3 flex items-center gap-2 text-[#1e5a8e] hover:text-[#1a4d7a] text-sm font-medium"
                     >
                       <Plus size={16} />
                       Add Another Role
                     </button>
                     
                     {roles.filter(r => r.trim() !== "").length > 0 && (
-                      <div className="mt-4 p-4 bg-indigo-50 rounded-xl">
+                      <div className="mt-4 p-4 bg-[#1e5a8e]/10 rounded-xl">
                         <p className="text-sm font-medium text-gray-700 mb-2">You're applying for:</p>
                         <div className="flex flex-wrap gap-2">
                           {roles.filter(r => r.trim() !== "").map((role, index) => (
-                            <span key={index} className="px-3 py-1.5 bg-indigo-100 text-indigo-600 rounded-full text-sm">
+                            <span key={index} className="px-3 py-1.5 bg-[#1e5a8e]/20 text-[#1e5a8e] rounded-full text-sm">
                               {role}
                             </span>
                           ))}
@@ -619,7 +619,7 @@ const Careers = () => {
                       onChange={handleInputChange}
                       rows="3"
                       placeholder="Tell us about your experience, skills, and what you're looking for (optional)"
-                      className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
+                      className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#1e5a8e] outline-none resize-none"
                     />
                   </div>
 
@@ -628,7 +628,7 @@ const Careers = () => {
                       type="submit"
                       disabled={submitting}
                       className={`w-full py-3 rounded-full text-white font-semibold flex items-center justify-center gap-2
-                      bg-gradient-to-r from-indigo-600 to-pink-600 hover:scale-105 transition text-lg
+                      bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] hover:scale-105 transition text-lg
                       ${submitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                     >
                       {submitting ? (

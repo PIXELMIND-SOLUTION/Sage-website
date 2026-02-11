@@ -10,11 +10,12 @@ const Navigator = ({ sections }) => {
           <span
             className="
               absolute right-8 px-3 py-1 rounded-md text-sm font-medium
-              bg-indigo-600 text-white shadow-lg
+              text-white shadow-lg
               opacity-0 translate-x-2
               group-hover:opacity-100 group-hover:translate-x-0
               transition-all duration-300 pointer-events-none whitespace-nowrap
             "
+            style={{ backgroundColor: "#1e5a8e" }}
           >
             {name}
           </span>
@@ -29,12 +30,17 @@ const Navigator = ({ sections }) => {
             }
             className="
               w-4 h-4 rounded-full
-              bg-gray-400
-              group-hover:bg-indigo-600
               group-hover:scale-150
               transition-all duration-300
               shadow-sm
             "
+            style={{ backgroundColor: "#4dd6d5" }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.backgroundColor = "#1e5a8e")
+            }
+            onMouseOut={(e) =>
+              (e.currentTarget.style.backgroundColor = "#4dd6d5")
+            }
             aria-label={`Scroll to ${name}`}
           />
         </div>

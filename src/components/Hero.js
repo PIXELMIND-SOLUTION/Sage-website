@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Play, Award, Users, TrendingUp } from "lucide-react";
 import hero from "../Assets/Images/Hero/banner2.png";
-import banner from "../Assets/videos/banner.mp4"
+import banner from "../Assets/videos/banner.mp4";
 
 /**
  * Assumption:
@@ -41,8 +41,7 @@ const slides = [
     {
         id: 2,
         type: "banner",
-        background:
-            hero,
+        background: hero,
         title: "Secure. Connect. Scale.",
         description:
             "End-to-end Networking, Cloud, Cyber Security, and Data Engineering solutions designed for modern, high-performing enterprises.",
@@ -59,7 +58,6 @@ const slides = [
     },
 ];
 
-
 const Hero = () => {
     const [current, setCurrent] = useState(0);
 
@@ -75,25 +73,38 @@ const Hero = () => {
             {slides.map((slide, index) => (
                 <div
                     key={slide.id}
-                    className={`${HERO_HEIGHT} flex items-center pt-10 transition-all duration-700 ease-in-out ${index === current
-                        ? "opacity-100 relative"
-                        : "opacity-0 absolute inset-0 pointer-events-none"
-                        }`}
+                    className={`${HERO_HEIGHT} flex items-center pt-10 transition-all duration-700 ease-in-out ${
+                        index === current
+                            ? "opacity-100 relative"
+                            : "opacity-0 absolute inset-0 pointer-events-none"
+                    }`}
                 >
                     {/* ================= CONTENT SLIDE ================= */}
                     {slide.type === "content" && (
                         <div className="max-w-7xl mx-auto px-6 mt-16 w-full grid lg:grid-cols-2 gap-12 items-center">
                             {/* LEFT */}
                             <div>
-                                <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 mb-6">
-                                    <span className="text-sm font-medium text-indigo-700">
+                                <div
+                                    className="inline-flex items-center px-4 py-2 rounded-full mb-6"
+                                    style={{ backgroundColor: "#e6f2f8" }}
+                                >
+                                    <span
+                                        className="text-sm font-medium"
+                                        style={{ color: "#1e5a8e" }}
+                                    >
                                         {slide.badge}
                                     </span>
                                 </div>
 
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                                     {slide.title}
-                                    <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                                    <span
+                                        className="bg-clip-text text-transparent"
+                                        style={{
+                                            backgroundImage:
+                                                "linear-gradient(to right, #1e5a8e, #4dd6d5)",
+                                        }}
+                                    >
                                         {slide.highlight}
                                     </span>
                                 </h1>
@@ -103,55 +114,43 @@ const Hero = () => {
                                 </p>
 
                                 <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                                    <button className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold rounded-full hover:scale-105 transition flex items-center justify-center">
+                                    <button
+                                        className="group px-8 py-4 text-white font-semibold rounded-full hover:scale-105 transition flex items-center justify-center"
+                                        style={{
+                                            backgroundImage:
+                                                "linear-gradient(to right, #1e5a8e, #4dd6d5)",
+                                        }}
+                                    >
                                         Get Consultation
                                         <ArrowRight className="ml-2 group-hover:translate-x-1 transition" />
                                     </button>
 
-                                    <button className="px-8 py-4 border-2 border-gray-300 rounded-full font-semibold hover:bg-indigo-50 transition flex items-center justify-center">
+                                    <button
+                                        className="px-8 py-4 border-2 rounded-full font-semibold transition flex items-center justify-center"
+                                        style={{
+                                            borderColor: "#1e5a8e",
+                                            color: "#1e5a8e",
+                                        }}
+                                    >
                                         <Play className="mr-2" /> Our Capabilities
                                     </button>
                                 </div>
-
-                                {/* ===== STATS CARDS (ENHANCED) ===== */}
-                                {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                                    {slide.stats.map((s, i) => {
-                                        const Icon = s.icon;
-                                        return (
-                                            <div
-                                                key={i}
-                                                className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 bg-white hover:shadow-lg transition"
-                                            >
-                                                <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center">
-                                                    <Icon className="w-6 h-6 text-indigo-600" />
-                                                </div>
-
-                                                <div>
-                                                    <div className="text-2xl font-bold text-gray-900">
-                                                        {s.value}
-                                                    </div>
-                                                    <div className="text-sm text-gray-500">
-                                                        {s.label}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div> */}
                             </div>
 
                             {/* RIGHT */}
                             <div className="relative h-[420px] hidden lg:block">
                                 {/* Card 1 */}
                                 <div className="absolute top-10 left-10 w-64 h-72 bg-white rounded-2xl shadow-xl p-6 rotate-3">
-                                    <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center mb-4">
-                                        {/* AI Icon */}
+                                    <div
+                                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                                        style={{ backgroundColor: "#e6f2f8" }}
+                                    >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="w-6 h-6 text-indigo-600"
+                                            className="w-6 h-6"
                                             fill="none"
                                             viewBox="0 0 24 24"
-                                            stroke="currentColor"
+                                            stroke="#1e5a8e"
                                         >
                                             <path
                                                 strokeLinecap="round"
@@ -166,28 +165,30 @@ const Hero = () => {
                                                 d="M9 12l2 2 4-4"
                                             />
                                         </svg>
-
                                     </div>
 
-                                    <h3 className="font-bold mb-2 text-gray-900">Cyber Security</h3>
+                                    <h3 className="font-bold mb-2 text-gray-900">
+                                        Cyber Security
+                                    </h3>
                                     <p className="text-sm text-gray-600">
                                         Comprehensive cyber security solutions that protect enterprise systems,
                                         data, and applications through advanced threat detection, continuous
                                         monitoring, compliance management, and zero-trust security frameworks.
                                     </p>
-
                                 </div>
 
                                 {/* Card 2 */}
                                 <div className="absolute bottom-10 right-10 w-72 h-72 bg-white rounded-2xl shadow-xl p-6 -rotate-3">
-                                    <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
-                                        {/* Cloud Icon */}
+                                    <div
+                                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                                        style={{ backgroundColor: "#e6f7f7" }}
+                                    >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="w-6 h-6 text-indigo-600"
+                                            className="w-6 h-6"
                                             fill="none"
                                             viewBox="0 0 24 24"
-                                            stroke="currentColor"
+                                            stroke="#1e5a8e"
                                         >
                                             <path
                                                 strokeLinecap="round"
@@ -208,19 +209,18 @@ const Hero = () => {
                                                 d="M4 18c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2z"
                                             />
                                         </svg>
-
                                     </div>
 
-                                    <h3 className="font-bold mb-2 text-gray-900">Data Engineering</h3>
+                                    <h3 className="font-bold mb-2 text-gray-900">
+                                        Data Engineering
+                                    </h3>
                                     <p className="text-sm text-gray-600">
                                         Robust data engineering services that design scalable data pipelines,
                                         modern data platforms, and analytics-ready architectures to enable
                                         real-time insights, AI-driven decisions, and business intelligence.
                                     </p>
-
                                 </div>
                             </div>
-
                         </div>
                     )}
 
@@ -246,10 +246,16 @@ const Hero = () => {
                                     </p>
 
                                     <div className="flex flex-col sm:flex-row gap-4">
-                                        <button className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-full font-semibold transition">
+                                        <button
+                                            className="px-8 py-4 rounded-full font-semibold transition text-white"
+                                            style={{ backgroundColor: "#1e5a8e" }}
+                                        >
                                             {slide.ctaPrimary}
                                         </button>
-                                        <button className="px-8 py-4 border border-white/40 hover:bg-white/10 rounded-full font-semibold transition">
+                                        <button
+                                            className="px-8 py-4 border rounded-full font-semibold transition"
+                                            style={{ borderColor: "#4dd6d5" }}
+                                        >
                                             {slide.ctaSecondary}
                                         </button>
                                     </div>
@@ -291,8 +297,12 @@ const Hero = () => {
                     <button
                         key={i}
                         onClick={() => setCurrent(i)}
-                        className={`w-3 h-3 rounded-full transition ${i === current ? "bg-indigo-600 scale-125" : "bg-gray-300"
-                            }`}
+                        className="w-3 h-3 rounded-full transition"
+                        style={{
+                            backgroundColor:
+                                i === current ? "#1e5a8e" : "#d1d5db",
+                            transform: i === current ? "scale(1.25)" : "scale(1)",
+                        }}
                     />
                 ))}
             </div>

@@ -26,50 +26,43 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer
+      className="text-white pt-16 pb-8"
+      style={{ backgroundColor: "#000" }}
+    >
       <div className="container max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
             <div className="flex items-center justify-start space-x-3 mb-6 h-20 w-48">
               <img
-                src="/logo.png" // 👈 Replace with your actual logo path
+                src="/logo.png"
                 alt="Nectar Solutions"
                 className="w-full h-full object-contain"
               />
             </div>
 
-            <p className="text-gray-400 mb-6">
+            <p style={{ color: "#bfeeee" }} className="mb-6">
               Leading global provider of digital transformation services,
               helping enterprises navigate complex technological landscapes
               with innovative solutions.
             </p>
 
             <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition"
-              >
-                <Youtube size={20} />
-              </a>
+              {[Linkedin, Twitter, Facebook, Youtube].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="w-10 h-10 rounded-full flex items-center justify-center transition"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.12)",
+                  }}
+                  onMouseOver={(e)=>e.currentTarget.style.backgroundColor="#4dd6d5"}
+                  onMouseOut={(e)=>e.currentTarget.style.backgroundColor="rgba(255,255,255,0.12)"}
+                >
+                  <Icon size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -81,7 +74,10 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={item.link}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="transition-colors"
+                    style={{ color: "#bfeeee" }}
+                    onMouseOver={(e)=>e.currentTarget.style.color="#4dd6d5"}
+                    onMouseOut={(e)=>e.currentTarget.style.color="#bfeeee"}
                   >
                     {item.name}
                   </a>
@@ -98,7 +94,10 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={item.link}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="transition-colors"
+                    style={{ color: "#bfeeee" }}
+                    onMouseOver={(e)=>e.currentTarget.style.color="#4dd6d5"}
+                    onMouseOut={(e)=>e.currentTarget.style.color="#bfeeee"}
                   >
                     {item.name}
                   </a>
@@ -112,8 +111,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin className="w-5 h-5 text-gray-400 mr-3 mt-1" />
-                <span className="text-gray-400">
+                <MapPin className="w-5 h-5 mr-3 mt-1" style={{ color: "#4dd6d5" }} />
+                <span style={{ color: "#bfeeee" }}>
                   8700 stacy rd
                   <br />
                   Mckinney texas 75070
@@ -122,12 +121,12 @@ const Footer = () => {
                 </span>
               </li>
               <li className="flex items-center">
-                <Phone className="w-5 h-5 text-gray-400 mr-3" />
-                <span className="text-gray-400">+1 (972) 654-2856</span>
+                <Phone className="w-5 h-5 mr-3" style={{ color: "#4dd6d5" }} />
+                <span style={{ color: "#bfeeee" }}>+1 (972) 654-2856</span>
               </li>
               <li className="flex items-center">
-                <Mail className="w-5 h-5 text-gray-400 mr-3" />
-                <span className="text-gray-400">
+                <Mail className="w-5 h-5 mr-3" style={{ color: "#4dd6d5" }} />
+                <span style={{ color: "#bfeeee" }}>
                   contact@nectar.com
                 </span>
               </li>
@@ -136,29 +135,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-800">
+        <div
+          className="pt-8"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}
+        >
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            <p style={{ color: "#bfeeee" }} className="text-sm mb-4 md:mb-0">
               © {new Date().getFullYear()} NectarSolutions. All rights reserved.
             </p>
-
-            {/* <div className="flex flex-wrap gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Cookie Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Security
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Compliance
-              </a>
-            </div> */}
           </div>
         </div>
       </div>

@@ -40,13 +40,25 @@ const Testimonials = () => {
   return (
     <section className="relative py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       {/* Decorative Blobs */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200/40 rounded-full blur-3xl" />
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-violet-200/40 rounded-full blur-3xl" />
+      <div
+        className="absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl"
+        style={{ backgroundColor: "rgba(30,90,142,0.25)" }}
+      />
+      <div
+        className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full blur-3xl"
+        style={{ backgroundColor: "rgba(77,214,213,0.25)" }}
+      />
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-semibold mb-4">
+          <span
+            className="inline-flex items-center px-4 py-2 rounded-full font-semibold mb-4"
+            style={{
+              backgroundColor: "#e6f2f8",
+              color: "#1e5a8e",
+            }}
+          >
             Client Success Stories
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -61,7 +73,12 @@ const Testimonials = () => {
         <div className="max-w-4xl mx-auto relative">
           <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-3xl p-8 sm:p-12 shadow-2xl transition-all duration-500">
             {/* Quote Icon */}
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center shadow-xl">
+            <div
+              className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl"
+              style={{
+                background: "linear-gradient(to bottom right, #1e5a8e, #4dd6d5)",
+              }}
+            >
               <Quote className="w-8 h-8 text-white" />
             </div>
 
@@ -86,9 +103,17 @@ const Testimonials = () => {
             {/* Author */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
               <div className="relative">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 p-[2px]">
+                <div
+                  className="w-16 h-16 rounded-full p-[2px]"
+                  style={{
+                    background: "linear-gradient(to bottom right, #1e5a8e, #4dd6d5)",
+                  }}
+                >
                   <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                    <span className="text-xl font-bold text-indigo-700">
+                    <span
+                      className="text-xl font-bold"
+                      style={{ color: "#1e5a8e" }}
+                    >
                       {testimonials[currentIndex].author.charAt(0)}
                     </span>
                   </div>
@@ -112,18 +137,19 @@ const Testimonials = () => {
             <div className="absolute top-1/2 -translate-y-1/2 left-4">
               <button
                 onClick={prev}
-                className="p-3 rounded-full bg-white shadow-lg hover:bg-indigo-50 transition"
+                className="p-3 rounded-full bg-white shadow-lg transition"
+                style={{}}
               >
-                <ChevronLeft />
+                <ChevronLeft style={{ color: "#1e5a8e" }} />
               </button>
             </div>
 
             <div className="absolute top-1/2 -translate-y-1/2 right-4">
               <button
                 onClick={next}
-                className="p-3 rounded-full bg-white shadow-lg hover:bg-indigo-50 transition"
+                className="p-3 rounded-full bg-white shadow-lg transition"
               >
-                <ChevronRight />
+                <ChevronRight style={{ color: "#1e5a8e" }} />
               </button>
             </div>
 
@@ -133,11 +159,12 @@ const Testimonials = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "w-8 bg-indigo-600"
-                      : "w-3 bg-gray-300 hover:bg-gray-400"
-                  }`}
+                  className="h-3 rounded-full transition-all duration-300"
+                  style={{
+                    width: index === currentIndex ? "32px" : "12px",
+                    backgroundColor:
+                      index === currentIndex ? "#1e5a8e" : "#d1d5db",
+                  }}
                 />
               ))}
             </div>

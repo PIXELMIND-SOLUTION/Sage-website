@@ -88,15 +88,31 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 mt-8 sm:py-20 overflow-hidden">
-      {/* Decorative Blobs - Fixed positioning to prevent overflow */}
-      <div className="absolute -top-20 -left-20 w-64 h-64 sm:w-96 sm:h-96 bg-indigo-200/40 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 -right-20 w-64 h-64 sm:w-96 sm:h-96 bg-violet-200/40 rounded-full blur-3xl" />
+    <section
+      className="relative min-h-screen py-12 mt-8 sm:py-20 overflow-hidden"
+      style={{
+        background: "linear-gradient(to bottom, #f8fafc, #ffffff)",
+      }}
+    >
+      {/* Decorative Blobs */}
+      <div
+        className="absolute -top-20 -left-20 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl"
+        style={{ background: "#1e5a8e33" }}
+      />
+      <div
+        className="absolute -bottom-20 -right-20 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl"
+        style={{ background: "#4dd6d533" }}
+      />
 
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-4">
-          <span className="inline-block px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-semibold mb-4">
+          <span
+            className="inline-block px-4 py-2 rounded-full font-semibold mb-4 text-white"
+            style={{
+              background: "linear-gradient(to right, #1e5a8e, #4dd6d5)",
+            }}
+          >
             Contact Us
           </span>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-4">
@@ -137,12 +153,21 @@ const ContactUs = () => {
                 key={i}
                 className="flex gap-3 sm:gap-4 bg-white rounded-xl p-4 sm:p-6 shadow-md border min-w-0"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-white"
+                  style={{
+                    background: "linear-gradient(to bottom right, #1e5a8e, #4dd6d5)",
+                  }}
+                >
                   {item.icon}
                 </div>
                 <div className="min-w-0">
-                  <h4 className="font-bold text-sm sm:text-base">{item.title}</h4>
-                  <p className="text-xs sm:text-sm text-gray-600 break-words">{item.desc}</p>
+                  <h4 className="font-bold text-sm sm:text-base">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-600 break-words">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -157,7 +182,8 @@ const ContactUs = () => {
                 onChange={handleChange}
                 placeholder="Full Name"
                 required
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                style={{ borderColor: "#1e5a8e33" }}
               />
 
               <input
@@ -165,7 +191,8 @@ const ContactUs = () => {
                 value={form.company}
                 onChange={handleChange}
                 placeholder="Company Name (Optional)"
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                style={{ borderColor: "#1e5a8e33" }}
               />
 
               <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
@@ -175,7 +202,8 @@ const ContactUs = () => {
                   onChange={handleChange}
                   placeholder="Mobile Number"
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                  style={{ borderColor: "#1e5a8e33" }}
                 />
                 <input
                   name="email"
@@ -183,7 +211,8 @@ const ContactUs = () => {
                   onChange={handleChange}
                   placeholder="Email Address"
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                  style={{ borderColor: "#1e5a8e33" }}
                 />
               </div>
 
@@ -194,14 +223,17 @@ const ContactUs = () => {
                   onChange={handleChange}
                   placeholder="Country"
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                  style={{ borderColor: "#1e5a8e33" }}
                 />
+
                 <select
                   name="interest"
                   value={form.interest}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                  style={{ borderColor: "#1e5a8e33" }}
                 >
                   <option value="">Area of Interest</option>
                   <option>Networking</option>
@@ -217,7 +249,8 @@ const ContactUs = () => {
                 value={form.source}
                 onChange={handleChange}
                 required
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                style={{ borderColor: "#1e5a8e33" }}
               >
                 <option value="">How did you hear about us?</option>
                 <option>Google Search</option>
@@ -233,14 +266,17 @@ const ContactUs = () => {
                 onChange={handleChange}
                 rows="3"
                 placeholder="Message"
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2"
+                style={{ borderColor: "#1e5a8e33" }}
               />
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-violet-600
-                text-white rounded-full font-semibold flex items-center justify-center gap-2 hover:from-indigo-700 hover:to-violet-700 transition-colors"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-white rounded-full font-semibold flex items-center justify-center gap-2 transition-all"
+                style={{
+                  background: "linear-gradient(to right, #1e5a8e, #4dd6d5)",
+                }}
               >
                 {loading ? (
                   <Loader2 className="animate-spin" size={20} />
@@ -252,12 +288,17 @@ const ContactUs = () => {
               </button>
 
               {successMsg && (
-                <p className="text-green-600 text-sm sm:text-base p-3 bg-green-50 rounded-lg">{successMsg}</p>
+                <p className="text-green-600 text-sm sm:text-base p-3 bg-green-50 rounded-lg">
+                  {successMsg}
+                </p>
               )}
               {errorMsg && (
-                <p className="text-red-500 text-sm sm:text-base p-3 bg-red-50 rounded-lg">{errorMsg}</p>
+                <p className="text-red-500 text-sm sm:text-base p-3 bg-red-50 rounded-lg">
+                  {errorMsg}
+                </p>
               )}
             </form>
+
           </div>
         </div>
       </div>

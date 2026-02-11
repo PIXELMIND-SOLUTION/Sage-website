@@ -40,7 +40,6 @@ const WhyChooseUs = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // 👇 This is the key change
         setInView(entry.isIntersecting);
       },
       {
@@ -68,13 +67,22 @@ const WhyChooseUs = () => {
                 : "opacity-0 -translate-x-12"
             }`}
           >
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-700 font-semibold mb-6">
+            <span
+              className="inline-flex items-center px-4 py-2 rounded-full font-semibold mb-6"
+              style={{
+                background:
+                  "linear-gradient(to right, #e6f2f8, #e6f7f7)",
+                color: "#1e5a8e",
+              }}
+            >
               Why Choose NectarSolutions
             </span>
 
             <h2 className="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               5+ Years of Excellence in <br />
-              <span className="text-indigo-600">Digital Transformation</span>
+              <span style={{ color: "#1e5a8e" }}>
+                Digital Transformation
+              </span>
             </h2>
 
             <p className="text-base sm:text-lg text-gray-600 mb-10 max-w-xl">
@@ -85,17 +93,14 @@ const WhyChooseUs = () => {
             <div className="space-y-6">
               {[
                 {
-                  color: "green",
                   title: "End-to-End Solutions",
                   desc: "From strategy and design to implementation and support",
                 },
                 {
-                  color: "blue",
                   title: "Industry-Specific Expertise",
                   desc: "Deep understanding of regulatory and operational needs",
                 },
                 {
-                  color: "purple",
                   title: "Innovation-Driven",
                   desc: "Continuous investment in emerging technologies and R&D",
                 },
@@ -110,10 +115,12 @@ const WhyChooseUs = () => {
                   style={{ transitionDelay: `${i * 150}ms` }}
                 >
                   <div
-                    className={`w-9 h-9 rounded-full bg-${item.color}-100 flex items-center justify-center mr-4`}
+                    className="w-9 h-9 rounded-full flex items-center justify-center mr-4"
+                    style={{ backgroundColor: "#e6f2f8" }}
                   >
                     <CheckCircle
-                      className={`w-5 h-5 text-${item.color}-600`}
+                      className="w-5 h-5"
+                      style={{ color: "#1e5a8e" }}
                     />
                   </div>
                   <div>
@@ -136,18 +143,27 @@ const WhyChooseUs = () => {
                 key={index}
                 className={`relative bg-white/70 backdrop-blur rounded-2xl p-6 border border-gray-100
                 shadow-lg transition-all duration-500 ease-out group
-                hover:-translate-y-2 hover:shadow-2xl hover:border-indigo-100
+                hover:-translate-y-2 hover:shadow-2xl
                 ${
                   inView
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
                 }`}
-                style={{ transitionDelay: `${index * 120}ms` }}
+                style={{
+                  transitionDelay: `${index * 120}ms`,
+                }}
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-100 to-violet-100
-                  flex items-center justify-center mb-5
-                  group-hover:scale-110 transition-transform duration-300">
-                  <div className="text-indigo-600">{feature.icon}</div>
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-5
+                  group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom right, #e6f2f8, #e6f7f7)",
+                  }}
+                >
+                  <div style={{ color: "#1e5a8e" }}>
+                    {feature.icon}
+                  </div>
                 </div>
 
                 <h3 className="font-bold text-gray-900 text-lg mb-2">
@@ -158,12 +174,18 @@ const WhyChooseUs = () => {
                   {feature.description}
                 </p>
 
-                <div className="text-2xl font-extrabold text-indigo-600">
+                <div
+                  className="text-2xl font-extrabold"
+                  style={{ color: "#1e5a8e" }}
+                >
                   {feature.stat}
                 </div>
 
                 {/* Hover glow */}
-                <div className="absolute inset-0 rounded-2xl bg-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{ backgroundColor: "rgba(30,90,142,0.05)" }}
+                />
               </div>
             ))}
           </div>

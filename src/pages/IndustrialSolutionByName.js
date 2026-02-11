@@ -76,7 +76,7 @@ const IndustrySolutions = () => {
           <p className="text-gray-600 mb-6">The requested solution page doesn't exist.</p>
           <button
             onClick={() => navigate('/solutions')}
-            className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium hover:shadow-lg transition-all duration-300"
+            className="px-6 py-3 rounded-full bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] text-white font-medium hover:shadow-lg transition-all duration-300"
           >
             Browse Solutions
           </button>
@@ -105,7 +105,7 @@ const IndustrySolutions = () => {
             alt={data.name}
             className="w-full h-full object-cover scale-110"
           />
-          <div className={`absolute inset-0 bg-gradient-to-r ${data.color} opacity-90`} />
+          <div className={`absolute inset-0 bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] opacity-90`} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         </div>
 
@@ -193,7 +193,7 @@ const IndustrySolutions = () => {
                       <span className="font-bold">99%</span>
                     </div>
                     <div className="h-1 bg-white/20 rounded-full overflow-hidden">
-                      <div className="h-full bg-blue-400 rounded-full w-full" />
+                      <div className="h-full bg-[#1e5a8e] rounded-full w-full" />
                     </div>
 
                     <div className="flex items-center justify-between text-white">
@@ -225,8 +225,8 @@ const IndustrySolutions = () => {
         {data.longDescription && (
           <div
             className={`mb-24 transition-all duration-1000 delay-300 ${inView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-6"
               }`}
           >
             <div className="max-w-4xl mx-auto">
@@ -235,8 +235,8 @@ const IndustrySolutions = () => {
                 className="
         relative
         rounded-3xl
-        border border-emerald-400/40
-        bg-emerald-500/10
+        border border-[#4dd6d5]/40
+        bg-[#1e5a8e]/10
         backdrop-blur-md
         shadow-lg
         p-10
@@ -248,7 +248,7 @@ const IndustrySolutions = () => {
                 <div className="
         absolute inset-0
         bg-gradient-to-br
-        from-emerald-200/40
+        from-[#4dd6d5]/40
         via-transparent
         to-transparent
         opacity-40
@@ -259,8 +259,8 @@ const IndustrySolutions = () => {
                 <div className="
         absolute left-0 top-0 bottom-0 w-2
         bg-gradient-to-b
-        from-emerald-500
-        to-teal-500
+        from-[#1e5a8e]
+        to-[#4dd6d5]
         rounded-l-3xl
         " />
 
@@ -279,7 +279,7 @@ const IndustrySolutions = () => {
         <section id="services" className="mb-24">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Our <span className="bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] bg-clip-text text-transparent">
                 Premium Services
               </span>
             </h2>
@@ -298,7 +298,7 @@ const IndustrySolutions = () => {
               >
                 {/* Service Card */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 border border-gray-200/50 p-8 flex flex-col transition-all duration-500 group-hover:opacity-0">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-blue-100 to-indigo-100 flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-[#1e5a8e]/10 to-[#4dd6d5]/10 flex items-center justify-center mb-6">
                     {getIconForService(service.title)}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -308,7 +308,7 @@ const IndustrySolutions = () => {
                     {service.desc}
                   </p>
                   <div className="mt-auto pt-6">
-                    <div className="flex items-center text-blue-600 font-medium">
+                    <div className="flex items-center text-[#1e5a8e] font-medium">
                       Learn More
                       <ChevronRight className="w-4 h-4 ml-1" />
                     </div>
@@ -335,7 +335,7 @@ const IndustrySolutions = () => {
 
                 {/* Floating Badge */}
                 <div className="absolute -top-3 -right-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] flex items-center justify-center text-white font-bold shadow-lg">
                     {index + 1}
                   </div>
                 </div>
@@ -346,32 +346,32 @@ const IndustrySolutions = () => {
 
         {/* ================= BENEFITS SECTION ================= */}
         {data.benefits && (
-  <section className="mb-32 px-6">
+          <section className="mb-32 px-6">
 
-    <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto">
 
-      <div className="grid lg:grid-cols-2 gap-20 items-start">
+              <div className="grid lg:grid-cols-2 gap-20 items-start">
 
-        {/* LEFT */}
-        <div className="lg:sticky lg:top-28">
+                {/* LEFT */}
+                <div className="lg:sticky lg:top-28">
 
-          {/* Tag */}
-          <span className="
+                  {/* Tag */}
+                  <span className="
             inline-block
             px-4 py-2
             rounded-full
-            bg-emerald-500/10
-            border border-emerald-400/40
-            text-emerald-700
+            bg-[#4dd6d5]/10
+            border border-[#4dd6d5]/40
+            text-[#1e5a8e]
             text-sm
             font-semibold
             mb-6
           ">
-            KEY BENEFITS
-          </span>
+                    KEY BENEFITS
+                  </span>
 
-          {/* Title */}
-          <h2 className="
+                  {/* Title */}
+                  <h2 className="
             text-3xl
             md:text-4xl
             font-bold
@@ -379,21 +379,21 @@ const IndustrySolutions = () => {
             leading-tight
             mb-6
           ">
-            {data.benefits.title}
-          </h2>
+                    {data.benefits.title}
+                  </h2>
 
-          {/* Description */}
-          <p className="
+                  {/* Description */}
+                  <p className="
             text-gray-600
             text-lg
             leading-relaxed
             mb-10
           ">
-            {data.benefits.description}
-          </p>
+                    {data.benefits.description}
+                  </p>
 
-          {/* Trust Block */}
-          <div className="
+                  {/* Trust Block */}
+                  <div className="
             flex items-center gap-4
             p-5
             rounded-2xl
@@ -401,37 +401,37 @@ const IndustrySolutions = () => {
             border
             shadow-sm
           ">
-            <div className="
+                    <div className="
               w-12 h-12
               rounded-xl
-              bg-gradient-to-r from-blue-600 to-indigo-600
+              bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5]
               flex items-center justify-center
               shadow-md
             ">
-              <Award className="w-6 h-6 text-white" />
-            </div>
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
 
-            <div>
-              <p className="font-semibold text-gray-900">
-                Enterprise Grade
-              </p>
-              <p className="text-gray-500 text-sm">
-                Certified & Trusted Solutions
-              </p>
-            </div>
-          </div>
-        </div>
+                    <div>
+                      <p className="font-semibold text-gray-900">
+                        Enterprise Grade
+                      </p>
+                      <p className="text-gray-500 text-sm">
+                        Certified & Trusted Solutions
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-        {/* RIGHT */}
-        <div>
+                {/* RIGHT */}
+                <div>
 
-          {/* FEATURES */}
-          <div className="grid sm:grid-cols-2 gap-6">
+                  {/* FEATURES */}
+                  <div className="grid sm:grid-cols-2 gap-6">
 
-            {data.benefits.keyFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="
+                    {data.benefits.keyFeatures.map((feature, index) => (
+                      <div
+                        key={index}
+                        className="
                   group
                   rounded-2xl
                   border
@@ -443,80 +443,80 @@ const IndustrySolutions = () => {
                   transition-all
                   duration-400
                 "
-              >
-                <div className="flex gap-4">
+                      >
+                        <div className="flex gap-4">
 
-                  {/* ICON */}
-                  <div className="
+                          {/* ICON */}
+                          <div className="
                     w-11 h-11
                     rounded-xl
-                    bg-emerald-500/10
+                    bg-[#4dd6d5]/10
                     flex items-center justify-center
                     flex-shrink-0
                   ">
-                    <CheckCircle className="w-5 h-5 text-emerald-600" />
-                  </div>
+                            <CheckCircle className="w-5 h-5 text-[#1e5a8e]" />
+                          </div>
 
-                  {/* TEXT */}
-                  <p className="font-semibold text-gray-800 leading-relaxed">
-                    {feature}
-                  </p>
-                </div>
+                          {/* TEXT */}
+                          <p className="font-semibold text-gray-800 leading-relaxed">
+                            {feature}
+                          </p>
+                        </div>
 
-                {/* Progress bar */}
-                <div className="mt-5 h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div
-                    className="
+                        {/* Progress bar */}
+                        <div className="mt-5 h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div
+                            className="
                       h-full
                       bg-gradient-to-r
-                      from-emerald-500
-                      to-teal-500
+                      from-[#1e5a8e]
+                      to-[#4dd6d5]
                       rounded-full
                     "
-                    style={{
-                      width: `${75 + index * 5}%`,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+                            style={{
+                              width: `${75 + index * 5}%`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
 
-          {/* STATS */}
-          <div className="
+                  {/* STATS */}
+                  <div className="
             mt-10
             rounded-3xl
             p-10
             bg-gradient-to-r
-            from-indigo-600
-            to-blue-600
+            from-[#1e5a8e]
+            to-[#4dd6d5]
             shadow-xl
           ">
-            <div className="grid grid-cols-3 gap-6 text-center">
+                    <div className="grid grid-cols-3 gap-6 text-center">
 
-              {[
-                { value: "24/7", label: "Support" },
-                { value: "99.9%", label: "Uptime" },
-                { value: "100+", label: "Projects" },
-              ].map((stat, i) => (
-                <div key={i}>
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    {stat.value}
+                      {[
+                        { value: "24/7", label: "Support" },
+                        { value: "99.9%", label: "Uptime" },
+                        { value: "100+", label: "Projects" },
+                      ].map((stat, i) => (
+                        <div key={i}>
+                          <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                            {stat.value}
+                          </div>
+                          <div className="text-[#1e5a8e]/100 text-sm">
+                            {stat.label}
+                          </div>
+                        </div>
+                      ))}
+
+                    </div>
                   </div>
-                  <div className="text-blue-100 text-sm">
-                    {stat.label}
-                  </div>
+
                 </div>
-              ))}
-
+              </div>
             </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-)}
+          </section>
+        )}
 
 
         {/* ================= STEPS SECTION ================= */}
@@ -527,7 +527,7 @@ const IndustrySolutions = () => {
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 Our{" "}
-                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] bg-clip-text text-transparent">
                   Process
                 </span>
               </h2>
@@ -541,7 +541,7 @@ const IndustrySolutions = () => {
             <div className="relative max-w-6xl mx-auto">
 
               {/* Center Line */}
-              <div className="hidden lg:block absolute left-1/2 top-0 h-full w-[3px] bg-gradient-to-b from-blue-200 via-indigo-300 to-purple-200 -translate-x-1/2" />
+              <div className="hidden lg:block absolute left-1/2 top-0 h-full w-[3px] bg-gradient-to-b from-[#1e5a8e]/20 via-[#4dd6d5]/30 to-[#1e5a8e]/20 -translate-x-1/2" />
 
               <div className="space-y-16">
 
@@ -575,7 +575,7 @@ const IndustrySolutions = () => {
                           <div className="flex items-center gap-4 mb-4">
 
                             {/* STEP NUMBER */}
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] flex items-center justify-center text-white font-bold shadow-lg">
                               {step.step}
                             </div>
 
@@ -592,7 +592,7 @@ const IndustrySolutions = () => {
 
                       {/* CENTER DOT */}
                       <div className="hidden lg:flex items-center justify-center w-[10%] relative">
-                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg border-4 border-white z-10" />
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] shadow-lg border-4 border-white z-10" />
                       </div>
 
                       {/* RIGHT EMPTY SPACE */}
@@ -638,7 +638,7 @@ const IndustrySolutions = () => {
                     <div key={index} className="w-full flex-shrink-0 px-4">
                       <div className="max-w-4xl mx-auto">
                         <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-12 border border-gray-200/50 shadow-xl">
-                          <Quote className="w-12 h-12 text-blue-600/20 mb-8" />
+                          <Quote className="w-12 h-12 text-[#1e5a8e]/20 mb-8" />
 
                           <div className="flex flex-col lg:flex-row gap-12 items-center">
                             {/* Client Info */}
@@ -711,7 +711,7 @@ const IndustrySolutions = () => {
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeTestimonial
-                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 w-8"
+                      ? "bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] w-8"
                       : "bg-gray-300 hover:bg-gray-400"
                       }`}
                   />
@@ -726,17 +726,17 @@ const IndustrySolutions = () => {
           className={`text-center transition-all duration-1000 delay-500
             ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
-          <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-12 shadow-2xl">
+          <div className="max-w-4xl mx-auto bg-gradient-to-r from-[#1e5a8e] to-[#4dd6d5] rounded-3xl p-12 shadow-2xl">
             <h3 className="text-3xl font-bold text-white mb-6">
               Ready to Transform Your Business?
             </h3>
-            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-[#1e5a8e]/100 text-lg mb-8 max-w-2xl mx-auto">
               Let's discuss how our {data.name} can drive your success forward.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => navigate('/contact')}
-                className="px-10 py-4 rounded-full bg-white text-blue-600 font-bold hover:bg-gray-100 hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                className="px-10 py-4 rounded-full bg-white text-[#1e5a8e] font-bold hover:bg-gray-100 hover:shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 Start Free Consultation
               </button>
@@ -747,7 +747,7 @@ const IndustrySolutions = () => {
                 Explore Other Solutions
               </button>
             </div>
-            <p className="text-blue-200 text-sm mt-8">
+            <p className="text-[#1e5a8e]/200 text-sm mt-8">
               Schedule a call with our experts • Get a custom proposal • 30-day pilot available
             </p>
           </div>
