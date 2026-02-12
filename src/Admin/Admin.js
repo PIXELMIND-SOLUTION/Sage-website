@@ -22,7 +22,9 @@ import {
   Globe,
   Filter,
   FileDown,
+  LogOut,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const API_BASE = "http://31.97.206.144:7127/api/positions";
 const API_DOWNLOAD = "http://31.97.206.144:7127";
@@ -63,6 +65,8 @@ const Admin = () => {
   const [resumes, setResumes] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   /* pagination + filters */
   const [page, setPage] = useState(1);
@@ -179,7 +183,7 @@ const Admin = () => {
       r.fullName.toLowerCase().includes(resumeSearch.toLowerCase()) ||
       r.email.toLowerCase().includes(resumeSearch.toLowerCase()) ||
       r.mobile.toLowerCase().includes(resumeSearch.toLowerCase()) ||
-      r.roles.some(role => 
+      r.roles.some(role =>
         role.toLowerCase().includes(resumeSearch.toLowerCase())
       )
     );
@@ -192,8 +196,8 @@ const Admin = () => {
       c.email.toLowerCase().includes(contactSearch.toLowerCase()) ||
       c.mobile.toLowerCase().includes(contactSearch.toLowerCase());
 
-    const matchInterest = contactInterestFilter 
-      ? c.areaOfInterest === contactInterestFilter 
+    const matchInterest = contactInterestFilter
+      ? c.areaOfInterest === contactInterestFilter
       : true;
 
     const matchSource = contactHeardAboutFilter
@@ -335,9 +339,9 @@ const Admin = () => {
     setResumeEditForm({ ...resumeEditForm, roles });
   };
 
-  const addRole = () => setResumeEditForm({ 
-    ...resumeEditForm, 
-    roles: [...resumeEditForm.roles, ""] 
+  const addRole = () => setResumeEditForm({
+    ...resumeEditForm,
+    roles: [...resumeEditForm.roles, ""]
   });
 
   const removeRole = (i) => setResumeEditForm({
@@ -347,7 +351,7 @@ const Admin = () => {
 
   const handleResumeUpdate = async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData();
     formData.append("fullName", resumeEditForm.fullName);
     if (resumeEditForm.resumeFile) {
@@ -359,7 +363,7 @@ const Admin = () => {
         method: "PUT",
         body: formData,
       });
-      
+
       setResumeEditModal(false);
       setResumeEditForm(emptyResumeForm);
       setResumeEditId(null);
@@ -371,12 +375,12 @@ const Admin = () => {
 
   const handleDeleteResume = async (id) => {
     if (!window.confirm("Delete this resume submission?")) return;
-    
+
     try {
       const res = await fetch(`${API_BASE}/deleteresume/${id}`, {
         method: "DELETE",
       });
-      
+
       if (res.ok) {
         fetchResumes();
       }
@@ -420,14 +424,14 @@ const Admin = () => {
 
   const handleContactUpdate = async (e) => {
     e.preventDefault();
-    
+
     try {
       const res = await fetch(`${API_BASE}/update-contact/${contactEditId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contactEditForm),
       });
-      
+
       if (res.ok) {
         setContactEditModal(false);
         setContactEditForm(emptyContactForm);
@@ -441,12 +445,12 @@ const Admin = () => {
 
   const handleDeleteContact = async (id) => {
     if (!window.confirm("Delete this contact form submission?")) return;
-    
+
     try {
       const res = await fetch(`${API_BASE}/delete-contact/${id}`, {
         method: "DELETE",
       });
-      
+
       if (res.ok) {
         fetchContacts();
       }
@@ -464,7 +468,7 @@ const Admin = () => {
 
     const headers = [
       "Full Name",
-      "Company Name", 
+      "Company Name",
       "Email",
       "Mobile",
       "Country",
@@ -494,11 +498,11 @@ const Admin = () => {
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
-    
+
     link.setAttribute("href", url);
     link.setAttribute("download", `contacts_export_${new Date().toISOString().split('T')[0]}.csv`);
     link.style.visibility = "hidden";
-    
+
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -510,45 +514,70 @@ const Admin = () => {
     window.open(downloadUrl, '_blank');
   };
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear all auth data
+    sessionStorage.removeItem('isAdminAuth');
+    // sessionStorage.removeItem('adminToken');
+    // localStorage.removeItem('adminPersist');
+
+    // Navigate to login page
+    navigate('/admin', { replace: true });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 mt-8 sm:mt-12 lg:mt-16">
         {/* ================= NAV ================= */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 my-6 sm:my-8  mt-16">
-          {[
-            { key: "careers", label: "Careers", icon: Briefcase },
-            { key: "resumes", label: "Resume Submissions", icon: FileText },
-            { key: "contacts", label: "Contact Forms", icon: Mail },
-          ].map((t) => {
-            const Icon = t.icon;
-            const isActive = activeTab === t.key;
-            return (
-              <button
-                key={t.key}
-                onClick={() => {
-                  setActiveTab(t.key);
-                  setPage(1);
-                  setResumePage(1);
-                  setContactPage(1);
-                }}
-                className={`
-                  flex items-center justify-center sm:justify-start gap-2 
-                  px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-200
-                  ${isActive 
-                    ? 'text-white shadow-lg' 
-                    : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200'
-                  }
-                `}
-                style={{
-                  backgroundColor: isActive ? '#4DD6D5' : '',
-                  color: isActive ? 'white' : ''
-                }}
-              >
-                <Icon size={18} />
-                <span className="truncate">{t.label}</span>
-              </button>
-            );
-          })}
+        {/* ================= NAV & LOGOUT ================= */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 my-6 sm:my-8 mt-16">
+          {/* Tabs Group */}
+          <div className="flex flex-wrap gap-3 sm:gap-4">
+            {[
+              { key: "careers", label: "Careers", icon: Briefcase },
+              { key: "resumes", label: "Resume Submissions", icon: FileText },
+              { key: "contacts", label: "Contact Forms", icon: Mail },
+            ].map((t) => {
+              const Icon = t.icon;
+              const isActive = activeTab === t.key;
+              return (
+                <button
+                  key={t.key}
+                  onClick={() => {
+                    setActiveTab(t.key);
+                    setPage(1);
+                    setResumePage(1);
+                    setContactPage(1);
+                  }}
+                  className={`
+            flex items-center justify-center sm:justify-start gap-2 
+            px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-200
+            ${isActive
+                      ? 'text-white shadow-lg'
+                      : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200'
+                    }
+          `}
+                  style={{
+                    backgroundColor: isActive ? '#4DD6D5' : '',
+                    color: isActive ? 'white' : ''
+                  }}
+                >
+                  <Icon size={18} />
+                  <span className="truncate">{t.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Logout Button - Separated from Tabs */}
+          <button
+            onClick={() => setShowLogoutModal(true)}
+            className="flex items-center justify-center gap-2 px-5 py-3 bg-white border-2 border-red-200 hover:bg-red-50 rounded-xl transition-all duration-200 group"
+          >
+            <LogOut size={18} className="text-red-500 group-hover:text-red-600" />
+            <span className="font-semibold text-red-600 group-hover:text-red-700">Logout</span>
+          </button>
         </div>
 
         {/* ================= CAREERS ================= */}
@@ -624,7 +653,7 @@ const Admin = () => {
                           <td className="p-4 font-medium text-gray-900">{p.title}</td>
                           <td className="p-4 text-gray-600">{p.location}</td>
                           <td className="p-4">
-                            <span 
+                            <span
                               className="px-2.5 py-1 rounded-full text-xs font-medium"
                               style={{ backgroundColor: '#E6F7F7', color: '#1E5A8E' }}
                             >
@@ -738,8 +767,8 @@ const Admin = () => {
                           <td className="p-4">
                             <div className="flex flex-wrap gap-1">
                               {r.roles.slice(0, 2).map((role, idx) => (
-                                <span 
-                                  key={idx} 
+                                <span
+                                  key={idx}
                                   className="px-2 py-1 text-xs rounded"
                                   style={{ backgroundColor: '#E6F7F7', color: '#1E5A8E' }}
                                 >
@@ -747,7 +776,7 @@ const Admin = () => {
                                 </span>
                               ))}
                               {r.roles.length > 2 && (
-                                <span 
+                                <span
                                   className="px-2 py-1 text-xs rounded"
                                   style={{ backgroundColor: '#E6F7F7', color: '#1E5A8E' }}
                                 >
@@ -914,7 +943,7 @@ const Admin = () => {
                           <td className="p-4 text-gray-600">{c.email}</td>
                           <td className="p-4 text-gray-600">{c.mobile}</td>
                           <td className="p-4">
-                            <span 
+                            <span
                               className="px-2.5 py-1 rounded-full text-xs font-medium"
                               style={{ backgroundColor: '#E6F7F7', color: '#1E5A8E' }}
                             >
@@ -1059,7 +1088,7 @@ const Admin = () => {
                       <Phone size={14} style={{ color: '#4DD6D5' }} /> {resumeViewData.mobile}
                     </span>
                     <span className="flex items-center gap-1">
-                      <Calendar size={14} style={{ color: '#4DD6D5' }} /> 
+                      <Calendar size={14} style={{ color: '#4DD6D5' }} />
                       {new Date(resumeViewData.createdAt).toLocaleDateString()}
                     </span>
                   </div>
@@ -1070,8 +1099,8 @@ const Admin = () => {
                 <h4 className="font-semibold mb-2" style={{ color: '#1E5A8E' }}>Roles Applied For</h4>
                 <div className="flex flex-wrap gap-2">
                   {resumeViewData.roles.map((role, idx) => (
-                    <span 
-                      key={idx} 
+                    <span
+                      key={idx}
                       className="px-3 py-1 rounded-full text-sm"
                       style={{ backgroundColor: '#E6F7F7', color: '#1E5A8E' }}
                     >
@@ -1141,7 +1170,7 @@ const Admin = () => {
                       <Mail size={14} style={{ color: '#4DD6D5' }} /> {contactViewData.email}
                     </span>
                     <span className="flex items-center gap-1">
-                      <Calendar size={14} style={{ color: '#4DD6D5' }} /> 
+                      <Calendar size={14} style={{ color: '#4DD6D5' }} />
                       {new Date(contactViewData.createdAt).toLocaleDateString()}
                     </span>
                   </div>
@@ -1161,7 +1190,7 @@ const Admin = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm mb-1" style={{ color: '#1E5A8E' }}>Area of Interest</h4>
-                  <span 
+                  <span
                     className="px-3 py-1 rounded-full text-sm inline-block"
                     style={{ backgroundColor: '#E6F7F7', color: '#1E5A8E' }}
                   >
@@ -1244,7 +1273,7 @@ const Admin = () => {
                         required
                       />
                       {form.requirement.length > 1 && (
-                        <button 
+                        <button
                           type="button"
                           onClick={() => removeRequirement(i)}
                           className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -1325,7 +1354,7 @@ const Admin = () => {
                         required
                       />
                       {resumeEditForm.roles.length > 1 && (
-                        <button 
+                        <button
                           type="button"
                           onClick={() => removeRole(i)}
                           className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -1355,7 +1384,7 @@ const Admin = () => {
                     onChange={handleResumeEditChange}
                     accept=".pdf,.doc,.docx"
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold"
-                    style={{ 
+                    style={{
                       focusRingColor: '#4DD6D5',
                       color: '#1E5A8E'
                     }}
@@ -1430,6 +1459,57 @@ const Admin = () => {
                   Update Contact Form
                 </button>
               </form>
+            </div>
+          </div>
+        )}
+
+        {/* ================= LOGOUT CONFIRMATION MODAL ================= */}
+        {showLogoutModal && (
+          <div
+            className="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4"
+            onClick={() => setShowLogoutModal(false)}
+          >
+            <div
+              className="bg-white max-w-md w-full rounded-2xl p-6 sm:p-8 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowLogoutModal(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="text-center">
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-red-50 flex items-center justify-center">
+                  <LogOut size={32} className="text-red-500" />
+                </div>
+
+                <h3 className="text-xl font-bold mb-2" style={{ color: '#1E5A8E' }}>
+                  Logout Confirmation
+                </h3>
+
+                <p className="text-gray-600 mb-6">
+                  Are you sure you want to logout from your admin account?
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={() => setShowLogoutModal(false)}
+                    className="flex-1 px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors font-medium"
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    onClick={handleLogout}
+                    className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors font-medium flex items-center justify-center gap-2"
+                  >
+                    <LogOut size={18} />
+                    Yes, Logout
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}
